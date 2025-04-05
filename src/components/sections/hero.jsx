@@ -178,7 +178,7 @@ export function Hero() {
               >
                 <div className="p-6">
                   <div
-                    className="rounded-full p-3 w-max"
+                    className="rounded-full p-3 w-max mx-auto md:mx-0"
                     style={{ background: "rgba(75, 99, 255, 0.1)" }}
                   >
                     <feature.icon
