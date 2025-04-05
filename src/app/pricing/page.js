@@ -191,9 +191,8 @@ const PricingToggle = ({ annual, setAnnual }) => {
   return (
     <div className="flex items-center justify-center space-x-4">
       <span
-        className={`text-sm font-medium ${
-          !annual ? "opacity-100" : "opacity-60"
-        }`}
+        className={`text-sm font-medium ${!annual ? "opacity-100" : "opacity-60"
+          }`}
         style={{ color: "#1E2B4F" }}
       >
         Monthly
@@ -207,16 +206,14 @@ const PricingToggle = ({ annual, setAnnual }) => {
         onClick={() => setAnnual(!annual)}
       >
         <span
-          className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-            annual ? "translate-x-5" : "translate-x-0"
-          }`}
+          className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${annual ? "translate-x-5" : "translate-x-0"
+            }`}
         />
       </button>
       <div>
         <span
-          className={`text-sm font-medium ${
-            annual ? "opacity-100" : "opacity-60"
-          }`}
+          className={`text-sm font-medium ${annual ? "opacity-100" : "opacity-60"
+            }`}
           style={{ color: "#1E2B4F" }}
         >
           Annual
@@ -266,11 +263,10 @@ export default function PricingPage() {
           {/* Billing toggle */}
           <div className="mt-12 inline-flex items-center justify-center gap-4 bg-[#F5F7FA] p-2 rounded-full border border-[#A8BFFF] shadow-sm">
             <span
-              className={`text-sm px-4 py-2 rounded-full transition-all duration-200 cursor-pointer ${
-                billingCycle === "monthly"
+              className={`text-sm px-4 py-2 rounded-full transition-all duration-200 cursor-pointer ${billingCycle === "monthly"
                   ? "font-semibold text-[#1E2B4F] bg-white shadow-sm"
                   : "text-[#6A7C99]"
-              }`}
+                }`}
               onClick={() => setBillingCycle("monthly")}
             >
               Monthly
@@ -284,17 +280,15 @@ export default function PricingPage() {
               }
             >
               <span
-                className={`inline-block h-4 w-4 transform rounded-full bg-[#4B63FF] transition-transform ${
-                  billingCycle === "annual" ? "translate-x-6" : "translate-x-1"
-                }`}
+                className={`inline-block h-4 w-4 transform rounded-full bg-[#4B63FF] transition-transform ${billingCycle === "annual" ? "translate-x-6" : "translate-x-1"
+                  }`}
               />
             </div>
             <span
-              className={`text-sm px-4 py-2 rounded-full transition-all duration-200 cursor-pointer ${
-                billingCycle === "annual"
+              className={`text-sm px-4 py-2 rounded-full transition-all duration-200 cursor-pointer ${billingCycle === "annual"
                   ? "font-semibold text-[#1E2B4F] bg-white shadow-sm"
                   : "text-[#6A7C99]"
-              }`}
+                }`}
               onClick={() => setBillingCycle("annual")}
             >
               Annual{" "}
@@ -307,11 +301,10 @@ export default function PricingPage() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`flex flex-col overflow-hidden rounded-2xl border bg-white transition-all duration-300 hover:shadow-xl relative ${
-                plan.highlight
+              className={`flex flex-col overflow-hidden rounded-2xl border bg-white transition-all duration-300 hover:shadow-xl relative ${plan.highlight
                   ? "border-[#4b63ff50] ring-2 ring-[#4b63ff50] shadow-lg transform hover:-translate-y-1"
                   : "border-[#A8BFFF] hover:border-[#4B63FF]"
-              }`}
+                }`}
             >
               {plan.showRibbon && (
                 <div className="absolute -right-12 top-6 bg-[#19C68B] text-white py-1 px-12 transform rotate-45 shadow-md z-10">
@@ -358,11 +351,10 @@ export default function PricingPage() {
                   <Dialog>
                     <DialogTrigger asChild>
                       <Button
-                        className={`mt-8 w-full h-12 font-semibold shadow-sm ${
-                          plan.buttonVariant === "default"
+                        className={`mt-8 w-full h-12 font-semibold shadow-sm ${plan.buttonVariant === "default"
                             ? "bg-[#4B63FF] hover:bg-[#3A51E0] text-white"
                             : "bg-[#F0F4FF] hover:bg-[#DCE4FF] text-[#4B63FF] border border-[#A8BFFF]"
-                        }`}
+                          }`}
                         variant={plan.buttonVariant}
                         size="lg"
                         onClick={() => setSelectedPlan(plan.name)}
@@ -376,7 +368,7 @@ export default function PricingPage() {
                           Join the Waitlist for {selectedPlan}
                         </DialogTitle>
                         <DialogDescription className="text-[#6A7C99]">
-                          Leave your details and we'll notify you when this plan
+                          Leave your details and we&apos;ll notify you when this plan
                           becomes available.
                         </DialogDescription>
                       </DialogHeader>
@@ -409,11 +401,10 @@ export default function PricingPage() {
                   </Dialog>
                 ) : (
                   <Button
-                    className={`mt-8 w-full h-12 font-semibold shadow-sm ${
-                      plan.buttonVariant === "default"
+                    className={`mt-8 w-full h-12 font-semibold shadow-sm ${plan.buttonVariant === "default"
                         ? "bg-[#4B63FF] hover:bg-[#3A51E0] text-white"
                         : "bg-[#F0F4FF] hover:bg-[#DCE4FF] text-[#4B63FF] border border-[#A8BFFF]"
-                    }`}
+                      }`}
                     variant={plan.buttonVariant}
                     size="lg"
                     disabled={plan.buttonText === "Coming Soon"}

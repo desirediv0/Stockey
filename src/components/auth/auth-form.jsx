@@ -176,7 +176,7 @@ export function AuthForm({ type = "signin" }) {
                   className="justify-center my-4"
                 />
                 <p className="text-xs text-gray-500">
-                  We've sent a 6-digit code to{" "}
+                  We&apos;ve sent a 6-digit code to{" "}
                   <span className="font-medium">{email}</span>
                 </p>
               </div>
@@ -229,7 +229,7 @@ export function AuthForm({ type = "signin" }) {
         <div className="w-full text-center text-sm">
           {type === "signin" ? (
             <span className="text-gray-500">
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <Link
                 href="/signup"
                 className="text-[#4B63FF] hover:text-[#3A4FCC] font-medium"

@@ -132,7 +132,7 @@ export default function SecurityPage() {
                 <h2 style={{ color: "#1E2B4F" }}>Our Security Commitment</h2>
                 <p>
                   At Stockey, security is a core part of our product, not an
-                  afterthought. We've built our platform from the ground up with
+                  afterthought. We&apos;ve built our platform from the ground up with
                   security best practices in mind. Our team continuously
                   monitors for threats and vulnerabilities, ensuring your data
                   remains protected.
@@ -140,7 +140,7 @@ export default function SecurityPage() {
 
                 <h2 style={{ color: "#1E2B4F" }}>Data Protection</h2>
                 <p>
-                  We understand the sensitive nature of financial data. That's
+                  We understand the sensitive nature of financial data. That&apos;s
                   why we never store your broker credentials. Instead, we use
                   secure OAuth integrations to access only the data you
                   explicitly authorize. All personal and financial data is
@@ -215,9 +215,9 @@ export default function SecurityPage() {
 
                 <h2 style={{ color: "#1E2B4F" }}>Bug Bounty Program</h2>
                 <p>
-                  We value the security research community's input and have
+                  We value the security research community&apos;s input and have
                   established a responsible disclosure program for reporting
-                  security vulnerabilities. If you believe you've found a
+                  security vulnerabilities. If you believe you&apos;ve found a
                   security issue, please contact us at{" "}
                   <a
                     href="mailto:security@stockey.com"

@@ -84,7 +84,7 @@ export default function NotFound() {
           transition={{ duration: 0.6, delay: 0.3 }}
           style={{ color: "#6A7C99" }}
         >
-          We're working on something amazing. Be the first to know when we
+          We&apos;re working on something amazing. Be the first to know when we
           launch by joining our waitlist.
         </motion.p>
 

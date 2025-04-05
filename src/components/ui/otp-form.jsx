@@ -50,7 +50,7 @@ export function OTPVerificationForm({ email, onVerify, onResend, onCancel }) {
       <CardHeader>
         <CardTitle className="text-xl text-center">Verify Your Email</CardTitle>
         <CardDescription className="text-center">
-          We've sent a 6-digit code to{" "}
+          We&apos;ve sent a 6-digit code to{" "}
           <span className="font-medium">{email || "your email"}</span>. Enter
           the code below to verify your account.
         </CardDescription>

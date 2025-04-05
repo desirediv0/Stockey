@@ -285,7 +285,7 @@ const WishlistForm = ({ planName }) => {
       </Button>
 
       <p className="text-xs text-center text-[#6A7C99] mt-2">
-        We'll only use your information to notify you about this plan.
+        We&apos;ll only use your information to notify you about this plan.
       </p>
     </form>
   );

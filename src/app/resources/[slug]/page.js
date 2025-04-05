@@ -84,7 +84,7 @@ export default function ResourcesPost({ params }) {
             Resource Not Found
           </h1>
           <p className="mb-8" style={{ color: "#6A7C99" }}>
-            We couldn't find the resource you're looking for. It may have been
+            We couldn&apos;t find the resource you&apos;re looking for. It may have been
             moved or deleted.
           </p>
           <Link

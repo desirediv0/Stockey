@@ -113,7 +113,7 @@ export default function AboutPage() {
             </h1>
 
             <p className="mt-6 text-lg leading-8" style={{ color: "#6A7C99" }}>
-              We're building the next generation of trading analytics tools to
+              We&apos;re building the next generation of trading analytics tools to
               help individual traders and investment firms make better
               decisions.
             </p>
@@ -160,7 +160,7 @@ export default function AboutPage() {
                 As traders ourselves, we were frustrated by the lack of
                 intuitive, affordable analytics tools. The existing solutions
                 were either too complex, too expensive, or required coding
-                skills that many traders simply don't have.
+                skills that many traders simply don&apos;t have.
               </p>
               <p
                 className="text-lg"
@@ -238,7 +238,7 @@ export default function AboutPage() {
               className="text-lg max-w-2xl mx-auto"
               style={{ color: "#6A7C99" }}
             >
-              We're a group of traders, engineers, and data scientists
+              We&apos;re a group of traders, engineers, and data scientists
               passionate about building better trading tools.
             </p>
           </div>
@@ -292,7 +292,7 @@ export default function AboutPage() {
               Join us on our mission
             </h2>
             <p className="text-xl mb-10 text-white opacity-90 max-w-2xl mx-auto">
-              We're looking for passionate people to help us build the future of
+              We&apos;re looking for passionate people to help us build the future of
               trading analytics.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">

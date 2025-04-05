@@ -50,9 +50,8 @@ export default function SettingsPage() {
               <nav className="space-y-1">
                 <Button
                   variant="ghost"
-                  className={`w-full justify-start ${
-                    activeTab === "profile" ? "bg-primary/10" : ""
-                  }`}
+                  className={`w-full justify-start ${activeTab === "profile" ? "bg-primary/10" : ""
+                    }`}
                   onClick={() => setActiveTab("profile")}
                   style={{
                     color: activeTab === "profile" ? "#4B63FF" : "#1E2B4F",
@@ -63,9 +62,8 @@ export default function SettingsPage() {
                 </Button>
                 <Button
                   variant="ghost"
-                  className={`w-full justify-start ${
-                    activeTab === "preferences" ? "bg-primary/10" : ""
-                  }`}
+                  className={`w-full justify-start ${activeTab === "preferences" ? "bg-primary/10" : ""
+                    }`}
                   onClick={() => setActiveTab("preferences")}
                   style={{
                     color: activeTab === "preferences" ? "#4B63FF" : "#1E2B4F",
@@ -76,9 +74,8 @@ export default function SettingsPage() {
                 </Button>
                 <Button
                   variant="ghost"
-                  className={`w-full justify-start ${
-                    activeTab === "security" ? "bg-primary/10" : ""
-                  }`}
+                  className={`w-full justify-start ${activeTab === "security" ? "bg-primary/10" : ""
+                    }`}
                   onClick={() => setActiveTab("security")}
                   style={{
                     color: activeTab === "security" ? "#4B63FF" : "#1E2B4F",
@@ -89,9 +86,8 @@ export default function SettingsPage() {
                 </Button>
                 <Button
                   variant="ghost"
-                  className={`w-full justify-start ${
-                    activeTab === "notifications" ? "bg-primary/10" : ""
-                  }`}
+                  className={`w-full justify-start ${activeTab === "notifications" ? "bg-primary/10" : ""
+                    }`}
                   onClick={() => setActiveTab("notifications")}
                   style={{
                     color:
@@ -103,9 +99,8 @@ export default function SettingsPage() {
                 </Button>
                 <Button
                   variant="ghost"
-                  className={`w-full justify-start ${
-                    activeTab === "billing" ? "bg-primary/10" : ""
-                  }`}
+                  className={`w-full justify-start ${activeTab === "billing" ? "bg-primary/10" : ""
+                    }`}
                   onClick={() => setActiveTab("billing")}
                   style={{
                     color: activeTab === "billing" ? "#4B63FF" : "#1E2B4F",
@@ -486,7 +481,7 @@ export default function SettingsPage() {
                         className="text-xs text-muted-foreground"
                         style={{ color: "#6A7C99" }}
                       >
-                        We'll send you a code via email or SMS when you sign in
+                        We&apos;ll send you a code via email or SMS when you sign in
                         on a new device.
                       </p>
                     </div>

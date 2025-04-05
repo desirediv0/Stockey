@@ -129,7 +129,7 @@ export default function CareersPage() {
                 border: "1px solid rgba(75, 99, 255, 0.3)",
               }}
             >
-              We're Hiring!
+              We&apos;re Hiring!
             </p>
 
             <h1
@@ -150,7 +150,7 @@ export default function CareersPage() {
             </h1>
 
             <p className="mt-6 text-lg leading-8" style={{ color: "#6A7C99" }}>
-              We're building the future of trading analytics and looking for
+              We&apos;re building the future of trading analytics and looking for
               talented individuals to join us on this mission. Explore our open
               positions below.
             </p>
@@ -185,9 +185,9 @@ export default function CareersPage() {
                 className="text-lg mb-8"
                 style={{ color: "#6A7C99", lineHeight: "1.7" }}
               >
-                At Stockey, we're building a platform that democratizes trading
+                At Stockey, we&apos;re building a platform that democratizes trading
                 analytics and makes powerful data tools accessible to everyone.
-                We're a remote-first company with team members across India,
+                We&apos;re a remote-first company with team members across India,
                 united by our passion for fintech and data-driven solutions.
               </p>
               <p
@@ -224,7 +224,7 @@ export default function CareersPage() {
               style={{ color: "#6A7C99" }}
             >
               We offer competitive compensation and a range of benefits to
-              support our team members' wellbeing and growth.
+              support our team members&apos; wellbeing and growth.
             </p>
           </div>
 
@@ -263,7 +263,7 @@ export default function CareersPage() {
               className="text-lg max-w-2xl mx-auto"
               style={{ color: "#6A7C99" }}
             >
-              We're organized into cross-functional teams that collaborate to
+              We&apos;re organized into cross-functional teams that collaborate to
               build and improve our platform.
             </p>
           </div>
@@ -395,11 +395,11 @@ export default function CareersPage() {
               className="text-xl font-semibold mb-2"
               style={{ color: "#1E2B4F" }}
             >
-              Don't see a position that fits?
+              Don&apos;t see a position that fits?
             </h3>
             <p className="mb-6" style={{ color: "#6A7C99" }}>
-              We're always looking for talented individuals to join our team.
-              Send us your resume and we'll keep you in mind for future
+              We&apos;re always looking for talented individuals to join our team.
+              Send us your resume and we&apos;ll keep you in mind for future
               opportunities.
             </p>
             <Button

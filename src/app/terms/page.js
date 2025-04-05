@@ -59,8 +59,8 @@ export default function TermsPage() {
               <div className="prose max-w-none" style={{ color: "#6A7C99" }}>
                 <h2 style={{ color: "#1E2B4F" }}>1. Acceptance of Terms</h2>
                 <p>
-                  By accessing or using the Stockey platform ("Service"), you
-                  agree to be bound by these Terms of Service ("Terms"). If you
+                  By accessing or using the Stockey platform (&quot;Service&quot;), you
+                  agree to be bound by these Terms of Service (&quot;Terms&quot;). If you
                   do not agree to all the terms and conditions of this
                   agreement, you may not access or use the Service.
                 </p>
@@ -118,7 +118,7 @@ export default function TermsPage() {
                 <p>
                   You may cancel your subscription at any time, and your service
                   will continue until the end of your current billing period. We
-                  reserve the right to change our prices upon 30 days' notice.
+                  reserve the right to change our prices upon 30 days&apos; notice.
                 </p>
 
                 <h2 style={{ color: "#1E2B4F" }}>6. Intellectual Property</h2>
@@ -138,7 +138,7 @@ export default function TermsPage() {
                   7. Disclaimer of Warranties
                 </h2>
                 <p>
-                  THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT
+                  THE SERVICE IS PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; WITHOUT
                   WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
                   BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY,
                   FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
@@ -177,7 +177,7 @@ export default function TermsPage() {
                   We reserve the right, at our sole discretion, to modify or
                   replace these Terms at any time. We will provide notice of any
                   changes by posting the new Terms on our website and updating
-                  the "Last Updated" date.
+                  the &quot;Last Updated&quot; date.
                 </p>
                 <p>
                   Your continued use of the Service after any such changes
