@@ -46,7 +46,7 @@ export function Hero() {
         background: "linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%)",
       }}
     >
-      <div className="container relative z-10 mx-auto px-4">
+      <div className="container relative z-10 mx-auto px-4 text-center md:text-left">
         {/* Status badge */}
         <div className="mx-auto mb-10 flex justify-center">
           <div
