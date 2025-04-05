@@ -209,9 +209,9 @@ export function Integrations() {
         <div className="mt-20 text-center">
           <Button
             size="lg"
-            className="px-8 py-6 text-base rounded-full hover:scale-105 transition-all duration-300 bg-gradient-to-r from-[#4B63FF] to-[#6A3AFF] hover:from-[#3A51E0] hover:to-[#5A2AE0] text-white font-medium shadow-lg hover:shadow-xl"
+            className="px-4 sm:px-6 md:px-8 py-4 sm:py-6 text-sm sm:text-base rounded-full hover:scale-105 transition-all duration-300 bg-gradient-to-r from-[#4B63FF] to-[#6A3AFF] hover:from-[#3A51E0] hover:to-[#5A2AE0] text-white font-medium shadow-lg hover:shadow-xl max-w-full mx-auto break-words"
           >
-            Coming Soon — Join the Waitlist for Early Access
+            <span className="whitespace-normal">Coming Soon — Join the Waitlist for Early Access</span>
           </Button>
         </div>
       </div>
