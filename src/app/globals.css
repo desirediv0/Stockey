@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 54% 21%; /* #1E2B4F - Deep Text Color */
+    --card: 0 0% 100%; /* #FFFFFF - Card Background */
+    --card-foreground: 222 54% 21%; /* #1E2B4F - Deep Text Color */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 54% 21%; /* #1E2B4F - Deep Text Color */
+    --primary: 231 100% 65%; /* #4B63FF - Primary Accent */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
+    --secondary: 227 100% 83%; /* #A8BFFF - Secondary Accent */
+    --secondary-foreground: 222 54% 21%; /* #1E2B4F - Deep Text Color */
+    --muted: 220 23% 97%; /* #F5F7FA - Light Gray BG */
+    --muted-foreground: 220 20% 51%; /* #6A7C99 - Muted Text */
+    --accent: 231 100% 95%; /* Light version of primary */
+    --accent-foreground: 222 54% 21%; /* #1E2B4F - Deep Text Color */
+    --destructive: 0 84% 70%; /* #FF6464 - Error/Alert */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF */
+    --border: 227 100% 95%; /* #F0F4FF - Light border version of secondary */
+    --input: 227 100% 95%; /* #F0F4FF - Light border version of secondary */
+    --ring: 231 100% 65%; /* #4B63FF - Primary Accent */
+    --radius: 0.5rem;
+    --success: 158 78% 44%; /* #19C68B - Success/CTA */
+    --chart-1: 231 100% 65%; /* #4B63FF - Primary color */
+    --chart-2: 227 100% 83%; /* #A8BFFF - Secondary */
+    --chart-3: 222 47% 29%; /* #27336D - Dark Accent */
+    --chart-4: 158 78% 44%; /* #19C68B - Success */
+    --chart-5: 0 84% 70%; /* #FF6464 - Error/Alert */
+  }
+
+  .dark {
+    --background: 222 47% 29%; /* #27336D - Dark Accent */
+    --foreground: 0 0% 98%;
+    --card: 222 54% 25%; /* Slightly lighter than background */
+    --card-foreground: 0 0% 98%;
+    --popover: 222 47% 29%; /* #27336D - Dark Accent */
+    --popover-foreground: 0 0% 98%;
+    --primary: 231 100% 65%; /* #4B63FF - Primary Accent */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 227 100% 83%; /* #A8BFFF - Secondary Accent */
+    --secondary-foreground: 222 47% 29%; /* #27336D - Dark Accent */
+    --muted: 222 47% 35%; /* Slightly lighter than background */
+    --muted-foreground: 220 20% 80%; /* Lighter version of muted text */
+    --accent: 231 100% 35%; /* Darker version of primary */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 222 47% 35%; /* Slightly lighter than background */
+    --input: 222 47% 35%; /* Slightly lighter than background */
+    --ring: 231 100% 75%; /* Lighter version of primary for dark mode */
+    --success: 158 78% 44%; /* #19C68B - Success/CTA */
+    --chart-1: 231 100% 75%; /* Lighter Primary */
+    --chart-2: 227 100% 90%; /* Lighter Secondary */
+    --chart-3: 222 30% 60%; /* Lighter Dark Accent */
+    --chart-4: 158 78% 55%; /* Lighter Success */
+    --chart-5: 0 84% 80%; /* Lighter Error/Alert */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/30;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
