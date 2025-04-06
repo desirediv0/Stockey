@@ -184,7 +184,7 @@ export function Integrations() {
       return;
     }
 
-    api.on("select", () => {});
+    api.on("select", () => { });
   }, [api]);
 
   return (
@@ -395,7 +395,7 @@ export function Integrations() {
                   Suggest an Integration
                 </DialogTitle>
                 <DialogDescription className="text-center text-[#6A7C99]">
-                  Tell us which integrations you'd like to see next.
+                  Tell us which integrations you&apos;d like to see next.
                 </DialogDescription>
               </DialogHeader>
               <form onSubmit={handleFeedbackSubmit} className="space-y-4">
