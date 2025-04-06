@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Search } from "lucide-react";
-import resourcesData from "../data.json";
+import resourcesData from "../../data.json";
 import { generateArticleListSchema } from "@/lib/schema";
 import { useState } from "react";
 import { toast } from "sonner";

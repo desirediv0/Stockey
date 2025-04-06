@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import resourcesData from "../../data.json";
+import resourcesData from "../../../data.json";
 import ShareButtons from "@/components/ShareButtons";
 import { generateArticleSchema } from "@/lib/schema";
 
@@ -84,8 +84,8 @@ export default function ResourcesPost({ params }) {
             Resource Not Found
           </h1>
           <p className="mb-8" style={{ color: "#6A7C99" }}>
-            We couldn&apos;t find the resource you&apos;re looking for. It may have been
-            moved or deleted.
+            We couldn&apos;t find the resource you&apos;re looking for. It may
+            have been moved or deleted.
           </p>
           <Link
             href="/resources"
