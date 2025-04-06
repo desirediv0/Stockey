@@ -2,12 +2,11 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   BarChart3,
-  LineChart,
-  PieChart,
   Layers,
   Link as LinkIcon,
   Settings,
@@ -19,7 +18,6 @@ import {
   User,
   Briefcase,
   TrendingUp,
-  Globe,
   Eye,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -27,45 +25,45 @@ import { usePathname } from "next/navigation";
 const navigation = [
   {
     name: "Dashboard",
-    href: "/dashboard",
+    href: "/demo",
     icon: BarChart3,
   },
   {
-    name: "Portfolio Analytics",
-    href: "/dashboard/portfolio",
-    icon: Briefcase,
-  },
-  {
-    name: "Market Insights",
-    href: "/dashboard/market",
+    name: "Analytics",
+    href: "/demo/market",
     icon: TrendingUp,
   },
   {
-    name: "Data Integration",
-    href: "/dashboard/integration",
-    icon: LinkIcon,
+    name: "Portfolio",
+    href: "/demo/portfolio",
+    icon: Briefcase,
   },
   {
     name: "Watchlist",
-    href: "/dashboard/watchlist",
+    href: "/demo/watchlist",
     icon: Eye,
   },
   {
     name: "Templates",
-    href: "/dashboard/templates",
+    href: "/demo/templates",
     icon: Layers,
+  },
+  {
+    name: "Integration",
+    href: "/demo/integration",
+    icon: LinkIcon,
   },
 ];
 
 const bottomNav = [
   {
     name: "Settings",
-    href: "/dashboard/settings",
+    href: "/demo/settings",
     icon: Settings,
   },
   {
     name: "Help & Support",
-    href: "/dashboard/help",
+    href: "/demo/help",
     icon: HelpCircle,
   },
 ];
@@ -77,16 +75,14 @@ export function Sidebar({ className }) {
   return (
     <div
       className={cn(
-        "flex h-screen flex-col border-r bg-card px-2 py-4",
+        "flex h-screen flex-col border-r bg-white px-2 py-4",
         className
       )}
       style={{ borderColor: "#F0F4FF" }}
     >
       <div className="flex h-14 items-center px-4">
-        <Link href="/dashboard" className="flex items-center gap-2">
-          <span className="font-semibold" style={{ color: "#4B63FF" }}>
-            Stockey
-          </span>
+        <Link href="/demo" className="flex items-center gap-2">
+          <Image src="/1.svg" alt="Logo" width={100} height={100} />
         </Link>
       </div>
 
