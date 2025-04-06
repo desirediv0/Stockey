@@ -125,7 +125,7 @@ export function Hero() {
                   background: "rgba(75, 99, 255, 0.05)",
                 }}
               >
-                Learn More
+                View Demo
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[500px] bg-white">

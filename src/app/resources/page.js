@@ -7,6 +7,7 @@ import { ArrowRight, Search } from "lucide-react";
 import resourcesData from "../data.json";
 import { generateArticleListSchema } from "@/lib/schema";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export default function ResourcesPage() {
   const { resourcesPosts, categories } = resourcesData;
@@ -243,13 +244,32 @@ export default function ResourcesPage() {
                     background: "rgba(255, 255, 255, 0.1)",
                     border: "1px solid rgba(255, 255, 255, 0.2)",
                     color: "white",
+                    height: "48px",
                   }}
+                  id="newsletter-email"
                 />
                 <Button
-                  className="sm:flex-shrink-0 px-8 py-3 text-base rounded-full hover:scale-105 transition-all duration-300"
+                  className="sm:flex-shrink-0 px-8 rounded-full hover:scale-105 transition-all duration-300"
                   style={{
                     background: "#19C68B",
                     color: "#FFFFFF",
+                    height: "48px",
+                  }}
+                  onClick={() => {
+                    const email =
+                      document.getElementById("newsletter-email").value;
+                    if (email) {
+                      console.log("Email submitted:", email);
+                      document.getElementById("newsletter-email").value = "";
+                      toast.success("Thank you for subscribing!", {
+                        description: `We'll send updates to ${email}`,
+                        duration: 3000,
+                      });
+                    } else {
+                      toast.error("Please enter a valid email", {
+                        duration: 3000,
+                      });
+                    }
                   }}
                 >
                   Subscribe

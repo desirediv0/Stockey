@@ -13,8 +13,6 @@ const WishlistForm = ({ planName }) => {
     phone: "",
     country: "",
     tradingExperience: "beginner",
-    preferredMarket: "india",
-    notificationPreference: "email",
   });
 
   const handleChange = (e) => {
@@ -27,16 +25,37 @@ const WishlistForm = ({ planName }) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Add planName to the form data
-    const submittedData = { ...formData, planName };
+    const submissionTime = new Date();
+    const submittedData = {
+      ...formData,
+      planName,
+      submissionDate: submissionTime.toLocaleDateString(),
+      submissionTime: submissionTime.toLocaleTimeString(),
+    };
 
-    // Log the form data to console
-    console.log("Wishlist Form Submission:", submittedData);
+    try {
+      console.log("Sending data to API:", submittedData);
 
-    setSubmitted(true);
+      // Simulate network delay
+      await new Promise((resolve) => setTimeout(resolve, 800));
+
+      // Simulate successful response
+      const fakeResponse = {
+        success: true,
+        message: "Successfully added to waitlist",
+        data: submittedData,
+      };
+
+      console.log("API Response:", fakeResponse);
+      console.log("Wishlist Form Submission:", submittedData);
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   if (submitted) {
@@ -192,86 +211,6 @@ const WishlistForm = ({ planName }) => {
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="expert" id="experience-expert" />
               <span>Expert</span>
-            </div>
-          </Label>
-        </RadioGroup>
-      </div>
-
-      <div className="space-y-3 pt-2">
-        <Label className="text-[#1E2B4F] font-medium">Preferred Market</Label>
-        <RadioGroup
-          defaultValue="india"
-          className="grid grid-cols-1 sm:grid-cols-3 gap-2"
-          value={formData.preferredMarket}
-          onValueChange={(value) => handleRadioChange(value, "preferredMarket")}
-        >
-          <Label
-            htmlFor="market-india"
-            className="flex items-center justify-between space-x-2 rounded-md border border-[#A8BFFF] p-3 cursor-pointer hover:border-[#4B63FF] transition-colors"
-          >
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="india" id="market-india" />
-              <span>India</span>
-            </div>
-          </Label>
-          <Label
-            htmlFor="market-us"
-            className="flex items-center justify-between space-x-2 rounded-md border border-[#A8BFFF] p-3 cursor-pointer hover:border-[#4B63FF] transition-colors"
-          >
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="us" id="market-us" />
-              <span>US</span>
-            </div>
-          </Label>
-          <Label
-            htmlFor="market-crypto"
-            className="flex items-center justify-between space-x-2 rounded-md border border-[#A8BFFF] p-3 cursor-pointer hover:border-[#4B63FF] transition-colors"
-          >
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="crypto" id="market-crypto" />
-              <span>Crypto</span>
-            </div>
-          </Label>
-        </RadioGroup>
-      </div>
-
-      <div className="space-y-3 pt-2">
-        <Label className="text-[#1E2B4F] font-medium">
-          Notification Preference
-        </Label>
-        <RadioGroup
-          defaultValue="email"
-          className="grid grid-cols-1 sm:grid-cols-3 gap-2"
-          value={formData.notificationPreference}
-          onValueChange={(value) =>
-            handleRadioChange(value, "notificationPreference")
-          }
-        >
-          <Label
-            htmlFor="notify-email"
-            className="flex items-center justify-between space-x-2 rounded-md border border-[#A8BFFF] p-3 cursor-pointer hover:border-[#4B63FF] transition-colors"
-          >
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="email" id="notify-email" />
-              <span>Email</span>
-            </div>
-          </Label>
-          <Label
-            htmlFor="notify-sms"
-            className="flex items-center justify-between space-x-2 rounded-md border border-[#A8BFFF] p-3 cursor-pointer hover:border-[#4B63FF] transition-colors"
-          >
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="sms" id="notify-sms" />
-              <span>SMS</span>
-            </div>
-          </Label>
-          <Label
-            htmlFor="notify-none"
-            className="flex items-center justify-between space-x-2 rounded-md border border-[#A8BFFF] p-3 cursor-pointer hover:border-[#4B63FF] transition-colors"
-          >
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="none" id="notify-none" />
-              <span>None</span>
             </div>
           </Label>
         </RadioGroup>

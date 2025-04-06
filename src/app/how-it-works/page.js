@@ -1,5 +1,15 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Link, BarChart2, PanelTop, Check } from "lucide-react";
+import WishlistForm from "@/components/wishlist-form";
+import ContactForm from "@/components/contact-form";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const steps = [
   {
@@ -77,6 +87,9 @@ const profiles = [
 ];
 
 export default function HowItWorksPage() {
+  const [showWishlistForm, setShowWishlistForm] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
+
   return (
     <div
       style={{
@@ -341,8 +354,9 @@ export default function HowItWorksPage() {
                   background: "#19C68B",
                   color: "#FFFFFF",
                 }}
+                onClick={() => setShowWishlistForm(true)}
               >
-                Get Started Free
+                Join Waitlist
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button
@@ -354,6 +368,7 @@ export default function HowItWorksPage() {
                   color: "#FFFFFF",
                   borderColor: "rgba(255, 255, 255, 0.2)",
                 }}
+                onClick={() => setShowContactForm(true)}
               >
                 Schedule a Demo
               </Button>
@@ -361,6 +376,30 @@ export default function HowItWorksPage() {
           </div>
         </div>
       </div>
+
+      {/* Wishlist Form Dialog */}
+      <Dialog open={showWishlistForm} onOpenChange={setShowWishlistForm}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-[#1E2B4F]">
+              Join the Waitlist
+            </DialogTitle>
+          </DialogHeader>
+          <WishlistForm planName="Stockey Analytics" />
+        </DialogContent>
+      </Dialog>
+
+      {/* Contact Form Dialog */}
+      <Dialog open={showContactForm} onOpenChange={setShowContactForm}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-[#1E2B4F]">
+              Schedule a Demo
+            </DialogTitle>
+          </DialogHeader>
+          <ContactForm />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/layout/navigation";
 import Link from "next/link";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
         <div className="relative min-h-screen flex flex-col">
           <Navigation />
           <main className="flex-1">{children}</main>
+          <Toaster />
           <footer className="border-t">
             <div className="container py-8">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -54,7 +56,7 @@ export default function RootLayout({ children }) {
                     </li>
                     <li>
                       <Link href="/resources" className="hover:text-foreground">
-                        resources
+                        Resources
                       </Link>
                     </li>
                     <li>
@@ -104,6 +106,17 @@ export default function RootLayout({ children }) {
                 <p>
                   &copy; {new Date().getFullYear()} Stockey. All rights
                   reserved.
+                  <br />
+                  We are a part of HyprSci Private Limited | We specialize in
+                  Data Analytics Solutions | Charts powered by{" "}
+                  <a
+                    href="https://www.tradingview.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-foreground"
+                  >
+                    Tradingview
+                  </a>
                 </p>
               </div>
             </div>

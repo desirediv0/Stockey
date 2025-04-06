@@ -18,6 +18,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const features = [
   {
@@ -321,8 +322,9 @@ export default function FeaturesPage() {
                   color: "#FFFFFF",
                   borderColor: "rgba(255, 255, 255, 0.2)",
                 }}
+                asChild
               >
-                View Pricing
+                <Link href="/pricing">View Pricing</Link>
               </Button>
             </div>
           </div>
