@@ -7,6 +7,7 @@ import {
   ArrowRight,
   Check,
 } from "lucide-react";
+import Image from "next/image";
 
 import WishlistForm from "@/components/wishlist-form";
 import {
@@ -26,7 +27,7 @@ const features = [
     description:
       "Create powerful analytics dashboards without writing a single line of code. Our Superset-powered interface makes it easy to visualize your trading data.",
     icon: Cpu,
-    image: "/screenshots/low-code-analytics.png",
+    image: "/h1.jpeg",
     benefits: [
       "Intuitive drag-and-drop interface",
       "Real-time data visualization",
@@ -38,7 +39,7 @@ const features = [
     description:
       "Connect with your favorite brokers through secure OAuth flows. Import your trading data automatically and keep it in sync.",
     icon: Link2,
-    image: "/screenshots/broker-integrations.png",
+    image: "/h2.jpeg",
     benefits: [
       "Secure OAuth authentication",
       "Automatic data syncing",
@@ -50,7 +51,7 @@ const features = [
     description:
       "Visualize your portfolio performance with customizable charts and metrics. Track your progress and identify opportunities.",
     icon: LineChart,
-    image: "/screenshots/advanced-charting.png",
+    image: "/h3.jpeg",
     benefits: [
       "Performance attribution analysis",
       "Risk and return metrics",
@@ -62,7 +63,7 @@ const features = [
     description:
       "Set up custom alerts and notifications based on your trading criteria. Stay informed about market movements and portfolio changes.",
     icon: AlertTriangle,
-    image: "/screenshots/alerts-automations.png",
+    image: "/h1.jpeg",
     badge: "Coming Soon",
     benefits: [
       "Custom price alerts",
@@ -233,7 +234,7 @@ export default function FeaturesPage() {
                 </div>
 
                 <div
-                  className="flex-1 overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="flex-1 overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 bg-white"
                   style={{ border: "1px solid rgba(168, 191, 255, 0.3)" }}
                 >
                   <div
@@ -252,18 +253,20 @@ export default function FeaturesPage() {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className="aspect-[16/9] w-full p-2"
-                    style={{ background: "#FFFFFF" }}
-                  >
-                    <div
-                      className="flex h-full w-full items-center justify-center rounded"
-                      style={{ background: "rgba(75, 99, 255, 0.05)" }}
-                    >
-                      <span style={{ color: "#6A7C99" }}>
-                        {feature.name} Preview
-                      </span>
-                    </div>
+                  <div className="relative w-full h-[300px]">
+                    <Image
+                      src={feature.image}
+                      alt={feature.name}
+                      fill
+                      priority
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      quality={100}
+                      style={{
+                        padding: "1rem",
+                        objectFit: "contain",
+                      }}
+                    />
                   </div>
                 </div>
               </div>
