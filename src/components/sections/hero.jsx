@@ -11,6 +11,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import WishlistForm from "@/components/wishlist-form";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { useEffect, useState } from "react";
 
 const features = [
   {
@@ -39,6 +41,29 @@ const features = [
 ];
 
 export function Hero() {
+  const [leftAnimation, setLeftAnimation] = useState(null);
+  const [centerAnimation, setCenterAnimation] = useState(null);
+  const [rightAnimation, setRightAnimation] = useState(null);
+
+  useEffect(() => {
+    fetch("/animations/Animation - 1743874185972.lottie")
+      .then((response) => response.json())
+      .then((data) => setLeftAnimation(data))
+      .catch((error) => console.error("Error loading left animation:", error));
+
+    fetch("/animations/Animation - 1743874670990.lottie")
+      .then((response) => response.json())
+      .then((data) => setCenterAnimation(data))
+      .catch((error) =>
+        console.error("Error loading center animation:", error)
+      );
+
+    fetch("/animations/Animation - 1743874606040.lottie")
+      .then((response) => response.json())
+      .then((data) => setRightAnimation(data))
+      .catch((error) => console.error("Error loading right animation:", error));
+  }, []);
+
   return (
     <div
       className="relative overflow-hidden py-20"
@@ -139,21 +164,51 @@ export function Hero() {
           </Dialog>
         </div>
 
-        {/* App preview mockup */}
-        <div className="mt-16 flex justify-center">
-          <div
-            className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-xl p-2 shadow-2xl"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(75, 99, 255, 0.05) 0%, rgba(168, 191, 255, 0.1) 100%)",
-              borderColor: "rgba(30, 43, 79, 0.1)",
-            }}
-          >
-            <div
-              className="relative aspect-video w-full rounded-lg p-1"
-              style={{ background: "#FFFFFF" }}
-            >
-              <div className="h-full w-full rounded"></div>
+        {/* App preview mockup with Lottie animations */}
+        <div className="mt-16 relative">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+            {/* Left animation */}
+            <div className="w-full md:w-1/4 hidden md:block absolute -top-96 left-0">
+              <DotLottieReact
+                src="/animations/Animation - 1743874606040.lottie"
+                loop
+                autoplay
+                style={{ height: "300px" }}
+              />
+            </div>
+
+            {/* Center dashboard preview */}
+            <div className="w-full md:w-2/4">
+              <div
+                className="relative mx-auto w-full overflow-hidden rounded-xl p-2 shadow-2xl"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(75, 99, 255, 0.05) 0%, rgba(168, 191, 255, 0.1) 100%)",
+                  borderColor: "rgba(30, 43, 79, 0.1)",
+                }}
+              >
+                <div
+                  className="relative aspect-video w-full rounded-lg p-1"
+                  style={{ background: "#FFFFFF" }}
+                >
+                  <DotLottieReact
+                    src="/animations/Animation - 1743874670990.lottie"
+                    loop
+                    autoplay
+                    style={{ height: "100%", width: "100%" }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Right animation */}
+            <div className="w-full md:w-1/4 hidden md:block absolute -top-96 right-0">
+              <DotLottieReact
+                src="/animations/Animation - 1743874185972.lottie"
+                loop
+                autoplay
+                style={{ height: "300px" }}
+              />
             </div>
           </div>
         </div>

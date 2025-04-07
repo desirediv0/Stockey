@@ -21,7 +21,6 @@ import {
   Settings,
   LogOut,
 } from "lucide-react";
-import { formatCurrency, formatPercentage } from "@/lib/utils";
 
 // Navigation items for mobile sidebar
 const mobileNavigation = [
@@ -173,10 +172,7 @@ export function Header() {
           <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-white p-4">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <Image src="/1.svg" alt="Logo" width={40} height={40} />
-                <span className="font-semibold" style={{ color: "#4B63FF" }}>
-                  Stockey
-                </span>
+                <Image src="/2.svg" alt="Logo" width={40} height={40} />
               </div>
               <Button
                 variant="ghost"

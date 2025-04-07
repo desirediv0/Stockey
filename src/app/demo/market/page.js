@@ -12,19 +12,27 @@ import { Button } from "@/components/ui/button";
 import {
   ArrowUp,
   ArrowDown,
-  BarChart,
-  LineChart,
-  PieChart,
+  PieChart as PieChartIcon,
   Globe,
   ChevronDown,
-  Info,
-  TrendingUp,
   Search,
   Layers,
   Filter,
   ListFilter,
 } from "lucide-react";
-import { formatCurrency, formatPercentage } from "@/lib/utils";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
+  Legend,
+  LineChart as RechartsLineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+} from "recharts";
 
 // Sample market data
 const marketIndices = [
@@ -109,6 +117,17 @@ const newsItems = [
     time: "8 hours ago",
     source: "Business Standard",
   },
+];
+
+// Sample historic market data for the line chart
+const historicData = [
+  { date: "Jan", NIFTY: 21500, SENSEX: 72000, BANKNIFTY: 45000 },
+  { date: "Feb", NIFTY: 22100, SENSEX: 73500, BANKNIFTY: 46200 },
+  { date: "Mar", NIFTY: 21800, SENSEX: 73000, BANKNIFTY: 45800 },
+  { date: "Apr", NIFTY: 22400, SENSEX: 74200, BANKNIFTY: 46800 },
+  { date: "May", NIFTY: 22900, SENSEX: 75500, BANKNIFTY: 47500 },
+  { date: "Jun", NIFTY: 23100, SENSEX: 76000, BANKNIFTY: 48000 },
+  { date: "Jul", NIFTY: 23150, SENSEX: 76580, BANKNIFTY: 48320 },
 ];
 
 export default function MarketPage() {
@@ -199,10 +218,63 @@ export default function MarketPage() {
         <CardContent>
           <div className="flex flex-col md:flex-row gap-6 items-center">
             <div className="relative h-[180px] w-[180px]">
-              {/* Replace with actual chart component */}
-              <div className="rounded-full h-full w-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center">
-                <PieChart className="h-12 w-12 text-gray-400" />
-              </div>
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={[
+                      {
+                        name: "Advancing",
+                        value: marketBreadth.advancing,
+                        color: "#10B981",
+                      },
+                      {
+                        name: "Declining",
+                        value: marketBreadth.declining,
+                        color: "#EF4444",
+                      },
+                      {
+                        name: "Unchanged",
+                        value: marketBreadth.unchanged,
+                        color: "#6B7280",
+                      },
+                    ]}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={40}
+                    outerRadius={70}
+                    paddingAngle={2}
+                    dataKey="value"
+                  >
+                    {[
+                      {
+                        name: "Advancing",
+                        value: marketBreadth.advancing,
+                        color: "#10B981",
+                      },
+                      {
+                        name: "Declining",
+                        value: marketBreadth.declining,
+                        color: "#EF4444",
+                      },
+                      {
+                        name: "Unchanged",
+                        value: marketBreadth.unchanged,
+                        color: "#6B7280",
+                      },
+                    ].map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip
+                    formatter={(value) => [value, "Stocks"]}
+                    contentStyle={{
+                      backgroundColor: "white",
+                      border: "1px solid #ccc",
+                      borderRadius: "6px",
+                    }}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
             </div>
             <div className="flex-1 grid grid-cols-3 gap-4">
               <div className="space-y-2 text-center">
@@ -502,15 +574,54 @@ export default function MarketPage() {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="h-[400px] w-full bg-gray-50 dark:bg-gray-800 rounded-md flex items-center justify-center">
-            {/* Replace with actual chart component */}
-            <div className="text-center">
-              <LineChart className="h-12 w-12 mx-auto mb-2 text-gray-400" />
-              <p className="text-sm text-gray-500">Market Trends Chart</p>
-              <p className="text-xs text-gray-400">
-                Interactive chart would be integrated here
-              </p>
-            </div>
+          <div className="h-[400px] w-full rounded-md">
+            <ResponsiveContainer width="100%" height="100%">
+              <RechartsLineChart
+                data={historicData}
+                margin={{
+                  top: 20,
+                  right: 30,
+                  left: 20,
+                  bottom: 10,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                <XAxis dataKey="date" stroke="#6A7C99" />
+                <YAxis stroke="#6A7C99" />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "white",
+                    border: "1px solid #ccc",
+                    borderRadius: "6px",
+                  }}
+                />
+                <Legend />
+                <Line
+                  type="monotone"
+                  dataKey="NIFTY"
+                  stroke="#4B63FF"
+                  strokeWidth={2}
+                  dot={{ r: 4 }}
+                  activeDot={{ r: 6 }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="SENSEX"
+                  stroke="#10B981"
+                  strokeWidth={2}
+                  dot={{ r: 4 }}
+                  activeDot={{ r: 6 }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="BANKNIFTY"
+                  stroke="#F59E0B"
+                  strokeWidth={2}
+                  dot={{ r: 4 }}
+                  activeDot={{ r: 6 }}
+                />
+              </RechartsLineChart>
+            </ResponsiveContainer>
           </div>
         </CardContent>
       </Card>
