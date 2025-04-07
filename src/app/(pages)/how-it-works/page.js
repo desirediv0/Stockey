@@ -10,6 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import Image from "next/image";
 
 const steps = [
   {
@@ -17,7 +18,7 @@ const steps = [
     name: "Connect Your Broker",
     description:
       "Easily connect your brokerage accounts using our secure OAuth integration. We support all major Indian brokers like Zerodha, Fyers, Dhan, and Angel One, as well as international brokers like Interactive Brokers and Tradier.",
-    image: "/screenshots/connect-broker.png",
+    image: "/h1.jpeg",
     icon: Link,
     benefits: [
       "Secure OAuth authentication",
@@ -30,7 +31,7 @@ const steps = [
     name: "Analyze Your Data",
     description:
       "Your trading data is automatically imported and processed. Visualize your portfolio performance, analyze trade patterns, and discover insights with our powerful analytics engine.",
-    image: "/screenshots/analyze-data.png",
+    image: "/h2.jpeg",
     icon: BarChart2,
     benefits: [
       "Comprehensive portfolio analysis",
@@ -43,7 +44,7 @@ const steps = [
     name: "Customize Dashboards",
     description:
       "Create custom dashboards tailored to your trading style with our drag-and-drop interface. Choose from a library of pre-built widgets or create your own. No coding required.",
-    image: "/screenshots/customize-dashboards.png",
+    image: "/h3.jpeg",
     icon: PanelTop,
     benefits: [
       "Drag-and-drop dashboard builder",
@@ -244,16 +245,17 @@ export default function HowItWorksPage() {
                         </div>
                       </div>
                       <div
-                        className="aspect-video w-full p-2"
+                        className="aspect-video w-full"
                         style={{ background: "#FFFFFF" }}
                       >
-                        <div
-                          className="flex h-full w-full items-center justify-center rounded"
-                          style={{ background: "rgba(75, 99, 255, 0.05)" }}
-                        >
-                          <span style={{ color: "#6A7C99" }}>
-                            {step.name} Screenshot
-                          </span>
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={step.image}
+                            alt={step.name}
+                            fill
+                            className="object-contain rounded-lg"
+                            priority
+                          />
                         </div>
                       </div>
                     </div>
