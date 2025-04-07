@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -16,42 +17,42 @@ const brokers = [
   {
     name: "Zerodha",
     description: "India's largest stock broker by active retail clients",
-    logo: "/logos/zerodha.svg",
+    logo: "/logos/zerodha.jpg",
     status: "connected",
     lastSync: "2 hours ago",
   },
   {
     name: "Fyers",
     description: "Modern trading platform with advanced charting",
-    logo: "/logos/fyers.svg",
+    logo: "/logos/fyers.jpg",
     status: "disconnected",
     lastSync: null,
   },
   {
     name: "Dhan",
     description: "Next-generation trading platform",
-    logo: "/logos/dhan.svg",
+    logo: "/logos/dhan.jpg",
     status: "disconnected",
     lastSync: null,
   },
   {
     name: "Angel One",
     description: "Full-service stock broker with research",
-    logo: "/logos/angel-one.svg",
+    logo: "/logos/angel-one.jpg",
     status: "connected",
     lastSync: "30 minutes ago",
   },
   {
     name: "Interactive Brokers",
     description: "Global trading platform for international markets",
-    logo: "/logos/ib.svg",
+    logo: "/logos/ib.jpg",
     status: "disconnected",
     lastSync: null,
   },
   {
     name: "Tradier",
     description: "US-based broker with powerful API",
-    logo: "/logos/tradier.svg",
+    logo: "/logos/tradier-logo.svg",
     status: "disconnected",
     lastSync: null,
   },
@@ -61,14 +62,14 @@ const dataProviders = [
   {
     name: "TrueData",
     description: "Real-time market data and analytics",
-    logo: "/logos/truedata.svg",
+    logo: "/logos/true-data.jpg",
     status: "disconnected",
     lastSync: null,
   },
   {
     name: "Global Data Feed",
     description: "Comprehensive market data solution",
-    logo: "/logos/gdf.svg",
+    logo: "/logos/gdf.jpg",
     status: "disconnected",
     lastSync: null,
   },
@@ -95,7 +96,7 @@ export default function IntegrationPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-7xl mx-auto px-4 py-8">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Data Integration</h1>
         <p className="text-muted-foreground">
@@ -105,27 +106,34 @@ export default function IntegrationPage() {
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* Broker Integration Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Broker Accounts</CardTitle>
+        <Card className="border border-[#A8BFFF]/30 shadow-md">
+          <CardHeader className="bg-[#F5F7FA] border-b border-[#A8BFFF]/20">
+            <CardTitle className="text-[#1E2B4F]">Broker Accounts</CardTitle>
             <CardDescription>
-              Connect your broker accounts to automatically import your trading
-              data
+              Connect your broker accounts to automatically import your trading data
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-4 pt-6">
             {brokers.map((broker) => (
               <div
                 key={broker.name}
-                className="flex items-center justify-between rounded-lg border p-4"
+                className="flex items-center justify-between rounded-lg border border-[#A8BFFF]/30 p-4 hover:shadow-md transition-all duration-200"
               >
                 <div className="flex items-center">
-                  <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <div className="h-6 w-6 bg-muted rounded-md"></div>
+                  <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#4B63FF]/10 border border-[#4B63FF]/20">
+                    <div className="h-8 w-8 relative overflow-hidden">
+                      <Image
+                        src={broker.logo}
+                        alt={broker.name}
+                        fill
+                        className="object-contain"
+                        quality={90}
+                      />
+                    </div>
                   </div>
                   <div>
-                    <h3 className="font-medium">{broker.name}</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <h3 className="font-medium text-[#1E2B4F]">{broker.name}</h3>
+                    <p className="text-sm text-[#6A7C99]">
                       {broker.description}
                     </p>
                   </div>
@@ -135,17 +143,17 @@ export default function IntegrationPage() {
                     <div className="flex items-center">
                       <div className="mr-2 flex items-center">
                         <div className="mr-2 h-2 w-2 rounded-full bg-green-500"></div>
-                        <span className="text-xs text-muted-foreground">
+                        <span className="text-xs text-[#6A7C99]">
                           Last sync: {broker.lastSync}
                         </span>
                       </div>
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="sm" className="border-red-400 text-red-500 hover:bg-red-50 hover:text-red-600">
                         <X className="mr-2 h-4 w-4" />
                         Disconnect
                       </Button>
                     </div>
                   ) : (
-                    <Button>
+                    <Button className="bg-[#4B63FF] hover:bg-[#3A51E0] text-white">
                       <Link className="mr-2 h-4 w-4" />
                       Connect
                     </Button>
@@ -157,26 +165,34 @@ export default function IntegrationPage() {
         </Card>
 
         {/* Data Providers Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Data Providers</CardTitle>
+        <Card className="border border-[#A8BFFF]/30 shadow-md">
+          <CardHeader className="bg-[#F5F7FA] border-b border-[#A8BFFF]/20">
+            <CardTitle className="text-[#1E2B4F]">Data Providers</CardTitle>
             <CardDescription>
               Connect to market data providers for additional data
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-4 pt-6">
             {dataProviders.map((provider) => (
               <div
                 key={provider.name}
-                className="flex items-center justify-between rounded-lg border p-4"
+                className="flex items-center justify-between rounded-lg border border-[#A8BFFF]/30 p-4 hover:shadow-md transition-all duration-200"
               >
                 <div className="flex items-center">
-                  <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <div className="h-6 w-6 bg-muted rounded-md"></div>
+                  <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#4B63FF]/10 border border-[#4B63FF]/20">
+                    <div className="h-8 w-8 relative overflow-hidden">
+                      <Image
+                        src={provider.logo}
+                        alt={provider.name}
+                        fill
+                        className="object-contain"
+                        quality={90}
+                      />
+                    </div>
                   </div>
                   <div>
-                    <h3 className="font-medium">{provider.name}</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <h3 className="font-medium text-[#1E2B4F]">{provider.name}</h3>
+                    <p className="text-sm text-[#6A7C99]">
                       {provider.description}
                     </p>
                   </div>
@@ -186,17 +202,17 @@ export default function IntegrationPage() {
                     <div className="flex items-center">
                       <div className="mr-2 flex items-center">
                         <div className="mr-2 h-2 w-2 rounded-full bg-green-500"></div>
-                        <span className="text-xs text-muted-foreground">
+                        <span className="text-xs text-[#6A7C99]">
                           Last sync: {provider.lastSync}
                         </span>
                       </div>
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="sm" className="border-red-400 text-red-500 hover:bg-red-50 hover:text-red-600">
                         <X className="mr-2 h-4 w-4" />
                         Disconnect
                       </Button>
                     </div>
                   ) : (
-                    <Button>
+                    <Button className="bg-[#4B63FF] hover:bg-[#3A51E0] text-white">
                       <Link className="mr-2 h-4 w-4" />
                       Connect
                     </Button>
@@ -209,18 +225,17 @@ export default function IntegrationPage() {
       </div>
 
       {/* CSV Upload Section */}
-      <Card>
-        <CardHeader>
-          <CardTitle>CSV Data Upload</CardTitle>
+      <Card className="border border-[#A8BFFF]/30 shadow-md">
+        <CardHeader className="bg-[#F5F7FA] border-b border-[#A8BFFF]/20">
+          <CardTitle className="text-[#1E2B4F]">CSV Data Upload</CardTitle>
           <CardDescription>
             Upload your trading data from a CSV file
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <div
-            className={`flex flex-col items-center justify-center rounded-lg border-2 border-dashed p-12 text-center ${
-              isDragging ? "border-primary bg-primary/5" : "border-border"
-            } ${csvUploaded ? "bg-green-50 border-green-500" : ""}`}
+            className={`flex flex-col items-center justify-center rounded-lg border-2 border-dashed p-12 text-center ${isDragging ? "border-[#4B63FF] bg-[#4B63FF]/5" : "border-[#A8BFFF]/50"
+              } ${csvUploaded ? "bg-green-50 border-green-500" : ""}`}
             onDrop={handleDrop}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -230,8 +245,8 @@ export default function IntegrationPage() {
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                   <Check className="h-6 w-6 text-green-600" />
                 </div>
-                <h3 className="mb-2 text-xl font-medium">Upload Successful</h3>
-                <p className="mb-4 max-w-md text-sm text-muted-foreground">
+                <h3 className="mb-2 text-xl font-medium text-[#1E2B4F]">Upload Successful</h3>
+                <p className="mb-4 max-w-md text-sm text-[#6A7C99]">
                   Your file has been uploaded and is being processed. This may
                   take a few minutes.
                 </p>
@@ -240,10 +255,11 @@ export default function IntegrationPage() {
                     variant="outline"
                     size="sm"
                     onClick={() => setCsvUploaded(false)}
+                    className="border-[#A8BFFF] text-[#4B63FF] hover:bg-[#4B63FF]/5"
                   >
                     Upload Another File
                   </Button>
-                  <Button size="sm">
+                  <Button size="sm" className="bg-[#4B63FF] hover:bg-[#3A51E0] text-white">
                     View Data
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -251,44 +267,44 @@ export default function IntegrationPage() {
               </div>
             ) : (
               <div className="flex flex-col items-center">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <UploadCloud className="h-6 w-6 text-primary" />
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#4B63FF]/10">
+                  <UploadCloud className="h-6 w-6 text-[#4B63FF]" />
                 </div>
-                <h3 className="mb-2 text-xl font-medium">
+                <h3 className="mb-2 text-xl font-medium text-[#1E2B4F]">
                   Drag & Drop CSV File
                 </h3>
-                <p className="mb-4 max-w-md text-sm text-muted-foreground">
+                <p className="mb-4 max-w-md text-sm text-[#6A7C99]">
                   Drag and drop your trading data CSV file here, or click to
                   select a file from your computer.
                 </p>
-                <Button>Select File</Button>
+                <Button className="bg-[#4B63FF] hover:bg-[#3A51E0] text-white">Select File</Button>
               </div>
             )}
           </div>
         </CardContent>
-        <CardFooter className="flex flex-col items-start border-t px-6 py-4">
-          <h4 className="mb-2 text-sm font-medium">Supported formats</h4>
+        <CardFooter className="flex flex-col items-start border-t border-[#A8BFFF]/20 px-6 py-4 bg-[#F5F7FA]/50">
+          <h4 className="mb-2 text-sm font-medium text-[#1E2B4F]">Supported formats</h4>
           <div className="flex flex-wrap gap-2">
-            <span className="rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium">
+            <span className="rounded-full bg-[#4B63FF]/10 px-2.5 py-0.5 text-xs font-medium text-[#4B63FF]">
               Zerodha P&L Report
             </span>
-            <span className="rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium">
+            <span className="rounded-full bg-[#4B63FF]/10 px-2.5 py-0.5 text-xs font-medium text-[#4B63FF]">
               Angel One Trade Report
             </span>
-            <span className="rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium">
+            <span className="rounded-full bg-[#4B63FF]/10 px-2.5 py-0.5 text-xs font-medium text-[#4B63FF]">
               Stockey CSV Format
             </span>
-            <span className="rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium">
+            <span className="rounded-full bg-[#4B63FF]/10 px-2.5 py-0.5 text-xs font-medium text-[#4B63FF]">
               Interactive Brokers Flex Query
             </span>
           </div>
-          <p className="mt-4 text-xs text-muted-foreground">
+          <p className="mt-4 text-xs text-[#6A7C99]">
             Need help with CSV format?{" "}
-            <a href="#" className="text-primary underline">
+            <a href="#" className="text-[#4B63FF] underline hover:text-[#3A51E0]">
               Download template
             </a>{" "}
             or{" "}
-            <a href="#" className="text-primary underline">
+            <a href="#" className="text-[#4B63FF] underline hover:text-[#3A51E0]">
               view documentation
             </a>
             .
@@ -297,42 +313,44 @@ export default function IntegrationPage() {
       </Card>
 
       {/* API Integration Section */}
-      <Card>
-        <CardHeader>
-          <CardTitle>API Integration</CardTitle>
+      <Card className="border border-[#A8BFFF]/30 shadow-md">
+        <CardHeader className="bg-[#F5F7FA] border-b border-[#A8BFFF]/20">
+          <CardTitle className="text-[#1E2B4F]">API Integration</CardTitle>
           <CardDescription>
             Access the Stockey API for advanced integrations
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="rounded-lg border p-4">
+        <CardContent className="space-y-4 pt-6">
+          <div className="rounded-lg border border-[#A8BFFF]/30 p-4 hover:shadow-md transition-all duration-200">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div className="mb-4 sm:mb-0">
-                <h3 className="font-medium">Developer API</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-medium text-[#1E2B4F]">Developer API</h3>
+                <p className="text-sm text-[#6A7C99]">
                   Access your data programmatically with our RESTful API
                 </p>
               </div>
-              <Button>Generate API Key</Button>
+              <Button className="bg-[#4B63FF] hover:bg-[#3A51E0] text-white">Generate API Key</Button>
             </div>
           </div>
-          <div className="rounded-lg border p-4">
+          <div className="rounded-lg border border-[#A8BFFF]/30 p-4 hover:shadow-md transition-all duration-200">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div className="mb-4 sm:mb-0">
-                <h3 className="font-medium">Webhook Integration</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-medium text-[#1E2B4F]">Webhook Integration</h3>
+                <p className="text-sm text-[#6A7C99]">
                   Receive real-time notifications via webhook
                 </p>
               </div>
-              <Button variant="outline">Configure Webhooks</Button>
+              <Button variant="outline" className="border-[#A8BFFF] text-[#4B63FF] hover:bg-[#4B63FF]/5">
+                Configure Webhooks
+              </Button>
             </div>
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between border-t px-6 py-4">
-          <p className="text-sm text-muted-foreground">
+        <CardFooter className="flex flex-col sm:flex-row sm:justify-between border-t border-[#A8BFFF]/20 px-6 py-4 bg-[#F5F7FA]/50">
+          <p className="text-sm text-[#6A7C99] mb-2 sm:mb-0">
             Need help with API integration?
           </p>
-          <a href="#" className="text-sm text-primary">
+          <a href="#" className="text-sm text-[#4B63FF] hover:text-[#3A51E0] hover:underline">
             View API Documentation
           </a>
         </CardFooter>
