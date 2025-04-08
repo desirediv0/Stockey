@@ -65,13 +65,7 @@ export default function AboutPage() {
       <div className="container py-24 sm:py-32">
         {/* Hero Section */}
         <div className="relative">
-          <div
-            className="absolute inset-0 opacity-10 z-0"
-            style={{
-              backgroundImage: "url('/patterns/grid.svg')",
-              backgroundSize: "cover",
-            }}
-          ></div>
+          <div className="absolute inset-0 opacity-10 z-0"></div>
 
           <div className="relative z-10 mx-auto max-w-3xl text-center">
             <p
@@ -113,8 +107,8 @@ export default function AboutPage() {
             </h1>
 
             <p className="mt-6 text-lg leading-8" style={{ color: "#6A7C99" }}>
-              We&apos;re building the next generation of trading analytics tools to
-              help individual traders and investment firms make better
+              We&apos;re building the next generation of trading analytics tools
+              to help individual traders and investment firms make better
               decisions.
             </p>
           </div>
@@ -292,8 +286,8 @@ export default function AboutPage() {
               Join us on our mission
             </h2>
             <p className="text-xl mb-10 text-white opacity-90 max-w-2xl mx-auto">
-              We&apos;re looking for passionate people to help us build the future of
-              trading analytics.
+              We&apos;re looking for passionate people to help us build the
+              future of trading analytics.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <Button

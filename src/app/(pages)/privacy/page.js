@@ -1,8 +1,20 @@
+"use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail } from "lucide-react";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import ContactForm from "@/components/contact-form";
 
 export default function PrivacyPolicyPage() {
+  const [showContactForm, setShowContactForm] = useState(false);
+
   return (
     <div
       style={{
@@ -12,13 +24,7 @@ export default function PrivacyPolicyPage() {
       <div className="container py-24 sm:py-32">
         {/* Hero Section */}
         <div className="relative mb-16">
-          <div
-            className="absolute inset-0 opacity-10 z-0"
-            style={{
-              backgroundImage: "url('/patterns/grid.svg')",
-              backgroundSize: "cover",
-            }}
-          ></div>
+          <div className="absolute inset-0 opacity-10 z-0"></div>
 
           <div className="relative z-10 mx-auto max-w-3xl text-center">
             <p
@@ -29,7 +35,7 @@ export default function PrivacyPolicyPage() {
                 border: "1px solid rgba(75, 99, 255, 0.3)",
               }}
             >
-              Last Updated: June 1, 2023
+              Last Updated: June 15, 2024
             </p>
 
             <h1
@@ -198,16 +204,31 @@ export default function PrivacyPolicyPage() {
                   </p>
                 </div>
               </div>
-              <Button
-                className="rounded-full px-6 py-2.5 transition-all duration-300 hover:shadow-md"
-                style={{
-                  background: "#4B63FF",
-                  color: "#FFFFFF",
-                }}
-              >
-                Contact Privacy Team
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <Dialog open={showContactForm} onOpenChange={setShowContactForm}>
+                <Button
+                  className="rounded-full px-6 py-2.5 transition-all duration-300 hover:shadow-md"
+                  style={{
+                    background: "#4B63FF",
+                    color: "#FFFFFF",
+                  }}
+                  onClick={() => setShowContactForm(true)}
+                >
+                  Contact Privacy Team
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+                <DialogContent className="sm:max-w-[500px] p-6">
+                  <DialogHeader>
+                    <DialogTitle className="text-[#1E2B4F] text-xl">
+                      Contact Our Privacy Team
+                    </DialogTitle>
+                    <DialogDescription className="text-[#6A7C99]">
+                      Fill out this form and our privacy team will get back to
+                      you within 24 hours.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <ContactForm />
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
 

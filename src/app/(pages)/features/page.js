@@ -83,13 +83,7 @@ export default function FeaturesPage() {
       <div className="container py-24 sm:py-32">
         {/* Hero Section */}
         <div className="relative">
-          <div
-            className="absolute inset-0 opacity-10 z-0"
-            style={{
-              backgroundImage: "url('/patterns/grid.svg')",
-              backgroundSize: "cover",
-            }}
-          ></div>
+          <div className="absolute inset-0 opacity-10 z-0"></div>
 
           <div className="relative z-10 mx-auto max-w-2xl text-center">
             <p

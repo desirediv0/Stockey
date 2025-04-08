@@ -1,8 +1,21 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, HelpCircle } from "lucide-react";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import ContactForm from "@/components/contact-form";
 
 export default function TermsPage() {
+  const [showContactForm, setShowContactForm] = useState(false);
+
   return (
     <div
       style={{
@@ -12,13 +25,7 @@ export default function TermsPage() {
       <div className="container py-24 sm:py-32">
         {/* Hero Section */}
         <div className="relative mb-16">
-          <div
-            className="absolute inset-0 opacity-10 z-0"
-            style={{
-              backgroundImage: "url('/patterns/grid.svg')",
-              backgroundSize: "cover",
-            }}
-          ></div>
+          <div className="absolute inset-0 opacity-10 z-0"></div>
 
           <div className="relative z-10 mx-auto max-w-3xl text-center">
             <p
@@ -29,7 +36,7 @@ export default function TermsPage() {
                 border: "1px solid rgba(75, 99, 255, 0.3)",
               }}
             >
-              Last Updated: June 1, 2023
+              Last Updated: June 15, 2024
             </p>
 
             <h1
@@ -59,10 +66,11 @@ export default function TermsPage() {
               <div className="prose max-w-none" style={{ color: "#6A7C99" }}>
                 <h2 style={{ color: "#1E2B4F" }}>1. Acceptance of Terms</h2>
                 <p>
-                  By accessing or using the Stockey platform (&quot;Service&quot;), you
-                  agree to be bound by these Terms of Service (&quot;Terms&quot;). If you
-                  do not agree to all the terms and conditions of this
-                  agreement, you may not access or use the Service.
+                  By accessing or using the Stockey platform
+                  (&quot;Service&quot;), you agree to be bound by these Terms of
+                  Service (&quot;Terms&quot;). If you do not agree to all the
+                  terms and conditions of this agreement, you may not access or
+                  use the Service.
                 </p>
 
                 <h2 style={{ color: "#1E2B4F" }}>2. Description of Service</h2>
@@ -118,7 +126,8 @@ export default function TermsPage() {
                 <p>
                   You may cancel your subscription at any time, and your service
                   will continue until the end of your current billing period. We
-                  reserve the right to change our prices upon 30 days&apos; notice.
+                  reserve the right to change our prices upon 30 days&apos;
+                  notice.
                 </p>
 
                 <h2 style={{ color: "#1E2B4F" }}>6. Intellectual Property</h2>
@@ -138,10 +147,11 @@ export default function TermsPage() {
                   7. Disclaimer of Warranties
                 </h2>
                 <p>
-                  THE SERVICE IS PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; WITHOUT
-                  WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
-                  BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY,
-                  FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+                  THE SERVICE IS PROVIDED &quot;AS IS&quot; AND &quot;AS
+                  AVAILABLE&quot; WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS
+                  OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES
+                  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+                  NON-INFRINGEMENT.
                 </p>
                 <p>
                   We do not warrant that the Service will be uninterrupted or
@@ -225,16 +235,31 @@ export default function TermsPage() {
                   </p>
                 </div>
               </div>
-              <Button
-                className="rounded-full px-6 py-2.5 transition-all duration-300 hover:shadow-md"
-                style={{
-                  background: "#4B63FF",
-                  color: "#FFFFFF",
-                }}
-              >
-                Contact Legal Team
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <Dialog open={showContactForm} onOpenChange={setShowContactForm}>
+                <Button
+                  className="rounded-full px-6 py-2.5 transition-all duration-300 hover:shadow-md"
+                  style={{
+                    background: "#4B63FF",
+                    color: "#FFFFFF",
+                  }}
+                  onClick={() => setShowContactForm(true)}
+                >
+                  Contact Legal Team
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+                <DialogContent className="sm:max-w-[500px] p-6">
+                  <DialogHeader>
+                    <DialogTitle className="text-[#1E2B4F] text-xl">
+                      Contact Our Legal Team
+                    </DialogTitle>
+                    <DialogDescription className="text-[#6A7C99]">
+                      Fill out this form and our legal team will get back to you
+                      within 24 hours.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <ContactForm />
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
 

@@ -112,13 +112,7 @@ export default function CareersPage() {
       <div className="container py-24 sm:py-32">
         {/* Hero Section */}
         <div className="relative">
-          <div
-            className="absolute inset-0 opacity-10 z-0"
-            style={{
-              backgroundImage: "url('/patterns/grid.svg')",
-              backgroundSize: "cover",
-            }}
-          ></div>
+          <div className="absolute inset-0 opacity-10 z-0"></div>
 
           <div className="relative z-10 mx-auto max-w-3xl text-center">
             <p
@@ -150,9 +144,9 @@ export default function CareersPage() {
             </h1>
 
             <p className="mt-6 text-lg leading-8" style={{ color: "#6A7C99" }}>
-              We&apos;re building the future of trading analytics and looking for
-              talented individuals to join us on this mission. Explore our open
-              positions below.
+              We&apos;re building the future of trading analytics and looking
+              for talented individuals to join us on this mission. Explore our
+              open positions below.
             </p>
           </div>
         </div>
@@ -185,10 +179,11 @@ export default function CareersPage() {
                 className="text-lg mb-8"
                 style={{ color: "#6A7C99", lineHeight: "1.7" }}
               >
-                At Stockey, we&apos;re building a platform that democratizes trading
-                analytics and makes powerful data tools accessible to everyone.
-                We&apos;re a remote-first company with team members across India,
-                united by our passion for fintech and data-driven solutions.
+                At Stockey, we&apos;re building a platform that democratizes
+                trading analytics and makes powerful data tools accessible to
+                everyone. We&apos;re a remote-first company with team members
+                across India, united by our passion for fintech and data-driven
+                solutions.
               </p>
               <p
                 className="text-lg mb-8"
@@ -263,8 +258,8 @@ export default function CareersPage() {
               className="text-lg max-w-2xl mx-auto"
               style={{ color: "#6A7C99" }}
             >
-              We&apos;re organized into cross-functional teams that collaborate to
-              build and improve our platform.
+              We&apos;re organized into cross-functional teams that collaborate
+              to build and improve our platform.
             </p>
           </div>
 
@@ -398,9 +393,9 @@ export default function CareersPage() {
               Don&apos;t see a position that fits?
             </h3>
             <p className="mb-6" style={{ color: "#6A7C99" }}>
-              We&apos;re always looking for talented individuals to join our team.
-              Send us your resume and we&apos;ll keep you in mind for future
-              opportunities.
+              We&apos;re always looking for talented individuals to join our
+              team. Send us your resume and we&apos;ll keep you in mind for
+              future opportunities.
             </p>
             <Button
               className="rounded-full px-6 py-2.5 transition-all duration-300 hover:shadow-md"
