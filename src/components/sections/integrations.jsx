@@ -32,37 +32,37 @@ const brokers = [
   {
     name: "Zerodha",
     description: "India's largest stock broker by active retail clients",
-    logo: "/logos/zerodha.jpg",
+    logo: "/logo/zerodha.png",
     link: "https://zerodha.com",
   },
   {
     name: "Fyers",
     description: "Modern trading platform with advanced charting",
-    logo: "/logos/fyers.jpg",
+    logo: "/logo/fyers.jpg",
     link: "https://fyers.in",
   },
   {
     name: "Dhan",
     description: "Next-generation trading platform",
-    logo: "/logos/dhan.jpg",
+    logo: "/logo/dhan.jpeg",
     link: "https://dhan.co",
   },
   {
     name: "Angel One",
     description: "Full-service stock broker with research",
-    logo: "/logos/angel-one.jpg",
+    logo: "/logo/AngelOne.png",
     link: "https://angelone.in",
   },
   {
     name: "Interactive Brokers",
     description: "Global trading platform for international markets",
-    logo: "/logos/ib.jpg",
+    logo: "/logos/ib.png",
     link: "https://www.interactivebrokers.com",
   },
   {
     name: "Tradier",
     description: "US-based broker with powerful API",
-    logo: "/logos/tradier-logo.svg",
+    logo: "/logo/Tradier.png",
     link: "https://tradier.com",
   },
 ];
@@ -71,61 +71,22 @@ const dataProviders = [
   {
     name: "TrueData",
     description: "Real-time market data and analytics",
-    logo: "/logos/true-data.jpg",
+    logo: "/logo/TrueData.png",
     link: "https://truedata.in",
   },
   {
     name: "Global Data Feed",
     description: "Comprehensive market data solution",
-    logo: "/logos/gdf.jpg",
+    logo: "/logo/global-data-feeds.png",
     link: "https://globaldatafeeds.in",
   },
 ];
-
-// const partners = [
-//   {
-//     name: "TradingView",
-//     logo: "/logos/tradingview.jpg",
-//     link: "https://www.tradingview.com/",
-//     description: "Advanced charting platform for technical analysis",
-//   },
-//   {
-//     name: "AWS",
-//     logo: "/logos/aws.jpg",
-//     link: "https://aws.amazon.com/",
-//     description: "Cloud computing platform with scalable infrastructure",
-//   },
-//   {
-//     name: "DBT Packages",
-//     logo: "/logos/dbt.jpg",
-//     link: "https://hub.getdbt.com/",
-//     description: "Data transformation tools for analytics engineers",
-//   },
-//   {
-//     name: "FastAPI",
-//     logo: "/logos/fastapi.jpg",
-//     link: "https://fastapi.tiangolo.com/",
-//     description: "High-performance web framework for building APIs",
-//   },
-//   {
-//     name: "Interactive Brokers",
-//     logo: "/logos/ib.jpg",
-//     link: "https://www.interactivebrokers.com/",
-//     description: "Global brokerage platform for worldwide markets",
-//   },
-//   {
-//     name: "Coinbase",
-//     logo: "/logos/coinbase.jpg",
-//     link: "https://www.coinbase.com/",
-//     description: "Secure cryptocurrency exchange platform",
-//   },
-// ];
 
 const technologyProviders = [
   {
     name: "TradingView",
     description: "Comprehensive charting solutions for technical analysis",
-    logo: "/logos/tradingview.jpg",
+    logo: "/logo/TradingView.jpg",
     link: "https://www.tradingview.com/",
   },
   {
@@ -168,7 +129,6 @@ export function Integrations() {
 
   const handleFeedbackSubmit = (e) => {
     e.preventDefault();
-    // This would normally connect to an API endpoint
     console.log("Feedback submitted:", feedbackForm);
     toast.success("Thank you for your feedback!");
     setFeedbackForm({
@@ -184,7 +144,7 @@ export function Integrations() {
       return;
     }
 
-    api.on("select", () => { });
+    api.on("select", () => {});
   }, [api]);
 
   return (
@@ -217,14 +177,14 @@ export function Integrations() {
                   className="block h-full"
                 >
                   <Card className="p-6 border border-[#A8BFFF]/30 shadow-lg hover:shadow-xl hover:border-[#4B63FF]/50 transition-all duration-300 flex flex-col h-full bg-white rounded-xl overflow-hidden group hover:translate-y-[-5px] cursor-pointer max-w-[300px]">
-                    <div className="flex h-24 w-24 items-center justify-center rounded-full bg-[#4B63FF]/10 mb-5 border border-[#4B63FF]/20 relative mx-auto">
+                    <div className="flex h-32 w-32 items-center justify-center rounded-full bg-[#4B63FF]/10 mb-5 border border-[#4B63FF]/20 relative mx-auto">
                       <Image
                         src={broker.logo}
                         alt={broker.name}
-                        width={50}
-                        height={50}
+                        width={70}
+                        height={70}
                         className="object-contain group-hover:scale-110 transition-transform duration-300"
-                        quality={95}
+                        quality={100}
                       />
                     </div>
                     <h3 className="text-xl font-semibold leading-7 tracking-tight text-[#1E2B4F] text-center">
@@ -261,14 +221,14 @@ export function Integrations() {
                   className="block h-full"
                 >
                   <Card className="p-6 border border-[#A8BFFF]/30 shadow-lg hover:shadow-xl hover:border-[#4B63FF]/50 transition-all duration-300 flex flex-col h-full bg-white rounded-xl overflow-hidden group hover:translate-y-[-5px] cursor-pointer">
-                    <div className="flex h-24 w-24 items-center justify-center rounded-full bg-[#4B63FF]/10 mb-5 border border-[#4B63FF]/20 relative mx-auto">
+                    <div className="flex h-32 w-32 items-center justify-center rounded-full bg-[#4B63FF]/10 mb-5 border border-[#4B63FF]/20 relative mx-auto">
                       <Image
                         src={provider.logo}
                         alt={provider.name}
-                        width={50}
-                        height={50}
+                        width={65}
+                        height={65}
                         className="object-contain group-hover:scale-110 transition-transform duration-300"
-                        quality={95}
+                        quality={100}
                       />
                     </div>
                     <h3 className="text-xl font-semibold leading-7 tracking-tight text-[#1E2B4F] text-center">
@@ -305,14 +265,14 @@ export function Integrations() {
                   className="block h-full"
                 >
                   <Card className="p-6 border border-[#A8BFFF]/30 shadow-lg hover:shadow-xl hover:border-[#4B63FF]/50 transition-all duration-300 flex flex-col h-full bg-white rounded-xl overflow-hidden group hover:translate-y-[-5px] cursor-pointer">
-                    <div className="flex h-24 w-24 items-center justify-center rounded-full bg-[#4B63FF]/10 mb-5 border border-[#4B63FF]/20 relative mx-auto">
+                    <div className="flex h-32 w-32 items-center justify-center rounded-full bg-[#4B63FF]/10 mb-5 border border-[#4B63FF]/20 relative mx-auto">
                       <Image
                         src={provider.logo}
                         alt={provider.name}
-                        width={50}
-                        height={50}
+                        width={65}
+                        height={65}
                         className="object-contain group-hover:scale-110 transition-transform duration-300"
-                        quality={95}
+                        quality={100}
                       />
                     </div>
                     <h3 className="text-xl font-semibold leading-7 tracking-tight text-[#1E2B4F] text-center">
@@ -510,14 +470,14 @@ export function Integrations() {
                       className="block h-full"
                     >
                       <Card className="p-6 border border-[#A8BFFF]/30 shadow-lg hover:shadow-xl hover:border-[#4B63FF]/50 transition-all duration-300 flex flex-col h-[300px] bg-white rounded-xl overflow-hidden group hover:translate-y-[-5px] cursor-pointer">
-                        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-[#4B63FF]/10 to-[#6A3AFF]/10 mb-5 border border-[#4B63FF]/20 relative mx-auto group-hover:shadow-md transition-all duration-300">
+                        <div className="flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-[#4B63FF]/10 to-[#6A3AFF]/10 mb-5 border border-[#4B63FF]/20 relative mx-auto group-hover:shadow-md transition-all duration-300">
                           <Image
                             src={partner.logo}
                             alt={partner.name}
-                            width={50}
-                            height={50}
+                            width={65}
+                            height={65}
                             className="object-contain group-hover:scale-110 transition-transform duration-300"
-                            quality={95}
+                            quality={100}
                           />
                         </div>
                         <h3 className="text-xl font-semibold leading-7 tracking-tight text-[#1E2B4F] text-center">
@@ -545,14 +505,14 @@ export function Integrations() {
                       className="block h-full"
                     >
                       <Card className="p-6 border border-[#A8BFFF]/30 shadow-lg hover:shadow-xl hover:border-[#4B63FF]/50 transition-all duration-300 flex flex-col h-[300px] bg-white rounded-xl overflow-hidden group hover:translate-y-[-5px] cursor-pointer">
-                        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-[#4B63FF]/10 to-[#6A3AFF]/10 mb-5 border border-[#4B63FF]/20 relative mx-auto group-hover:shadow-md transition-all duration-300">
+                        <div className="flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-[#4B63FF]/10 to-[#6A3AFF]/10 mb-5 border border-[#4B63FF]/20 relative mx-auto group-hover:shadow-md transition-all duration-300">
                           <Image
                             src={partner.logo}
                             alt={partner.name}
-                            width={50}
-                            height={50}
+                            width={65}
+                            height={65}
                             className="object-contain group-hover:scale-110 transition-transform duration-300"
-                            quality={95}
+                            quality={100}
                           />
                         </div>
                         <h3 className="text-xl font-semibold leading-7 tracking-tight text-[#1E2B4F] text-center">
@@ -580,14 +540,14 @@ export function Integrations() {
                       className="block h-full"
                     >
                       <Card className="p-6 border border-[#A8BFFF]/30 shadow-lg hover:shadow-xl hover:border-[#4B63FF]/50 transition-all duration-300 flex flex-col h-[300px] bg-white rounded-xl overflow-hidden group hover:translate-y-[-5px] cursor-pointer">
-                        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-[#4B63FF]/10 to-[#6A3AFF]/10 mb-5 border border-[#4B63FF]/20 relative mx-auto group-hover:shadow-md transition-all duration-300">
+                        <div className="flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-[#4B63FF]/10 to-[#6A3AFF]/10 mb-5 border border-[#4B63FF]/20 relative mx-auto group-hover:shadow-md transition-all duration-300">
                           <Image
                             src={partner.logo}
                             alt={partner.name}
-                            width={50}
-                            height={50}
+                            width={65}
+                            height={65}
                             className="object-contain group-hover:scale-110 transition-transform duration-300"
-                            quality={95}
+                            quality={100}
                           />
                         </div>
                         <h3 className="text-xl font-semibold leading-7 tracking-tight text-[#1E2B4F] text-center">
