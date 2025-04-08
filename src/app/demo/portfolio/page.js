@@ -22,7 +22,14 @@ import {
   ChevronsUpDown,
   Filter,
 } from "lucide-react";
-import { formatCurrency, formatPercentage } from "@/lib/utils";
+import { formatCurrency } from "@/lib/utils";
+import {
+  PieChart as RechartsPieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
 
 // Sample data for the portfolio page
 const portfolioStats = {
@@ -248,7 +255,7 @@ export default function PortfolioPage() {
               className="text-lg font-medium"
               style={{ color: "#1E2B4F" }}
             >
-               Performance
+              Performance
             </CardTitle>
             <CardDescription style={{ color: "#6A7C99" }}>
               Track your portfolio value over time
@@ -370,9 +377,7 @@ export default function PortfolioPage() {
             {/* Replace with actual chart component */}
             <div className="text-center">
               <TrendingUp className="h-12 w-12 mx-auto mb-2 text-gray-400" />
-              <p className="text-sm text-gray-500">
-                 Performance Chart
-              </p>
+              <p className="text-sm text-gray-500">Performance Chart</p>
               <p className="text-xs text-gray-400">
                 Showing data for {timeRange}
               </p>
@@ -401,14 +406,34 @@ export default function PortfolioPage() {
           <CardContent>
             <div className="flex flex-col lg:flex-row justify-between items-center">
               <div className="h-[200px] w-[200px] relative flex items-center justify-center mb-4 lg:mb-0">
-                {/* Replace with actual pie chart component */}
-
-                
-                <div className="rounded-full h-full w-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center">
-                  <PieChart className="h-12 w-12 text-gray-400" />
-                </div>
-
-
+                <ResponsiveContainer width="100%" height="100%">
+                  <RechartsPieChart>
+                    <Pie
+                      data={assetAllocation}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={40}
+                      outerRadius={70}
+                      paddingAngle={2}
+                      dataKey="percentage"
+                    >
+                      {assetAllocation.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={`hsl(${index * 60}, 70%, 50%)`}
+                        />
+                      ))}
+                    </Pie>
+                    <Tooltip
+                      formatter={(value, name) => [`${value}%`, name]}
+                      contentStyle={{
+                        backgroundColor: "white",
+                        border: "1px solid #ccc",
+                        borderRadius: "6px",
+                      }}
+                    />
+                  </RechartsPieChart>
+                </ResponsiveContainer>
               </div>
               <div className="flex-1 space-y-4">
                 {assetAllocation.map((asset) => (
