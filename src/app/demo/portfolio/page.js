@@ -402,9 +402,13 @@ export default function PortfolioPage() {
             <div className="flex flex-col lg:flex-row justify-between items-center">
               <div className="h-[200px] w-[200px] relative flex items-center justify-center mb-4 lg:mb-0">
                 {/* Replace with actual pie chart component */}
+
+                
                 <div className="rounded-full h-full w-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center">
                   <PieChart className="h-12 w-12 text-gray-400" />
                 </div>
+
+
               </div>
               <div className="flex-1 space-y-4">
                 {assetAllocation.map((asset) => (
