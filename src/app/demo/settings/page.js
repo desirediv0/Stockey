@@ -24,14 +24,13 @@ import {
   Settings,
   Save,
   MousePointerClick,
-  
 } from "lucide-react";
 
 export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState("profile");
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 p-4 md:p-6">
       <div>
         <h1
           className="text-3xl font-bold tracking-tight"
@@ -106,15 +105,14 @@ export default function SettingsPage() {
                 <Button
                   variant="ghost"
                   className={`w-full justify-start ${
-                    activeTab === "billing" ? "bg-primary/10" : ""
+                    activeTab === "subscription" ? "bg-primary/10" : ""
                   }`}
                   onClick={() => setActiveTab("subscription")}
                   style={{
-                    color: activeTab === "billing" ? "#4B63FF" : "#1E2B4F",
+                    color: activeTab === "subscription" ? "#4B63FF" : "#1E2B4F",
                   }}
                 >
-                 
-                  <MousePointerClick className="h-5 w-5 mr-2" />
+                  <MousePointerClick className="h-4 w-4 mr-2" />
                   Subscription
                 </Button>
                 <Button
@@ -137,6 +135,7 @@ export default function SettingsPage() {
 
         {/* Main Content */}
         <div className="col-span-12 md:col-span-9">
+          {/* Profile Tab */}
           {activeTab === "profile" && (
             <Card style={{ borderColor: "#F0F4FF" }}>
               <CardHeader className="pb-2">
@@ -240,6 +239,7 @@ export default function SettingsPage() {
             </Card>
           )}
 
+          {/* Preferences Tab */}
           {activeTab === "preferences" && (
             <Card style={{ borderColor: "#F0F4FF" }}>
               <CardHeader className="pb-2">
@@ -256,7 +256,7 @@ export default function SettingsPage() {
                   >
                     Theme
                   </h3>
-                  <div className="flex gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <Button
                       variant="outline"
                       className="flex-1 justify-start border-2"
@@ -311,7 +311,7 @@ export default function SettingsPage() {
                   >
                     Dashboard Layout
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     <div
                       className="border rounded-md p-3 cursor-pointer border-primary"
                       style={{ borderColor: "#4B63FF" }}
@@ -413,6 +413,7 @@ export default function SettingsPage() {
             </Card>
           )}
 
+          {/* Security Tab */}
           {activeTab === "security" && (
             <Card style={{ borderColor: "#F0F4FF" }}>
               <CardHeader className="pb-2">
@@ -493,7 +494,7 @@ export default function SettingsPage() {
                   >
                     Two-Factor Authentication
                   </h3>
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <div>
                       <p className="text-sm" style={{ color: "#1E2B4F" }}>
                         Add an extra layer of security to your account
@@ -526,7 +527,7 @@ export default function SettingsPage() {
                   </h3>
                   <div className="space-y-3">
                     <div
-                      className="flex justify-between items-center p-3 border rounded-md"
+                      className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 border rounded-md gap-2"
                       style={{ borderColor: "#F0F4FF" }}
                     >
                       <div>
@@ -548,7 +549,7 @@ export default function SettingsPage() {
                       </div>
                     </div>
                     <div
-                      className="flex justify-between items-center p-3 border rounded-md"
+                      className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 border rounded-md gap-2"
                       style={{ borderColor: "#F0F4FF" }}
                     >
                       <div>
@@ -584,7 +585,7 @@ export default function SettingsPage() {
                     Danger Zone
                   </h3>
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                       <div>
                         <p
                           className="text-sm font-medium"
@@ -607,7 +608,7 @@ export default function SettingsPage() {
                         Delete Account
                       </Button>
                     </div>
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                       <div>
                         <p
                           className="text-sm font-medium"
@@ -634,6 +635,447 @@ export default function SettingsPage() {
                   </div>
                 </div>
               </CardContent>
+            </Card>
+          )}
+
+          {/* Notifications Tab */}
+          {activeTab === "notifications" && (
+            <Card style={{ borderColor: "#F0F4FF" }}>
+              <CardHeader className="pb-2">
+                <CardTitle style={{ color: "#1E2B4F" }}>
+                  Notification Settings
+                </CardTitle>
+                <CardDescription style={{ color: "#6A7C99" }}>
+                  Manage how you receive notifications
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div>
+                  <h3
+                    className="text-sm font-medium mb-3"
+                    style={{ color: "#1E2B4F" }}
+                  >
+                    Email Notifications
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p
+                          className="text-sm font-medium"
+                          style={{ color: "#1E2B4F" }}
+                        >
+                          Account Updates
+                        </p>
+                        <p
+                          className="text-xs text-muted-foreground"
+                          style={{ color: "#6A7C99" }}
+                        >
+                          Receive updates about your account activity
+                        </p>
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        style={{ borderColor: "#4B63FF", color: "#4B63FF" }}
+                      >
+                        Enabled
+                      </Button>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p
+                          className="text-sm font-medium"
+                          style={{ color: "#1E2B4F" }}
+                        >
+                          Marketing Emails
+                        </p>
+                        <p
+                          className="text-xs text-muted-foreground"
+                          style={{ color: "#6A7C99" }}
+                        >
+                          Receive marketing and promotional emails
+                        </p>
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        style={{ borderColor: "#A8BFFF", color: "#1E2B4F" }}
+                      >
+                        Disabled
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className="pt-4 border-t"
+                  style={{ borderColor: "#F0F4FF" }}
+                >
+                  <h3
+                    className="text-sm font-medium mb-3"
+                    style={{ color: "#1E2B4F" }}
+                  >
+                    Push Notifications
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p
+                          className="text-sm font-medium"
+                          style={{ color: "#1E2B4F" }}
+                        >
+                          New Messages
+                        </p>
+                        <p
+                          className="text-xs text-muted-foreground"
+                          style={{ color: "#6A7C99" }}
+                        >
+                          Receive notifications for new messages
+                        </p>
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        style={{ borderColor: "#4B63FF", color: "#4B63FF" }}
+                      >
+                        Enabled
+                      </Button>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p
+                          className="text-sm font-medium"
+                          style={{ color: "#1E2B4F" }}
+                        >
+                          System Updates
+                        </p>
+                        <p
+                          className="text-xs text-muted-foreground"
+                          style={{ color: "#6A7C99" }}
+                        >
+                          Receive notifications about system updates
+                        </p>
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        style={{ borderColor: "#4B63FF", color: "#4B63FF" }}
+                      >
+                        Enabled
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+              <CardFooter className="flex justify-end gap-2 pt-2">
+                <Button
+                  variant="outline"
+                  style={{ borderColor: "#A8BFFF", color: "#4B63FF" }}
+                >
+                  Reset to Default
+                </Button>
+                <Button style={{ backgroundColor: "#4B63FF", color: "white" }}>
+                  <Save className="h-4 w-4 mr-2" />
+                  Save Changes
+                </Button>
+              </CardFooter>
+            </Card>
+          )}
+
+          {/* Subscription Tab */}
+          {activeTab === "subscription" && (
+            <Card style={{ borderColor: "#F0F4FF" }}>
+              <CardHeader className="pb-2">
+                <CardTitle style={{ color: "#1E2B4F" }}>
+                  Subscription Plans
+                </CardTitle>
+                <CardDescription style={{ color: "#6A7C99" }}>
+                  Choose the plan that best fits your needs
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div
+                    className="border rounded-lg p-6 cursor-pointer"
+                    style={{ borderColor: "#A8BFFF" }}
+                  >
+                    <h3
+                      className="text-lg font-semibold mb-2"
+                      style={{ color: "#1E2B4F" }}
+                    >
+                      Basic
+                    </h3>
+                    <p
+                      className="text-2xl font-bold mb-4"
+                      style={{ color: "#4B63FF" }}
+                    >
+                      $9.99
+                      <span className="text-sm font-normal text-muted-foreground">
+                        /month
+                      </span>
+                    </p>
+                    <ul className="space-y-2 mb-6">
+                      <li className="flex items-center text-sm">
+                        <span className="mr-2">✓</span>
+                        Basic features
+                      </li>
+                      <li className="flex items-center text-sm">
+                        <span className="mr-2">✓</span>
+                        5GB storage
+                      </li>
+                      <li className="flex items-center text-sm">
+                        <span className="mr-2">✓</span>
+                        Email support
+                      </li>
+                    </ul>
+                    <Button
+                      className="w-full"
+                      style={{ backgroundColor: "#4B63FF", color: "white" }}
+                    >
+                      Select Plan
+                    </Button>
+                  </div>
+
+                  <div
+                    className="border rounded-lg p-6 cursor-pointer border-primary relative"
+                    style={{ borderColor: "#4B63FF" }}
+                  >
+                    <div
+                      className="absolute top-0 right-0 bg-primary text-white text-xs px-2 py-1 rounded-bl-lg"
+                      style={{ backgroundColor: "#4B63FF" }}
+                    >
+                      Popular
+                    </div>
+                    <h3
+                      className="text-lg font-semibold mb-2"
+                      style={{ color: "#1E2B4F" }}
+                    >
+                      Pro
+                    </h3>
+                    <p
+                      className="text-2xl font-bold mb-4"
+                      style={{ color: "#4B63FF" }}
+                    >
+                      $19.99
+                      <span className="text-sm font-normal text-muted-foreground">
+                        /month
+                      </span>
+                    </p>
+                    <ul className="space-y-2 mb-6">
+                      <li className="flex items-center text-sm">
+                        <span className="mr-2">✓</span>
+                        All Basic features
+                      </li>
+                      <li className="flex items-center text-sm">
+                        <span className="mr-2">✓</span>
+                        50GB storage
+                      </li>
+                      <li className="flex items-center text-sm">
+                        <span className="mr-2">✓</span>
+                        Priority support
+                      </li>
+                      <li className="flex items-center text-sm">
+                        <span className="mr-2">✓</span>
+                        Advanced analytics
+                      </li>
+                    </ul>
+                    <Button
+                      className="w-full"
+                      style={{ backgroundColor: "#4B63FF", color: "white" }}
+                    >
+                      Select Plan
+                    </Button>
+                  </div>
+
+                  <div
+                    className="border rounded-lg p-6 cursor-pointer"
+                    style={{ borderColor: "#A8BFFF" }}
+                  >
+                    <h3
+                      className="text-lg font-semibold mb-2"
+                      style={{ color: "#1E2B4F" }}
+                    >
+                      Enterprise
+                    </h3>
+                    <p
+                      className="text-2xl font-bold mb-4"
+                      style={{ color: "#4B63FF" }}
+                    >
+                      $49.99
+                      <span className="text-sm font-normal text-muted-foreground">
+                        /month
+                      </span>
+                    </p>
+                    <ul className="space-y-2 mb-6">
+                      <li className="flex items-center text-sm">
+                        <span className="mr-2">✓</span>
+                        All Pro features
+                      </li>
+                      <li className="flex items-center text-sm">
+                        <span className="mr-2">✓</span>
+                        Unlimited storage
+                      </li>
+                      <li className="flex items-center text-sm">
+                        <span className="mr-2">✓</span>
+                        24/7 support
+                      </li>
+                      <li className="flex items-center text-sm">
+                        <span className="mr-2">✓</span>
+                        Custom solutions
+                      </li>
+                    </ul>
+                    <Button
+                      className="w-full"
+                      style={{ backgroundColor: "#4B63FF", color: "white" }}
+                    >
+                      Select Plan
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Billing Tab */}
+          {activeTab === "billing" && (
+            <Card style={{ borderColor: "#F0F4FF" }}>
+              <CardHeader className="pb-2">
+                <CardTitle style={{ color: "#1E2B4F" }}>
+                  Billing History
+                </CardTitle>
+                <CardDescription style={{ color: "#6A7C99" }}>
+                  View and manage your billing information
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div>
+                    <h3
+                      className="text-sm font-medium mb-3"
+                      style={{ color: "#1E2B4F" }}
+                    >
+                      Payment Method
+                    </h3>
+                    <div
+                      className="border rounded-md p-4 flex items-center justify-between"
+                      style={{ borderColor: "#F0F4FF" }}
+                    >
+                      <div className="flex items-center">
+                        <CreditCard
+                          className="h-6 w-6 mr-3"
+                          style={{ color: "#4B63FF" }}
+                        />
+                        <div>
+                          <p
+                            className="text-sm font-medium"
+                            style={{ color: "#1E2B4F" }}
+                          >
+                            Visa ending in 4242
+                          </p>
+                          <p
+                            className="text-xs text-muted-foreground"
+                            style={{ color: "#6A7C99" }}
+                          >
+                            Expires 12/24
+                          </p>
+                        </div>
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        style={{ borderColor: "#A8BFFF", color: "#4B63FF" }}
+                      >
+                        Update
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3
+                      className="text-sm font-medium mb-3"
+                      style={{ color: "#1E2B4F" }}
+                    >
+                      Recent Transactions
+                    </h3>
+                    <div className="space-y-3">
+                      <div
+                        className="border rounded-md p-4 flex items-center justify-between"
+                        style={{ borderColor: "#F0F4FF" }}
+                      >
+                        <div>
+                          <p
+                            className="text-sm font-medium"
+                            style={{ color: "#1E2B4F" }}
+                          >
+                            Pro Plan - Monthly
+                          </p>
+                          <p
+                            className="text-xs text-muted-foreground"
+                            style={{ color: "#6A7C99" }}
+                          >
+                            Dec 1, 2023
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <p
+                            className="text-sm font-medium"
+                            style={{ color: "#1E2B4F" }}
+                          >
+                            $19.99
+                          </p>
+                          <p
+                            className="text-xs text-green-600"
+                            style={{ color: "#10B981" }}
+                          >
+                            Paid
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        className="border rounded-md p-4 flex items-center justify-between"
+                        style={{ borderColor: "#F0F4FF" }}
+                      >
+                        <div>
+                          <p
+                            className="text-sm font-medium"
+                            style={{ color: "#1E2B4F" }}
+                          >
+                            Pro Plan - Monthly
+                          </p>
+                          <p
+                            className="text-xs text-muted-foreground"
+                            style={{ color: "#6A7C99" }}
+                          >
+                            Nov 1, 2023
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <p
+                            className="text-sm font-medium"
+                            style={{ color: "#1E2B4F" }}
+                          >
+                            $19.99
+                          </p>
+                          <p
+                            className="text-xs text-green-600"
+                            style={{ color: "#10B981" }}
+                          >
+                            Paid
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+              <CardFooter className="flex justify-end gap-2 pt-2">
+                <Button
+                  variant="outline"
+                  style={{ borderColor: "#A8BFFF", color: "#4B63FF" }}
+                >
+                  Download All
+                </Button>
+              </CardFooter>
             </Card>
           )}
         </div>
