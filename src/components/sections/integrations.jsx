@@ -54,10 +54,10 @@ const brokers = [
     link: "https://angelone.in",
   },
   {
-    name: "Interactive Brokers",
-    description: "Global trading platform for international markets",
-    logo: "/logos/ib.png",
-    link: "https://www.interactivebrokers.com",
+    name: "Alpaca",
+    description: "Commission-free stock trading API",
+    logo: "/logo/alpaca.png",
+    link: "https://alpaca.markets",
   },
   {
     name: "Tradier",
@@ -297,7 +297,7 @@ export function Integrations() {
           </div>
         </div>
 
-        <div className="mt-20 text-center flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="mt-20 text-center flex flex-col sm:flex-row items-center justify-center gap-4 max-w-4xl mx-auto">
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
               <Button

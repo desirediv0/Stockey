@@ -96,7 +96,7 @@ export default function FeaturesSection() {
             >
               Manage Your Investments with
               <span
-                className="block"
+                className="block py-1"
                 style={{
                   background:
                     "linear-gradient(90deg, #4B63FF 0%, #A8BFFF 100%)",

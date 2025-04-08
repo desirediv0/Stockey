@@ -13,6 +13,7 @@ import {
 import WishlistForm from "@/components/wishlist-form";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const features = [
   {
@@ -137,31 +138,20 @@ export function Hero() {
               <WishlistForm planName="Standard" />
             </DialogContent>
           </Dialog>
-
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto transition-all duration-300"
-                style={{
-                  borderColor: "#4B63FF",
-                  color: "#4B63FF",
-                  background: "rgba(75, 99, 255, 0.05)",
-                }}
-              >
-                View Demo
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[500px] bg-white">
-              <DialogHeader>
-                <DialogTitle className="text-xl text-[#1E2B4F]">
-                  Request More Information
-                </DialogTitle>
-              </DialogHeader>
-              <WishlistForm planName="Information Request" />
-            </DialogContent>
-          </Dialog>
+          <Link href={"/demo"}>
+            <Button
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto transition-all duration-300"
+              style={{
+                borderColor: "#4B63FF",
+                color: "#4B63FF",
+                background: "rgba(75, 99, 255, 0.05)",
+              }}
+            >
+              View Demo
+            </Button>
+          </Link>
         </div>
 
         {/* App preview mockup with Lottie animations */}

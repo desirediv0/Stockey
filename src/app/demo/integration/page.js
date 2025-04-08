@@ -43,9 +43,9 @@ const brokers = [
     lastSync: "30 minutes ago",
   },
   {
-    name: "Interactive Brokers",
-    description: "Global trading platform for international markets",
-    logo: "/logo/Interactive-brokers.png",
+    name: "Alpaca",
+    description: "Commission-free stock trading API",
+    logo: "/logo/alpaca.png",
     status: "disconnected",
     lastSync: null,
   },
@@ -320,7 +320,7 @@ export default function IntegrationPage() {
               Stockey CSV Format
             </span>
             <span className="rounded-full bg-[#4B63FF]/10 px-2.5 py-0.5 text-xs font-medium text-[#4B63FF]">
-              Interactive Brokers Flex Query
+              Alpaca API Integration
             </span>
           </div>
           <p className="mt-4 text-xs text-[#6A7C99]">

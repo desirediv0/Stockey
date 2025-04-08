@@ -59,11 +59,20 @@ export function Navigation() {
           </div>
 
           <div className="flex flex-1 items-center justify-between">
-            <div className="flex md:hidden">
+            <div className="flex md:hidden items-center justify-between w-full">
+              <Link href="/" className="flex items-center space-x-2">
+                <Image
+                  src={"/1.svg"}
+                  alt="Logo"
+                  width={100}
+                  height={100}
+                  className="h-28 w-28"
+                />
+              </Link>
               <Button
                 variant="ghost"
                 size="icon"
-                className="mr-2 text-[#1E2B4F] hover:text-[#4B63FF] hover:bg-[#F0F4FF]"
+                className="text-[#1E2B4F] hover:text-[#4B63FF] hover:bg-[#F0F4FF]"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? (
@@ -72,15 +81,6 @@ export function Navigation() {
                   <Menu className="h-6 w-6" />
                 )}
               </Button>
-              <Link href="/" className="flex items-center space-x-2">
-                <Image
-                  src={"/2.svg"}
-                  alt="Logo"
-                  width={100}
-                  height={100}
-                  className="h-8 w-8"
-                />
-              </Link>
             </div>
 
             <div className="hidden md:flex md:items-center md:space-x-8">
@@ -135,14 +135,14 @@ export function Navigation() {
               className="fixed inset-y-0 right-0 z-50 w-4/5 max-w-sm bg-white p-6 shadow-2xl overflow-y-auto"
               style={{ height: "100%", overflowY: "auto" }}
             >
-              <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center justify-between">
                 <Link href="/" className="flex items-center space-x-2">
                   <Image
-                    src={"/2.svg"}
+                    src={"/1.svg"}
                     alt="Logo"
                     width={100}
                     height={100}
-                    className="h-10 w-10"
+                    className="h-28 w-28"
                   />
                 </Link>
                 <Button

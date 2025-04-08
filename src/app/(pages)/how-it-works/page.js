@@ -17,7 +17,7 @@ const steps = [
     id: "01",
     name: "Connect Your Broker",
     description:
-      "Easily connect your brokerage accounts using our secure OAuth integration. We support all major Indian brokers like Zerodha, Fyers, Dhan, and Angel One, as well as international brokers like Interactive Brokers and Tradier.",
+      "Easily connect your brokerage accounts using our secure OAuth integration. We support all major Indian brokers like Zerodha, Fyers, Dhan, and Angel One, as well as international brokers like Alpaca and Tradier.",
     image: "/h1.jpeg",
     icon: Link,
     benefits: [
