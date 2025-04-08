@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,6 +9,8 @@ import {
   Server,
   Mail,
 } from "lucide-react";
+import { useState } from "react";
+import WishlistForm from "@/components/wishlist-form";
 
 const securityMeasures = [
   {
@@ -37,6 +40,8 @@ const securityMeasures = [
 ];
 
 export default function SecurityPage() {
+  const [showWishlistForm, setShowWishlistForm] = useState(false);
+
   return (
     <div
       style={{
@@ -63,7 +68,7 @@ export default function SecurityPage() {
                 border: "1px solid rgba(75, 99, 255, 0.3)",
               }}
             >
-              Last Updated: June 1, 2023
+              Last Updated: June 15, 2024
             </p>
 
             <h1
@@ -132,20 +137,20 @@ export default function SecurityPage() {
                 <h2 style={{ color: "#1E2B4F" }}>Our Security Commitment</h2>
                 <p>
                   At Stockey, security is a core part of our product, not an
-                  afterthought. We&apos;ve built our platform from the ground up with
-                  security best practices in mind. Our team continuously
+                  afterthought. We&apos;ve built our platform from the ground up
+                  with security best practices in mind. Our team continuously
                   monitors for threats and vulnerabilities, ensuring your data
                   remains protected.
                 </p>
 
                 <h2 style={{ color: "#1E2B4F" }}>Data Protection</h2>
                 <p>
-                  We understand the sensitive nature of financial data. That&apos;s
-                  why we never store your broker credentials. Instead, we use
-                  secure OAuth integrations to access only the data you
-                  explicitly authorize. All personal and financial data is
-                  encrypted both in transit and at rest using industry-standard
-                  encryption protocols.
+                  We understand the sensitive nature of financial data.
+                  That&apos;s why we never store your broker credentials.
+                  Instead, we use secure OAuth integrations to access only the
+                  data you explicitly authorize. All personal and financial data
+                  is encrypted both in transit and at rest using
+                  industry-standard encryption protocols.
                 </p>
 
                 <h2 style={{ color: "#1E2B4F" }}>
@@ -266,12 +271,52 @@ export default function SecurityPage() {
                   background: "#4B63FF",
                   color: "#FFFFFF",
                 }}
+                onClick={() => setShowWishlistForm(true)}
               >
                 Report Security Issue
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
           </div>
+
+          {/* Wishlist Form Modal */}
+          {showWishlistForm && (
+            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+              <div
+                className="bg-white rounded-xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto"
+                style={{ border: "1px solid rgba(168, 191, 255, 0.3)" }}
+              >
+                <div className="flex justify-between items-center mb-4">
+                  <h3
+                    className="text-xl font-semibold"
+                    style={{ color: "#1E2B4F" }}
+                  >
+                    Report Security Issue
+                  </h3>
+                  <button
+                    onClick={() => setShowWishlistForm(false)}
+                    className="text-[#6A7C99] hover:text-[#1E2B4F]"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                </div>
+                <WishlistForm planName="Security Issue Report" />
+              </div>
+            </div>
+          )}
 
           {/* Related Links */}
           <div className="mx-auto max-w-2xl">

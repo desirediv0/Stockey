@@ -110,3 +110,33 @@
     text-wrap: balance;
   }
 }
+
+/* Resource content styling */
+.resource-content h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e2b4f;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.resource-content h2:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #4b63ff, #a8bfff);
+  border-radius: 3px;
+}
+
+.resource-content p {
+  color: #6a7c99;
+  line-height: 1.75;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  font-size: 1.125rem;
+}

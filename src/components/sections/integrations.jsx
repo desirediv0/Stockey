@@ -462,7 +462,7 @@ export function Integrations() {
                 {brokers.map((partner) => (
                   <CarouselItem
                     key={partner.name}
-                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-full"
+                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-full py-10"
                   >
                     <Link
                       href={partner.link}
@@ -497,7 +497,7 @@ export function Integrations() {
                 {technologyProviders.map((partner) => (
                   <CarouselItem
                     key={partner.name}
-                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-full"
+                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-full py-10"
                   >
                     <Link
                       href={partner.link}
@@ -532,7 +532,7 @@ export function Integrations() {
                 {dataProviders.map((partner) => (
                   <CarouselItem
                     key={partner.name}
-                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-full"
+                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 h-full py-10"
                   >
                     <Link
                       href={partner.link}

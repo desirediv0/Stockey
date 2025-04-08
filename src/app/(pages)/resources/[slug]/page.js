@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import resourcesData from "../../../data.json";
 import ShareButtons from "@/components/ShareButtons";
 import { generateArticleSchema } from "@/lib/schema";
+import ResourceCTA from "@/components/ResourceCTA";
 
 export async function generateStaticParams() {
   return resourcesData.resourcesPosts.map((post) => ({
@@ -181,12 +182,19 @@ export default function ResourcesPost({ params }) {
             </div>
 
             <div
-              className="prose prose-lg max-w-none"
+              className="prose prose-lg max-w-none resource-content"
               style={{
                 "--tw-prose-body": "#6A7C99",
                 "--tw-prose-headings": "#1E2B4F",
                 "--tw-prose-links": "#4B63FF",
                 "--tw-prose-bold": "#1E2B4F",
+                "--tw-prose-h2": "#1E2B4F",
+                "--tw-prose-h2-font-weight": "700",
+                "--tw-prose-h2-margin-top": "2em",
+                "--tw-prose-h2-margin-bottom": "1em",
+                "--tw-prose-p-margin-top": "1.25em",
+                "--tw-prose-p-margin-bottom": "1.25em",
+                "--tw-prose-p-line-height": "1.75",
               }}
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
@@ -206,29 +214,7 @@ export default function ResourcesPost({ params }) {
               </div>
             </div>
 
-            <div
-              className="mt-16 p-8 rounded-2xl text-center"
-              style={{
-                background: "linear-gradient(135deg, #27336D 0%, #4B63FF 100%)",
-              }}
-            >
-              <h3 className="text-2xl font-bold mb-4 text-white">
-                Ready to improve your trading?
-              </h3>
-              <p className="text-lg mb-8 text-white opacity-90">
-                Join thousands of traders who use Stockey to analyze their
-                portfolios and make better decisions.
-              </p>
-              <Button
-                className="px-8 py-3 text-base rounded-full hover:scale-105 transition-all duration-300"
-                style={{
-                  background: "#19C68B",
-                  color: "#FFFFFF",
-                }}
-              >
-                Get Started for Free
-              </Button>
-            </div>
+            <ResourceCTA />
 
             <div className="mt-20">
               <h3
