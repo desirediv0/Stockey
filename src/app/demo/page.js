@@ -20,8 +20,6 @@ import {
   BarChart,
   TrendingUp,
   Lock,
-  Sun,
-  Moon,
 } from "lucide-react";
 import { formatCurrency, formatPercentage } from "@/lib/utils";
 
@@ -123,13 +121,6 @@ export default function DashboardPage() {
   const [timeRange, setTimeRange] = useState("1M");
   const [selectedBroker, setSelectedBroker] = useState("All Brokers");
   const [selectedDataSource, setSelectedDataSource] = useState("TrueData");
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    // Here you would also toggle the actual theme in your application
-    document.documentElement.classList.toggle("dark");
-  };
 
   return (
     <div className="space-y-6">
@@ -309,19 +300,6 @@ export default function DashboardPage() {
             ALL
           </Button>
         </div>
-
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={toggleTheme}
-          className="ml-auto md:ml-0"
-        >
-          {isDarkMode ? (
-            <Sun className="h-5 w-5" />
-          ) : (
-            <Moon className="h-5 w-5" />
-          )}
-        </Button>
       </div>
 
       {/* Header Widgets (Portfolio Summary Cards) */}

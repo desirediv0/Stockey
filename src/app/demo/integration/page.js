@@ -17,42 +17,42 @@ const brokers = [
   {
     name: "Zerodha",
     description: "India's largest stock broker by active retail clients",
-    logo: "/logos/zerodha.jpg",
+    logo: "/logo/zerodha.png",
     status: "connected",
     lastSync: "2 hours ago",
   },
   {
     name: "Fyers",
     description: "Modern trading platform with advanced charting",
-    logo: "/logos/fyers.jpg",
+    logo: "/logo/fyers.jpg",
     status: "disconnected",
     lastSync: null,
   },
   {
     name: "Dhan",
     description: "Next-generation trading platform",
-    logo: "/logos/dhan.jpg",
+    logo: "/logo/dhan.jpeg",
     status: "disconnected",
     lastSync: null,
   },
   {
     name: "Angel One",
     description: "Full-service stock broker with research",
-    logo: "/logos/angel-one.jpg",
+    logo: "/logo/AngelOne.png",
     status: "connected",
     lastSync: "30 minutes ago",
   },
   {
     name: "Interactive Brokers",
     description: "Global trading platform for international markets",
-    logo: "/logos/ib.jpg",
+    logo: "/logo/Interactive-brokers.png",
     status: "disconnected",
     lastSync: null,
   },
   {
     name: "Tradier",
     description: "US-based broker with powerful API",
-    logo: "/logos/tradier-logo.svg",
+    logo: "/logo/Tradier.png",
     status: "disconnected",
     lastSync: null,
   },
@@ -62,14 +62,14 @@ const dataProviders = [
   {
     name: "TrueData",
     description: "Real-time market data and analytics",
-    logo: "/logos/true-data.jpg",
+    logo: "/logo/TrueData.png",
     status: "disconnected",
     lastSync: null,
   },
   {
     name: "Global Data Feed",
     description: "Comprehensive market data solution",
-    logo: "/logos/gdf.jpg",
+    logo: "/logo/global-data-feeds.png",
     status: "disconnected",
     lastSync: null,
   },
@@ -110,7 +110,8 @@ export default function IntegrationPage() {
           <CardHeader className="bg-[#F5F7FA] border-b border-[#A8BFFF]/20">
             <CardTitle className="text-[#1E2B4F]">Broker Accounts</CardTitle>
             <CardDescription>
-              Connect your broker accounts to automatically import your trading data
+              Connect your broker accounts to automatically import your trading
+              data
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4 pt-6">
@@ -132,7 +133,9 @@ export default function IntegrationPage() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-medium text-[#1E2B4F]">{broker.name}</h3>
+                    <h3 className="font-medium text-[#1E2B4F]">
+                      {broker.name}
+                    </h3>
                     <p className="text-sm text-[#6A7C99]">
                       {broker.description}
                     </p>
@@ -147,7 +150,11 @@ export default function IntegrationPage() {
                           Last sync: {broker.lastSync}
                         </span>
                       </div>
-                      <Button variant="outline" size="sm" className="border-red-400 text-red-500 hover:bg-red-50 hover:text-red-600">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-red-400 text-red-500 hover:bg-red-50 hover:text-red-600"
+                      >
                         <X className="mr-2 h-4 w-4" />
                         Disconnect
                       </Button>
@@ -191,7 +198,9 @@ export default function IntegrationPage() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-medium text-[#1E2B4F]">{provider.name}</h3>
+                    <h3 className="font-medium text-[#1E2B4F]">
+                      {provider.name}
+                    </h3>
                     <p className="text-sm text-[#6A7C99]">
                       {provider.description}
                     </p>
@@ -206,7 +215,11 @@ export default function IntegrationPage() {
                           Last sync: {provider.lastSync}
                         </span>
                       </div>
-                      <Button variant="outline" size="sm" className="border-red-400 text-red-500 hover:bg-red-50 hover:text-red-600">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-red-400 text-red-500 hover:bg-red-50 hover:text-red-600"
+                      >
                         <X className="mr-2 h-4 w-4" />
                         Disconnect
                       </Button>
@@ -234,8 +247,11 @@ export default function IntegrationPage() {
         </CardHeader>
         <CardContent className="pt-6">
           <div
-            className={`flex flex-col items-center justify-center rounded-lg border-2 border-dashed p-12 text-center ${isDragging ? "border-[#4B63FF] bg-[#4B63FF]/5" : "border-[#A8BFFF]/50"
-              } ${csvUploaded ? "bg-green-50 border-green-500" : ""}`}
+            className={`flex flex-col items-center justify-center rounded-lg border-2 border-dashed p-12 text-center ${
+              isDragging
+                ? "border-[#4B63FF] bg-[#4B63FF]/5"
+                : "border-[#A8BFFF]/50"
+            } ${csvUploaded ? "bg-green-50 border-green-500" : ""}`}
             onDrop={handleDrop}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -245,7 +261,9 @@ export default function IntegrationPage() {
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                   <Check className="h-6 w-6 text-green-600" />
                 </div>
-                <h3 className="mb-2 text-xl font-medium text-[#1E2B4F]">Upload Successful</h3>
+                <h3 className="mb-2 text-xl font-medium text-[#1E2B4F]">
+                  Upload Successful
+                </h3>
                 <p className="mb-4 max-w-md text-sm text-[#6A7C99]">
                   Your file has been uploaded and is being processed. This may
                   take a few minutes.
@@ -259,7 +277,10 @@ export default function IntegrationPage() {
                   >
                     Upload Another File
                   </Button>
-                  <Button size="sm" className="bg-[#4B63FF] hover:bg-[#3A51E0] text-white">
+                  <Button
+                    size="sm"
+                    className="bg-[#4B63FF] hover:bg-[#3A51E0] text-white"
+                  >
                     View Data
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -277,13 +298,17 @@ export default function IntegrationPage() {
                   Drag and drop your trading data CSV file here, or click to
                   select a file from your computer.
                 </p>
-                <Button className="bg-[#4B63FF] hover:bg-[#3A51E0] text-white">Select File</Button>
+                <Button className="bg-[#4B63FF] hover:bg-[#3A51E0] text-white">
+                  Select File
+                </Button>
               </div>
             )}
           </div>
         </CardContent>
         <CardFooter className="flex flex-col items-start border-t border-[#A8BFFF]/20 px-6 py-4 bg-[#F5F7FA]/50">
-          <h4 className="mb-2 text-sm font-medium text-[#1E2B4F]">Supported formats</h4>
+          <h4 className="mb-2 text-sm font-medium text-[#1E2B4F]">
+            Supported formats
+          </h4>
           <div className="flex flex-wrap gap-2">
             <span className="rounded-full bg-[#4B63FF]/10 px-2.5 py-0.5 text-xs font-medium text-[#4B63FF]">
               Zerodha P&L Report
@@ -300,11 +325,17 @@ export default function IntegrationPage() {
           </div>
           <p className="mt-4 text-xs text-[#6A7C99]">
             Need help with CSV format?{" "}
-            <a href="#" className="text-[#4B63FF] underline hover:text-[#3A51E0]">
+            <a
+              href="#"
+              className="text-[#4B63FF] underline hover:text-[#3A51E0]"
+            >
               Download template
             </a>{" "}
             or{" "}
-            <a href="#" className="text-[#4B63FF] underline hover:text-[#3A51E0]">
+            <a
+              href="#"
+              className="text-[#4B63FF] underline hover:text-[#3A51E0]"
+            >
               view documentation
             </a>
             .
@@ -329,18 +360,25 @@ export default function IntegrationPage() {
                   Access your data programmatically with our RESTful API
                 </p>
               </div>
-              <Button className="bg-[#4B63FF] hover:bg-[#3A51E0] text-white">Generate API Key</Button>
+              <Button className="bg-[#4B63FF] hover:bg-[#3A51E0] text-white">
+                Generate API Key
+              </Button>
             </div>
           </div>
           <div className="rounded-lg border border-[#A8BFFF]/30 p-4 hover:shadow-md transition-all duration-200">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div className="mb-4 sm:mb-0">
-                <h3 className="font-medium text-[#1E2B4F]">Webhook Integration</h3>
+                <h3 className="font-medium text-[#1E2B4F]">
+                  Webhook Integration
+                </h3>
                 <p className="text-sm text-[#6A7C99]">
                   Receive real-time notifications via webhook
                 </p>
               </div>
-              <Button variant="outline" className="border-[#A8BFFF] text-[#4B63FF] hover:bg-[#4B63FF]/5">
+              <Button
+                variant="outline"
+                className="border-[#A8BFFF] text-[#4B63FF] hover:bg-[#4B63FF]/5"
+              >
                 Configure Webhooks
               </Button>
             </div>
@@ -350,7 +388,10 @@ export default function IntegrationPage() {
           <p className="text-sm text-[#6A7C99] mb-2 sm:mb-0">
             Need help with API integration?
           </p>
-          <a href="#" className="text-sm text-[#4B63FF] hover:text-[#3A51E0] hover:underline">
+          <a
+            href="#"
+            className="text-sm text-[#4B63FF] hover:text-[#3A51E0] hover:underline"
+          >
             View API Documentation
           </a>
         </CardFooter>
