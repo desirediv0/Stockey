@@ -248,7 +248,7 @@ export default function PortfolioPage() {
               className="text-lg font-medium"
               style={{ color: "#1E2B4F" }}
             >
-              Portfolio Performance
+               Performance
             </CardTitle>
             <CardDescription style={{ color: "#6A7C99" }}>
               Track your portfolio value over time
@@ -371,7 +371,7 @@ export default function PortfolioPage() {
             <div className="text-center">
               <TrendingUp className="h-12 w-12 mx-auto mb-2 text-gray-400" />
               <p className="text-sm text-gray-500">
-                Portfolio Performance Chart
+                 Performance Chart
               </p>
               <p className="text-xs text-gray-400">
                 Showing data for {timeRange}

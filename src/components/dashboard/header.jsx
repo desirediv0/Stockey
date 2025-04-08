@@ -30,8 +30,8 @@ const mobileNavigation = [
     icon: BarChart3,
   },
   {
-    name: "Analytics",
-    href: "/demo/market",
+    name: "Advanced Analytics",
+    href: "/demo/templates",
     icon: TrendingUp,
   },
   {
@@ -39,16 +39,18 @@ const mobileNavigation = [
     href: "/demo/portfolio",
     icon: Briefcase,
   },
+
+  {
+    name: "Market insights",
+    href: "/demo/market",
+    icon: Layers,
+  },
   {
     name: "Watchlist",
     href: "/demo/watchlist",
     icon: Eye,
   },
-  {
-    name: "Templates",
-    href: "/demo/templates",
-    icon: Layers,
-  },
+
   {
     name: "Integration",
     href: "/demo/integration",
@@ -170,9 +172,9 @@ export function Header() {
             onClick={() => setIsMobileSidebarOpen(false)}
           ></div>
           <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-white p-4">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between ">
               <div className="flex items-center gap-2">
-                <Image src="/2.svg" alt="Logo" width={40} height={40} />
+                <Image src="/1.svg" alt="Logo" width={120} height={120} />
               </div>
               <Button
                 variant="ghost"

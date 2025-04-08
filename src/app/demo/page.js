@@ -520,7 +520,7 @@ export default function DashboardPage() {
                 className="text-lg font-medium"
                 style={{ color: "#1E2B4F" }}
               >
-                Portfolio Performance
+                Performance
               </CardTitle>
               <Button
                 variant="outline"
@@ -538,7 +538,7 @@ export default function DashboardPage() {
               <div className="text-center">
                 <TrendingUp className="h-12 w-12 mx-auto mb-2 text-gray-400" />
                 <p className="text-sm text-gray-500">
-                  Portfolio Performance Chart
+                   Performance Chart
                 </p>
                 <p className="text-xs text-gray-400">Time range: {timeRange}</p>
               </div>
@@ -558,7 +558,7 @@ export default function DashboardPage() {
               className="text-lg font-medium"
               style={{ color: "#1E2B4F" }}
             >
-              Sector Allocation
+              Sector Stock
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -569,7 +569,7 @@ export default function DashboardPage() {
                 <p className="text-sm text-gray-500">Sector Allocation Chart</p>
               </div>
             </div>
-            <div className="mt-4 grid grid-cols-3 gap-2">
+            {/* <div className="mt-4 grid grid-cols-3 gap-2">
               {sectorAllocation.map((sector) => (
                 <div key={sector.name} className="flex items-center">
                   <div
@@ -588,7 +588,7 @@ export default function DashboardPage() {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </CardContent>
         </Card>
 

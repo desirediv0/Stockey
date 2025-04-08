@@ -29,8 +29,8 @@ const navigation = [
     icon: BarChart3,
   },
   {
-    name: "Analytics",
-    href: "/demo/market",
+    name: "Advanced Analytics",
+    href: "/demo/templates",
     icon: TrendingUp,
   },
   {
@@ -38,16 +38,18 @@ const navigation = [
     href: "/demo/portfolio",
     icon: Briefcase,
   },
+
+  {
+    name: "Market insights",
+    href: "/demo/market",
+    icon: Layers,
+  },
   {
     name: "Watchlist",
     href: "/demo/watchlist",
     icon: Eye,
   },
-  {
-    name: "Templates",
-    href: "/demo/templates",
-    icon: Layers,
-  },
+  
   {
     name: "Integration",
     href: "/demo/integration",

@@ -150,7 +150,7 @@ export default function TemplatesPage() {
             className="text-3xl font-bold tracking-tight"
             style={{ color: "#1E2B4F" }}
           >
-            Dashboard Templates
+            Advanced Analytics
           </h1>
           <p className="text-muted-foreground" style={{ color: "#6A7C99" }}>
             Choose from pre-built templates or create your own
