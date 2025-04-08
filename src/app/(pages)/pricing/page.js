@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/dialog";
 import ContactForm from "@/components/contact-form";
 import WishlistForm from "@/components/wishlist-form";
-import Link from "next/link";
 
 const plansData = {
   monthly: [
@@ -186,64 +185,6 @@ const faqs = [
   },
 ];
 
-// Pricing toggle component
-const PricingToggle = ({ annual, setAnnual }) => {
-  return (
-    <div className="flex items-center justify-center space-x-4">
-      <span
-        className={`text-sm font-medium ${
-          !annual ? "opacity-100" : "opacity-60"
-        }`}
-        style={{ color: "#1E2B4F" }}
-      >
-        Monthly
-      </span>
-      <button
-        type="button"
-        className="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none"
-        style={{
-          backgroundColor: annual ? "#4B63FF" : "rgba(75, 99, 255, 0.3)",
-        }}
-        onClick={() => setAnnual(!annual)}
-      >
-        <span
-          className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-            annual ? "translate-x-5" : "translate-x-0"
-          }`}
-        />
-      </button>
-      <div>
-        <span
-          className={`text-sm font-medium ${
-            annual ? "opacity-100" : "opacity-60"
-          }`}
-          style={{ color: "#1E2B4F" }}
-        >
-          Annual
-        </span>
-        <span
-          className="ml-1.5 inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold"
-          style={{
-            background: "rgba(25, 198, 139, 0.1)",
-            color: "#19C68B",
-          }}
-        >
-          Save 20%
-        </span>
-      </div>
-    </div>
-  );
-};
-
-// Feature check component
-const FeatureCheck = ({ included }) => {
-  return included ? (
-    <Check className="h-5 w-5" style={{ color: "#19C68B" }} />
-  ) : (
-    <X className="h-5 w-5" style={{ color: "#E53E3E" }} />
-  );
-};
-
 export default function PricingPage() {
   const [billingCycle, setBillingCycle] = useState("annual");
   const plans =
@@ -314,8 +255,8 @@ export default function PricingPage() {
               }`}
             >
               {plan.showRibbon && (
-                <div className="absolute -right-20 top-6 bg-[#19C68B] text-white py-2 px-20 transform rotate-45 shadow-md z-10 w-72">
-                  <span className="text-xs font-bold tracking-wider text-center block">
+                <div className="absolute -right-20 top-6 bg-[#19C68B] text-white py-2 px-20 transform rotate-45 shadow-md z-10 w-72 flex justify-center">
+                  <span className="text-xs font-bold tracking-wider text-center">
                     MOST POPULAR • SAVE 20%
                   </span>
                 </div>
@@ -331,7 +272,7 @@ export default function PricingPage() {
                 )}
                 {plan.discount && (
                   <div className="mb-4">
-                    <span className="rounded-full bg-[#19C68B]/10 px-3 py-1 text-xs font-semibold leading-6 text-[#19C68B] ring-1 ring-inset ring-[#19C68B]/30">
+                    <span className="rounded-full bg-[#6A7C99]/10 px-3 py-1 text-xs font-semibold leading-6 text-[#6A7C99] ring-1 ring-inset ring-[#6A7C99]/30">
                       {plan.discount}
                     </span>
                   </div>
