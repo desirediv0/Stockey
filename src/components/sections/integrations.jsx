@@ -435,9 +435,9 @@ export function Integrations() {
             <div className="flex justify-center items-center pb-2 mb-8">
               <h3 className="text-2xl font-bold text-center relative">
                 <span className="text-gray-800 ">
-                  Powered by Industry Leaders
+                  Powered By
                 </span>
-                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gray-700"></div>
+     
               </h3>
             </div>
 

@@ -205,11 +205,11 @@ export default function PricingPage() {
           </p>
 
           {/* Billing toggle */}
-          <div className="mt-12 inline-flex items-center justify-center gap-4 bg-[#F5F7FA] p-2 rounded-full border border-[#A8BFFF] shadow-sm">
+          <div className="mt-12 inline-flex items-center justify-center gap-4 bg-[#ecf1fa] p-2 rounded-full border border-[#9eb6fa] shadow-sm">
             <span
               className={`text-sm px-4 py-2 rounded-full transition-all duration-200 cursor-pointer ${
                 billingCycle === "monthly"
-                  ? "font-semibold text-[#1E2B4F] bg-white shadow-sm"
+                  ? "font-semibold text-[#1E2B4F] bg-white  shadow-sm"
                   : "text-[#6A7C99]"
               }`}
               onClick={() => setBillingCycle("monthly")}
@@ -239,7 +239,7 @@ export default function PricingPage() {
               onClick={() => setBillingCycle("annual")}
             >
               Annual{" "}
-              <span className="text-[#19C68B] font-medium ml-1">Save 20%</span>
+              <span className="text-[#19C68B] font-medium ml-1 ">Save 20%</span>
             </span>
           </div>
         </div>
@@ -256,8 +256,8 @@ export default function PricingPage() {
             >
               {plan.showRibbon && (
                 <div className="absolute -right-20 top-6 bg-[#19C68B] text-white py-2 px-20 transform rotate-45 shadow-md z-10 w-72 flex justify-center">
-                  <span className="text-xs font-bold tracking-wider text-center">
-                    MOST POPULAR • SAVE 20%
+                  <span className="text-xs font-bold tracking-wider text-center ml-5 ">
+                    MOST POPULAR SAVE 20%
                   </span>
                 </div>
               )}
@@ -270,13 +270,13 @@ export default function PricingPage() {
                     </span>
                   </div>
                 )}
-                {plan.discount && (
+                {/* {plan.discount && (
                   <div className="mb-4">
                     <span className="rounded-full bg-[#6A7C99]/10 px-3 py-1 text-xs font-semibold leading-6 text-[#6A7C99] ring-1 ring-inset ring-[#6A7C99]/30">
                       {plan.discount}
                     </span>
                   </div>
-                )}
+                )} */}
                 <h3 className="text-2xl font-bold text-[#1E2B4F]">
                   {plan.name}
                 </h3>
