@@ -83,8 +83,7 @@ export function Hero() {
               borderColor: "rgba(75, 99, 255, 0.3)",
             }}
           >
-            <span className="animate-pulse mr-2">●</span>
-            Coming Soon — Join the Waitlist for Early Access
+            Join the Waitlist for Early Access
           </div>
         </div>
 
