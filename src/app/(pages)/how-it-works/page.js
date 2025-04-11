@@ -44,7 +44,7 @@ const steps = [
     name: "Customize Dashboards",
     description:
       "Create custom dashboards tailored to your trading style with our drag-and-drop interface. Choose from a library of pre-built widgets or create your own. No coding required.",
-    image: "/h3.jpeg",
+    image: "/h3.png",
     icon: PanelTop,
     benefits: [
       "Drag-and-drop dashboard builder",
