@@ -51,7 +51,7 @@ const features = [
     description:
       "Visualize your portfolio performance with customizable charts and metrics. Track your progress and identify opportunities.",
     icon: LineChart,
-    image: "/h3.jpeg",
+    image: "/h3.png",
     benefits: [
       "Performance attribution analysis",
       "Risk and return metrics",
@@ -63,7 +63,7 @@ const features = [
     description:
       "Set up custom alerts and notifications based on your trading criteria. Stay informed about market movements and portfolio changes.",
     icon: AlertTriangle,
-    image: "/h1.jpeg",
+    image: "/nh1.png",
     badge: "Coming Soon",
     benefits: [
       "Custom price alerts",

@@ -24,10 +24,168 @@ import {
   Settings,
   Save,
   MousePointerClick,
+  Sparkles,
+  ArrowRight,
+  Check,
+  X,
+  ChevronUp,
+  ChevronDown,
 } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import WishlistForm from "@/components/wishlist-form";
+import ContactForm from "@/components/contact-form";
+
+const plansData = {
+  monthly: [
+    {
+      name: "Free",
+      tagline: "For individual traders just getting started",
+      price: "FREE",
+      description: "Basic features for exploring the platform",
+      features: [
+        { name: "Connect up to 2 broker accounts", included: true },
+        { name: "Basic portfolio analytics", included: true },
+        { name: "Pre-built dashboard templates", included: true },
+        { name: "7-day data history", included: true },
+        { name: "Email support", included: true },
+        { name: "Advanced charting capabilities", included: false },
+        { name: "Unlimited dashboards", included: false },
+        { name: "Custom alerts & notifications", included: false },
+        { name: "Priority support", included: false },
+        { name: "CSV data upload", included: false },
+      ],
+      buttonText: "Coming Soon",
+      buttonVariant: "outline",
+      highlight: false,
+      showRibbon: false,
+      isWishlist: true,
+    },
+    {
+      name: "Pro",
+      tagline: "For serious traders and investors",
+      price: "₹999",
+      period: "/month",
+      description: "All the tools you need for advanced trading analytics",
+      features: [
+        { name: "Connect unlimited broker accounts", included: true },
+        { name: "Advanced portfolio analytics", included: true },
+        { name: "All dashboard templates", included: true },
+        { name: "Full historical data", included: true },
+        { name: "Priority email support", included: true },
+        { name: "Advanced charting capabilities", included: true },
+        { name: "Unlimited dashboards", included: true },
+        { name: "Custom alerts & notifications", included: true },
+        { name: "Priority support", included: true },
+        { name: "CSV data upload", included: true },
+      ],
+      buttonText: "Coming Soon",
+      buttonVariant: "default",
+      highlight: true,
+      showRibbon: true,
+      isWishlist: true,
+    },
+    {
+      name: "Team",
+      tagline: "For professional trading teams",
+      price: "Custom",
+      description: "Tailored solutions for trading firms and teams",
+      features: [
+        { name: "Everything in Pro plan", included: true },
+        { name: "Team collaboration features", included: true },
+        { name: "Custom integrations", included: true },
+        { name: "Dedicated account manager", included: true },
+        { name: "Security & compliance features", included: true },
+        { name: "API access", included: true },
+        { name: "White labeling options", included: true },
+        { name: "Onboarding & training", included: true },
+        { name: "SLA & uptime guarantees", included: true },
+        { name: "Custom reports", included: true },
+      ],
+      buttonText: "Contact Sales",
+      buttonVariant: "outline",
+      isContactForm: true,
+    },
+  ],
+  annual: [
+    {
+      name: "Free",
+      tagline: "For individual traders just getting started",
+      price: "FREE",
+      description: "Basic features for exploring the platform",
+      features: [
+        { name: "Connect up to 2 broker accounts", included: true },
+        { name: "Basic portfolio analytics", included: true },
+        { name: "Pre-built dashboard templates", included: true },
+        { name: "7-day data history", included: true },
+        { name: "Email support", included: true },
+        { name: "Advanced charting capabilities", included: false },
+        { name: "Unlimited dashboards", included: false },
+        { name: "Custom alerts & notifications", included: false },
+        { name: "Priority support", included: false },
+        { name: "CSV data upload", included: false },
+      ],
+      buttonText: "Coming Soon",
+      buttonVariant: "outline",
+      highlight: false,
+      showRibbon: false,
+      isWishlist: true,
+    },
+    {
+      name: "Pro",
+      tagline: "For serious traders and investors",
+      price: "₹799",
+      period: "/month",
+      description: "All the tools you need for advanced trading analytics",
+      features: [
+        { name: "Connect unlimited broker accounts", included: true },
+        { name: "Advanced portfolio analytics", included: true },
+        { name: "All dashboard templates", included: true },
+        { name: "Full historical data", included: true },
+        { name: "Priority email support", included: true },
+        { name: "Advanced charting capabilities", included: true },
+        { name: "Unlimited dashboards", included: true },
+        { name: "Custom alerts & notifications", included: true },
+        { name: "Priority support", included: true },
+        { name: "CSV data upload", included: true },
+      ],
+      buttonText: "Coming Soon",
+      buttonVariant: "default",
+      highlight: true,
+      showRibbon: true,
+      isWishlist: true,
+      discount: "20% off",
+    },
+    {
+      name: "Team",
+      tagline: "For professional trading teams",
+      price: "Custom",
+      description: "Tailored solutions for trading firms and teams",
+      features: [
+        { name: "Everything in Pro plan", included: true },
+        { name: "Team collaboration features", included: true },
+        { name: "Custom integrations", included: true },
+        { name: "Dedicated account manager", included: true },
+        { name: "Security & compliance features", included: true },
+        { name: "API access", included: true },
+        { name: "White labeling options", included: true },
+        { name: "Onboarding & training", included: true },
+        { name: "SLA & uptime guarantees", included: true },
+        { name: "Custom reports", included: true },
+      ],
+      buttonText: "Contact Sales",
+      buttonVariant: "outline",
+      isContactForm: true,
+    },
+  ],
+};
 
 export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState("profile");
+  const [billingCycle, setBillingCycle] = useState("monthly");
+     const [isExpanded, setIsExpanded] = useState(false);
+  const plans =
+    billingCycle === "monthly" ? plansData.monthly : plansData.annual;
+      const [selectedPlan, setSelectedPlan] = useState(null);
 
   return (
     <div className="space-y-8 p-4 md:p-6">
@@ -784,156 +942,197 @@ export default function SettingsPage() {
 
           {/* Subscription Tab */}
           {activeTab === "subscription" && (
-            <Card style={{ borderColor: "#F0F4FF" }}>
-              <CardHeader className="pb-2">
-                <CardTitle style={{ color: "#1E2B4F" }}>
-                  Subscription Plans
-                </CardTitle>
-                <CardDescription style={{ color: "#6A7C99" }}>
-                  Choose the plan that best fits your needs
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div
-                    className="border rounded-lg p-6 cursor-pointer"
-                    style={{ borderColor: "#A8BFFF" }}
-                  >
-                    <h3
-                      className="text-lg font-semibold mb-2"
-                      style={{ color: "#1E2B4F" }}
-                    >
-                      Basic
-                    </h3>
-                    <p
-                      className="text-2xl font-bold mb-4"
-                      style={{ color: "#4B63FF" }}
-                    >
-                      $9.99
-                      <span className="text-sm font-normal text-muted-foreground">
-                        /month
-                      </span>
-                    </p>
-                    <ul className="space-y-2 mb-6">
-                      <li className="flex items-center text-sm">
-                        <span className="mr-2">✓</span>
-                        Basic features
-                      </li>
-                      <li className="flex items-center text-sm">
-                        <span className="mr-2">✓</span>
-                        5GB storage
-                      </li>
-                      <li className="flex items-center text-sm">
-                        <span className="mr-2">✓</span>
-                        Email support
-                      </li>
-                    </ul>
-                    <Button
-                      className="w-full"
-                      style={{ backgroundColor: "#4B63FF", color: "white" }}
-                    >
-                      Select Plan
-                    </Button>
-                  </div>
+            <div className="mx-auto max-w-7xl grid grid-cols-1 gap-3 lg:grid-cols-3">
+              {plans.map((plan) => {
+               
 
-                  <div
-                    className="border rounded-lg p-6 cursor-pointer border-primary relative"
-                    style={{ borderColor: "#4B63FF" }}
-                  >
-                    <div
-                      className="absolute top-0 right-0 bg-primary text-white text-xs px-2 py-1 rounded-bl-lg"
-                      style={{ backgroundColor: "#4B63FF" }}
-                    >
-                      Popular
+            return (
+              <div
+                key={plan.name}
+                className={`flex flex-col overflow-hidden rounded-2xl border bg-white transition-all duration-300 hover:shadow-xl relative ${
+                  plan.highlight
+                    ? "border-[#4b63ff50] ring-2 ring-[#4b63ff50] shadow-lg transform hover:-translate-y-1"
+                    : "border-[#A8BFFF] hover:border-[#4B63FF]"
+                }`}
+              >
+                {plan.showRibbon && (
+                  <div className="absolute -right-20 top-6 bg-[#19C68B] text-white py-2 px-20 transform rotate-45 shadow-md z-10 w-72 flex justify-center">
+                    <span className="text-xs font-bold tracking-wider text-center ml-5 ">
+                      MOST POPULAR SAVE 20%
+                    </span>
+                  </div>
+                )}
+                <div className="p-8">
+                  {plan.highlight && (
+                    <div className="mb-4">
+                      <span className="rounded-full bg-[#4B63FF]/10 px-3 py-1 text-xs font-semibold leading-6 text-[#4B63FF] ring-1 ring-inset ring-[#4B63FF]/30 flex items-center w-fit gap-1">
+                        <Sparkles className="h-3 w-3" />
+                        <span>Most Popular</span>
+                      </span>
                     </div>
-                    <h3
-                      className="text-lg font-semibold mb-2"
-                      style={{ color: "#1E2B4F" }}
-                    >
-                      Pro
-                    </h3>
-                    <p
-                      className="text-2xl font-bold mb-4"
-                      style={{ color: "#4B63FF" }}
-                    >
-                      $19.99
-                      <span className="text-sm font-normal text-muted-foreground">
-                        /month
-                      </span>
-                    </p>
-                    <ul className="space-y-2 mb-6">
-                      <li className="flex items-center text-sm">
-                        <span className="mr-2">✓</span>
-                        All Basic features
-                      </li>
-                      <li className="flex items-center text-sm">
-                        <span className="mr-2">✓</span>
-                        50GB storage
-                      </li>
-                      <li className="flex items-center text-sm">
-                        <span className="mr-2">✓</span>
-                        Priority support
-                      </li>
-                      <li className="flex items-center text-sm">
-                        <span className="mr-2">✓</span>
-                        Advanced analytics
-                      </li>
-                    </ul>
-                    <Button
-                      className="w-full"
-                      style={{ backgroundColor: "#4B63FF", color: "white" }}
-                    >
-                      Select Plan
-                    </Button>
+                  )}
+                  {/* {plan.discount && (
+                  <div className="mb-4">
+                    <span className="rounded-full bg-[#6A7C99]/10 px-3 py-1 text-xs font-semibold leading-6 text-[#6A7C99] ring-1 ring-inset ring-[#6A7C99]/30">
+                      {plan.discount}
+                    </span>
                   </div>
-
-                  <div
-                    className="border rounded-lg p-6 cursor-pointer"
-                    style={{ borderColor: "#A8BFFF" }}
-                  >
-                    <h3
-                      className="text-lg font-semibold mb-2"
-                      style={{ color: "#1E2B4F" }}
-                    >
-                      Enterprise
-                    </h3>
-                    <p
-                      className="text-2xl font-bold mb-4"
-                      style={{ color: "#4B63FF" }}
-                    >
-                      $49.99
-                      <span className="text-sm font-normal text-muted-foreground">
-                        /month
+                )} */}
+                  <h3 className="text-2xl font-bold text-[#1E2B4F]">
+                    {plan.name}
+                  </h3>
+                  <p className="mt-1 text-sm text-[#6A7C99]">{plan.tagline}</p>
+                  <p className="mt-6 flex items-baseline">
+                    <span className="text-5xl font-bold text-[#1E2B4F]">
+                      {plan.price}
+                    </span>
+                    {plan.period && (
+                      <span className="text-sm text-[#6A7C99] ml-1">
+                        {plan.period}
                       </span>
-                    </p>
-                    <ul className="space-y-2 mb-6">
-                      <li className="flex items-center text-sm">
-                        <span className="mr-2">✓</span>
-                        All Pro features
-                      </li>
-                      <li className="flex items-center text-sm">
-                        <span className="mr-2">✓</span>
-                        Unlimited storage
-                      </li>
-                      <li className="flex items-center text-sm">
-                        <span className="mr-2">✓</span>
-                        24/7 support
-                      </li>
-                      <li className="flex items-center text-sm">
-                        <span className="mr-2">✓</span>
-                        Custom solutions
-                      </li>
-                    </ul>
+                    )}
+                  </p>
+                  <p className="mt-2 text-sm text-[#6A7C99]">
+                    {plan.description}
+                  </p>
+
+                  {plan.isWishlist ? (
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button
+                          className={`mt-8 w-full h-12 font-semibold shadow-sm ${
+                            plan.buttonVariant === "default"
+                              ? "bg-[#4B63FF] hover:bg-[#3A51E0] text-white"
+                              : "bg-[#F0F4FF] hover:bg-[#DCE4FF] text-[#4B63FF] border border-[#A8BFFF]"
+                          }`}
+                          variant={plan.buttonVariant}
+                          size="lg"
+                          onClick={() => setSelectedPlan(plan.name)}
+                        >
+                          {plan.buttonText}
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-[500px] p-6">
+                        <DialogHeader>
+                          <DialogTitle className="text-[#1E2B4F] text-xl">
+                            Join the Waitlist for {selectedPlan}
+                          </DialogTitle>
+                          <DialogDescription className="text-[#6A7C99]">
+                            Leave your details and we&apos;ll notify you when
+                            this plan becomes available.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <WishlistForm planName={selectedPlan} />
+                      </DialogContent>
+                    </Dialog>
+                  ) : plan.isContactForm ? (
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button
+                          className="mt-8 w-full bg-[#F0F4FF] hover:bg-[#DCE4FF] text-[#4B63FF] font-semibold border border-[#A8BFFF] shadow-sm h-12"
+                          variant={plan.buttonVariant}
+                          size="lg"
+                        >
+                          {plan.buttonText}
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-[500px] p-6">
+                        <DialogHeader>
+                          <DialogTitle className="text-[#1E2B4F] text-xl">
+                            Contact Our Sales Team
+                          </DialogTitle>
+                          <DialogDescription className="text-[#6A7C99]">
+                            Fill out this form and our team will get back to you
+                            within 24 hours.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <ContactForm />
+                      </DialogContent>
+                    </Dialog>
+                  ) : (
                     <Button
-                      className="w-full"
-                      style={{ backgroundColor: "#4B63FF", color: "white" }}
+                      className={`mt-8 w-full h-12 font-semibold shadow-sm ${
+                        plan.buttonVariant === "default"
+                          ? "bg-[#4B63FF] hover:bg-[#3A51E0] text-white"
+                          : "bg-[#F0F4FF] hover:bg-[#DCE4FF] text-[#4B63FF] border border-[#A8BFFF]"
+                      }`}
+                      variant={plan.buttonVariant}
+                      size="lg"
+                      disabled={plan.buttonText === "Coming Soon"}
                     >
-                      Select Plan
+                      {plan.buttonText}
+                      {plan.buttonVariant === "default" &&
+                        plan.buttonText !== "Coming Soon" && (
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        )}
                     </Button>
+                  )}
+                </div>
+                <div className="flex flex-1 flex-col justify-between bg-[#F5F7FA] p-8">
+                  <div>
+                    <h4 className="text-sm font-semibold text-[#1E2B4F]">
+                      What&apos;s included:
+                    </h4>
+                    <ul className="mt-6 space-y-4">
+                      {/* Show only first 4 items or all items based on expanded state */}
+                      {plan.features
+                        .slice(0, isExpanded ? undefined : 4)
+                        .map((feature) => (
+                          <li
+                            key={feature.name}
+                            className="flex items-start text-sm leading-6"
+                          >
+                            {feature.included ? (
+                              <Check
+                                className="mr-3 h-5 w-5 flex-shrink-0 text-[#19C68B]"
+                                aria-hidden="true"
+                              />
+                            ) : (
+                              <X
+                                className="mr-3 h-5 w-5 flex-shrink-0 text-[#6A7C99]"
+                                aria-hidden="true"
+                              />
+                            )}
+                            <span
+                              className={
+                                feature.included
+                                  ? "text-[#1E2B4F]"
+                                  : "text-[#6A7C99]"
+                              }
+                            >
+                              {feature.name}
+                            </span>
+                          </li>
+                        ))}
+                    </ul>
+
+                    {/* Show More/Less button if features are more than 4 */}
+                    {plan.features.length > 4 && (
+                      <Button
+                        variant="ghost"
+                        className="mt-4 w-full text-[#4B63FF] hover:bg-[#4B63FF]/10"
+                        onClick={() => setIsExpanded(!isExpanded)}
+                      >
+                        {" "}
+                        {isExpanded ? (
+                          <>
+                            Show Less
+                            <ChevronUp className="ml-2 h-4 w-4" />
+                          </>
+                        ) : (
+                          <>
+                            Show More
+                            <ChevronDown className="ml-2 h-4 w-4" />
+                          </>
+                        )}
+                      </Button>
+                    )}
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            );
+              })}
+            </div>
           )}
 
           {/* Billing Tab */}
