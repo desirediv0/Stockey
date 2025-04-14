@@ -1,5 +1,7 @@
 "use client";
-
+import TradingViewChart from "@/components/TradingViewChart";
+import TradingViewSectorStockWidget from "@/components/TradingViewSectorStockWidget";
+import TradingViewPerformanceHeatmap from "@/components/TradingViewPerformanceHeatmap";
 import { useState } from "react";
 import {
   Card,
@@ -535,50 +537,8 @@ export default function DashboardPage() {
           </CardHeader>
        
           <CardContent>
-            <div className="h-[250px] w-full">
-              <div
-                className="tradingview-widget-container"
-                style={{ height: "100%", width: "100%" }}
-              >
-                <div
-                  className="tradingview-widget-container__widget"
-                  style={{ height: "calc(100% - 32px)", width: "100%" }}
-                ></div>
-                <div className="tradingview-widget-copyright">
-                  <a
-                    href="https://www.tradingview.com/"
-                    rel="noopener nofollow"
-                    target="_blank"
-                  >
-                    <span className="blue-text">
-                      Track all markets on TradingView
-                    </span>
-                  </a>
-                </div>
-                <script
-                  type="text/javascript"
-                  src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
-                  async
-                  dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                      autosize: true,
-                      symbol: "NASDAQ:AAPL",
-                      interval: "W",
-                      timezone: "Asia/Kolkata",
-                      theme: "light",
-                      style: "1",
-                      locale: "en",
-                      backgroundColor: "rgba(255, 255, 255, 1)",
-                      hide_top_toolbar: true,
-                      hide_legend: true,
-                      allow_symbol_change: false,
-                      save_image: false,
-                      hide_volume: true,
-                      support_host: "https://www.tradingview.com",
-                    }),
-                  }}
-                />
-              </div>
+            <div className="h-[250px] p-1">
+              <TradingViewChart />
             </div>
           </CardContent>
         </Card>
@@ -599,123 +559,8 @@ export default function DashboardPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-[250px] w-full">
-              <div className="tradingview-widget-container">
-                <div className="tradingview-widget-container__widget"></div>
-                <div className="tradingview-widget-copyright">
-                  <a
-                    href="https://www.tradingview.com/"
-                    rel="noopener nofollow"
-                    target="_blank"
-                  >
-                    <span className="blue-text">
-                      Track all markets on TradingView
-                    </span>
-                  </a>
-                </div>
-                <script
-                  type="text/javascript"
-                  src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js"
-                  async
-                  dangerouslySetInnerHTML={{
-                    __html: `
-                      {
-                        "title": "Stocks",
-                        "width": "100%",
-                        "height": "100%",
-                        "locale": "en",
-                        "showSymbolLogo": true,
-                        "symbolsGroups": [
-                          {
-                            "name": "Financial",
-                            "symbols": [
-                              {
-                                "name": "NYSE:JPM",
-                                "displayName": "JPMorgan Chase"
-                              },
-                              {
-                                "name": "NYSE:WFC",
-                                "displayName": "Wells Fargo Co New"
-                              },
-                              {
-                                "name": "NYSE:BAC",
-                                "displayName": "Bank Amer Corp"
-                              },
-                              {
-                                "name": "NYSE:HSBC",
-                                "displayName": "Hsbc Hldgs Plc"
-                              },
-                              {
-                                "name": "NYSE:C",
-                                "displayName": "Citigroup Inc"
-                              },
-                              {
-                                "name": "NYSE:MA",
-                                "displayName": "Mastercard Incorporated"
-                              }
-                            ]
-                          },
-                          {
-                            "name": "Technology",
-                            "symbols": [
-                              {
-                                "name": "NASDAQ:AAPL",
-                                "displayName": "Apple"
-                              },
-                              {
-                                "name": "NASDAQ:GOOGL",
-                                "displayName": "Alphabet"
-                              },
-                              {
-                                "name": "NASDAQ:MSFT",
-                                "displayName": "Microsoft"
-                              },
-                              {
-                                "name": "NASDAQ:FB",
-                                "displayName": "Meta Platforms"
-                              },
-                              {
-                                "name": "NYSE:ORCL",
-                                "displayName": "Oracle Corp"
-                              },
-                              {
-                                "name": "NASDAQ:INTC",
-                                "displayName": "Intel Corp"
-                              }
-                            ]
-                          },
-                          {
-                            "name": "Services",
-                            "symbols": [
-                              {
-                                "name": "NASDAQ:AMZN",
-                                "displayName": "Amazon"
-                              },
-                              {
-                                "name": "NYSE:BABA",
-                                "displayName": "Alibaba Group Hldg Ltd"
-                              },
-                              {
-                                "name": "NYSE:T",
-                                "displayName": "At&t Inc"
-                              },
-                              {
-                                "name": "NYSE:WMT",
-                                "displayName": "Walmart"
-                              },
-                              {
-                                "name": "NYSE:V",
-                                "displayName": "Visa"
-                              }
-                            ]
-                          }
-                        ],
-                        "colorTheme": "light"
-                      }
-                    `,
-                  }}
-                ></script>
-              </div>
+            <div className="h-[450px] p-1">
+              <TradingViewSectorStockWidget />
             </div>
           </CardContent>
         </Card>
@@ -733,52 +578,8 @@ export default function DashboardPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-[250px] w-full">
-              <div
-                className="tradingview-widget-container"
-                style={{ height: "100%", width: "100%" }}
-              >
-                <div
-                  className="tradingview-widget-container__widget"
-                  style={{ height: "calc(100% - 32px)", width: "100%" }}
-                ></div>
-                <div className="tradingview-widget-copyright">
-                  <a
-                    href="https://www.tradingview.com/"
-                    rel="noopener nofollow"
-                    target="_blank"
-                  >
-                    <span className="blue-text">
-                      Track all markets on TradingView
-                    </span>
-                  </a>
-                </div>
-                <script
-                  type="text/javascript"
-                  src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
-                  async
-                  dangerouslySetInnerHTML={{
-                    __html: `
-              {
-                "autosize": true,
-                "symbol": "NASDAQ:AAPL",
-                "interval": "W",
-                "timezone": "Asia/Kolkata",
-                "theme": "light",
-                "style": "1",
-                "locale": "en",
-                "backgroundColor": "rgba(255, 255, 255, 1)",
-                "hide_top_toolbar": true,
-                "hide_legend": true,
-                "allow_symbol_change": false,
-                "save_image": false,
-                "hide_volume": true,
-                "support_host": "https://www.tradingview.com"
-              }
-            `,
-                  }}
-                ></script>
-              </div>
+            <div className="h-[450px] p-1">
+              <TradingViewPerformanceHeatmap />
             </div>
           </CardContent>
         </Card>

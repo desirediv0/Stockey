@@ -18,7 +18,7 @@ const steps = [
     name: "Connect Your Broker",
     description:
       "Easily connect your brokerage accounts using our secure OAuth integration. We support all major Indian brokers like Zerodha, Fyers, Dhan, and Angel One, as well as international brokers like Alpaca and Tradier.",
-    image: "/hh1.png",
+    image: "/Integration.jpg",
     icon: Link,
     benefits: [
       "Secure OAuth authentication",
@@ -31,7 +31,7 @@ const steps = [
     name: "Analyze Your Data",
     description:
       "Your trading data is automatically imported and processed. Visualize your portfolio performance, analyze trade patterns, and discover insights with our powerful analytics engine.",
-    image: "/h3.png",
+    image: "/Portfolio.jpg",
     icon: BarChart2,
     benefits: [
       "Comprehensive portfolio analysis",
@@ -44,7 +44,7 @@ const steps = [
     name: "Customize Dashboards",
     description:
       "Create custom dashboards tailored to your trading style with our drag-and-drop interface. Choose from a library of pre-built widgets or create your own. No coding required.",
-    image: "/h3.jpeg",
+    image: "/Advanced_Analytics.jpg",
     icon: PanelTop,
     benefits: [
       "Drag-and-drop dashboard builder",

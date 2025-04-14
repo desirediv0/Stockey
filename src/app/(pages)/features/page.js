@@ -27,7 +27,7 @@ const features = [
     description:
       "Create powerful analytics dashboards without writing a single line of code. Our Superset-powered interface makes it easy to visualize your trading data.",
     icon: Cpu,
-    image: "/h1.jpeg",
+    image: "/Dashboard.jpg",
     benefits: [
       "Intuitive drag-and-drop interface",
       "Real-time data visualization",
@@ -39,7 +39,7 @@ const features = [
     description:
       "Connect with your favorite brokers through secure OAuth flows. Import your trading data automatically and keep it in sync.",
     icon: Link2,
-    image: "/h2.jpeg",
+    image: "/Integration.jpg",
     benefits: [
       "Secure OAuth authentication",
       "Automatic data syncing",
@@ -51,7 +51,7 @@ const features = [
     description:
       "Visualize your portfolio performance with customizable charts and metrics. Track your progress and identify opportunities.",
     icon: LineChart,
-    image: "/h3.png",
+    image: "/Advanced_Analytics.jpg",
     benefits: [
       "Performance attribution analysis",
       "Risk and return metrics",
@@ -63,7 +63,7 @@ const features = [
     description:
       "Set up custom alerts and notifications based on your trading criteria. Stay informed about market movements and portfolio changes.",
     icon: AlertTriangle,
-    image: "/nh1.png",
+    image: "/Watchlist.jpg",
     badge: "Coming Soon",
     benefits: [
       "Custom price alerts",

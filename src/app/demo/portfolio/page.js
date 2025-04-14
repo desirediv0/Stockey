@@ -1,5 +1,7 @@
 "use client";
 
+import TradingViewChart from "@/components/TradingViewChart";
+import TradingViewSectorStockWidget from "@/components/TradingViewSectorStockWidget";
 import { useState } from "react";
 import {
   Card,
@@ -374,14 +376,7 @@ export default function PortfolioPage() {
         </CardHeader>
         <CardContent>
           <div className="h-[300px] w-full bg-gray-50 dark:bg-gray-800 rounded-md flex items-center justify-center">
-            {/* Replace with actual chart component */}
-            <div className="text-center">
-              <TrendingUp className="h-12 w-12 mx-auto mb-2 text-gray-400" />
-              <p className="text-sm text-gray-500">Performance Chart</p>
-              <p className="text-xs text-gray-400">
-                Showing data for {timeRange}
-              </p>
-            </div>
+            <TradingViewChart />
           </div>
         </CardContent>
       </Card>
@@ -494,14 +489,8 @@ export default function PortfolioPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-[300px] w-full bg-gray-50 dark:bg-gray-800 rounded-md flex items-center justify-center">
-              {/* Replace with actual bar chart component */}
-              <div className="text-center">
-                <BarChart className="h-12 w-12 mx-auto mb-2 text-gray-400" />
-                <p className="text-sm text-gray-500">
-                  Sector Distribution Chart
-                </p>
-              </div>
+            <div className="h-[450px] p-1">
+              <TradingViewSectorStockWidget />
             </div>
             <div className="mt-4 grid grid-cols-2 gap-2">
               {sectorDistribution.slice(0, 4).map((sector) => (
