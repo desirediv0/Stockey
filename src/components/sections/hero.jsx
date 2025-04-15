@@ -11,9 +11,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import WishlistForm from "@/components/wishlist-form";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { useEffect, useState } from "react";
+
 import Link from "next/link";
+import Lottie from "../lottie";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const features = [
   {
@@ -42,28 +43,7 @@ const features = [
 ];
 
 export function Hero() {
-  const [leftAnimation, setLeftAnimation] = useState(null);
-  const [centerAnimation, setCenterAnimation] = useState(null);
-  const [rightAnimation, setRightAnimation] = useState(null);
 
-  useEffect(() => {
-    fetch("/animations/Animation - 1743874185972.lottie")
-      .then((response) => response.json())
-      .then((data) => setLeftAnimation(data))
-      .catch((error) => console.error("Error loading left animation:", error));
-
-    fetch("/animations/Animation - 1743874670990.lottie")
-      .then((response) => response.json())
-      .then((data) => setCenterAnimation(data))
-      .catch((error) =>
-        console.error("Error loading center animation:", error)
-      );
-
-    fetch("/animations/Animation - 1743874606040.lottie")
-      .then((response) => response.json())
-      .then((data) => setRightAnimation(data))
-      .catch((error) => console.error("Error loading right animation:", error));
-  }, []);
 
   return (
     <div
@@ -158,11 +138,17 @@ export function Hero() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
             {/* Left animation */}
             <div className="w-full md:w-1/4 hidden md:block absolute -top-96 left-0">
-              <DotLottieReact
+              {/* <DotLottieReact
                 src="/animations/Animation - 1743874606040.lottie"
                 loop
                 autoplay
                 style={{ height: "300px" }}
+              /> */}
+              <Lottie
+                src={"animations/Animation - 1743874606040.json"}
+                width={300}
+                height={300}
+               
               />
             </div>
 
@@ -180,11 +166,17 @@ export function Hero() {
                   className="relative aspect-video w-full rounded-lg p-1"
                   style={{ background: "#FFFFFF" }}
                 >
-                  <DotLottieReact
+                  {/* <DotLottieReact
                     src="/animations/Animation - 1743874670990.lottie"
                     loop
                     autoplay
                     style={{ height: "100%", width: "100%" }}
+                  /> */}
+                  <Lottie
+                    src={"animations/Animation - 1743874670990.json"}
+                    width={450}
+                    height={450}
+                    className={" flex items-center justify-center w-full h-full"}
                   />
                 </div>
               </div>
@@ -192,11 +184,18 @@ export function Hero() {
 
             {/* Right animation */}
             <div className="w-full md:w-1/4 hidden md:block absolute -top-96 right-0">
-              <DotLottieReact
+              {/* <DotLottieReact
                 src="/animations/Animation - 1743874185972.lottie"
                 loop
                 autoplay
                 style={{ height: "300px" }}
+              /> */}
+
+              <Lottie
+                src={"animations/Animation - 1743874185972.json"}
+                width={300}
+                height={300}
+               
               />
             </div>
           </div>
