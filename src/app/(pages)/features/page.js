@@ -33,7 +33,7 @@ const features = [
     description:
       "Create powerful analytics dashboards without writing a single line of code. Our Superset-powered interface makes it easy to visualize your trading data.",
     icon: Cpu,
-    image: "/Dashboard.jpg",
+    image: "/low-dashboard.png",
     benefits: [
       "Intuitive drag-and-drop interface",
       "Real-time data visualization",
@@ -45,7 +45,7 @@ const features = [
     description:
       "Connect with your favorite brokers through secure OAuth flows. Import your trading data automatically and keep it in sync.",
     icon: Link2,
-    image: "/Integration.jpg",
+    image: "/Integration.png",
     benefits: [
       "Secure OAuth authentication",
       "Automatic data syncing",
@@ -69,7 +69,7 @@ const features = [
     description:
       "Set up custom alerts and notifications based on your trading criteria. Stay informed about market movements and portfolio changes.",
     icon: AlertTriangle,
-    image: "/Watchlist.jpg",
+    image: "/Wishlist.png",
     badge: "Coming Soon",
     benefits: [
       "Custom price alerts",
@@ -91,7 +91,7 @@ export default function FeaturesPage() {
         <div className="relative  md:mb-0  ">
           <div className="absolute inset-0 opacity-10 z-0 "></div>
 
-          <div className="w-full md:w-1/4 hidden xl:block absolute top-0 left-0">
+          <div className="w-full md:w-1/4 hidden xl:block absolute -top-2 2xl:left-10">
             <Lottie
               src={"animations/Animation - 1743874498432.json"}
               width={300}

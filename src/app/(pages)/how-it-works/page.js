@@ -23,7 +23,7 @@ const steps = [
     name: "Connect Your Broker",
     description:
       "Easily connect your brokerage accounts using our secure OAuth integration. We support all major Indian brokers like Zerodha, Fyers, Dhan, and Angel One, as well as international brokers like Alpaca and Tradier.",
-    image: "/Integration.jpg",
+    image: "/Integration.png",
     icon: Link,
     benefits: [
       "Secure OAuth authentication",
@@ -49,7 +49,7 @@ const steps = [
     name: "Customize Dashboards",
     description:
       "Create custom dashboards tailored to your trading style with our drag-and-drop interface. Choose from a library of pre-built widgets or create your own. No coding required.",
-    image: "/portfolio.png",
+    image: "/dashboard.png",
     icon: PanelTop,
     benefits: [
       "Drag-and-drop dashboard builder",
@@ -245,8 +245,8 @@ export default function HowItWorksPage() {
                     >
                       <div
                         className="border-b px-6 py-4"
-                        style={{ borderColor: "rgba(168, 191, 255, 0.2)" }}
-                      >
+                        style={{ borderColor: "rgba(168, 191, 255, 0.2)" }}>
+                        
                         <div className="flex items-center space-x-2">
                           <div className="h-3 w-3 rounded-full bg-red-500"></div>
                           <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
@@ -254,7 +254,8 @@ export default function HowItWorksPage() {
                           <div
                             className="ml-2 text-xs font-medium"
                             style={{ color: "#6A7C99" }}
-                          >
+                          > 
+
                             Stockey - {step.name}
                           </div>
                         </div>
