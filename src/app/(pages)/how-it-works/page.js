@@ -11,6 +11,11 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+const Lottie = dynamic(() => import("@/components/lottie"), {
+  ssr: false,
+});
+
 
 const steps = [
   {
@@ -44,7 +49,7 @@ const steps = [
     name: "Customize Dashboards",
     description:
       "Create custom dashboards tailored to your trading style with our drag-and-drop interface. Choose from a library of pre-built widgets or create your own. No coding required.",
-    image: "/h3.jpeg",
+    image: "/portfolio.png",
     icon: PanelTop,
     benefits: [
       "Drag-and-drop dashboard builder",
@@ -101,6 +106,14 @@ export default function HowItWorksPage() {
         <div className="relative">
           <div className="absolute inset-0 opacity-10 z-0"></div>
 
+          <div className="w-full md:w-1/4 hidden 2xl:block absolute -top-56 rotate-90 -right-0 lg:-right-0">
+            <Lottie
+              src={"animations/Animation - 1743875012167.json"}
+              width={500}
+              height={500}
+            />
+          </div>
+
           <div className="relative z-10 mx-auto max-w-2xl text-center">
             <p
               className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold mb-6"
@@ -146,6 +159,14 @@ export default function HowItWorksPage() {
               simple steps. Our platform makes analytics accessible to everyone.
             </p>
           </div>
+        </div>
+
+        <div className="w-full md:w-1/4 hidden 2xl:block  absolute top-0 rotate-90 left-24">
+          <Lottie
+            src={"animations/Animation - 1743875012167.json"}
+            width={500}
+            height={500}
+          />
         </div>
 
         <div className="mx-auto mt-24 max-w-5xl">

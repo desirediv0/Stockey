@@ -20,6 +20,12 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+// import Lottie from "@/components/lottie";
+import dynamic from "next/dynamic";
+
+const Lottie = dynamic(() => import("@/components/lottie"), {
+  ssr: false,
+});
 
 const features = [
   {
@@ -80,10 +86,18 @@ export default function FeaturesPage() {
         background: "linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%)",
       }}
     >
-      <div className="container py-24 sm:py-32">
+      <div className="container py-24 ">
         {/* Hero Section */}
-        <div className="relative">
-          <div className="absolute inset-0 opacity-10 z-0"></div>
+        <div className="relative  md:mb-0  ">
+          <div className="absolute inset-0 opacity-10 z-0 "></div>
+
+          <div className="w-full md:w-1/4 hidden xl:block absolute top-0 left-0">
+            <Lottie
+              src={"animations/Animation - 1743874498432.json"}
+              width={300}
+              height={300}
+            />
+          </div>
 
           <div className="relative z-10 mx-auto max-w-2xl text-center">
             <p
@@ -121,7 +135,7 @@ export default function FeaturesPage() {
                 }}
               >
                 Features
-              </span>{" "}
+              </span>
               for Traders
             </h1>
 
@@ -129,6 +143,15 @@ export default function FeaturesPage() {
               Stockey gives you everything you need to analyze your trades,
               track your portfolio, and make better trading decisions.
             </p>
+
+            <div className="w-full md:w-1/4 hidden xl:block absolute top-52 lg:-top-5  mx-auto  max-xl-right-0 lg:-right-32 ">
+              <Lottie
+                src={"animations/Animation - 1743874404437.json"}
+                width={300}
+                height={300}
+                className={"flex md:block justify-center"}
+              />
+            </div>
           </div>
         </div>
 

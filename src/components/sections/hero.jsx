@@ -13,8 +13,11 @@ import {
 import WishlistForm from "@/components/wishlist-form";
 
 import Link from "next/link";
-import Lottie from "../lottie";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import dynamic from "next/dynamic";
+const Lottie = dynamic(() => import("../lottie"), {
+  ssr: false,
+});
+
 
 const features = [
   {
@@ -137,13 +140,8 @@ export function Hero() {
         <div className="mt-16 relative">
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
             {/* Left animation */}
-            <div className="w-full md:w-1/4 hidden md:block absolute -top-96 left-0">
-              {/* <DotLottieReact
-                src="/animations/Animation - 1743874606040.lottie"
-                loop
-                autoplay
-                style={{ height: "300px" }}
-              /> */}
+            <div className="w-full md:w-1/4 hidden xl:block absolute -top-96 left-0">
+             
               <Lottie
                 src={"animations/Animation - 1743874606040.json"}
                 width={300}
@@ -166,12 +164,7 @@ export function Hero() {
                   className="relative aspect-video w-full rounded-lg p-1"
                   style={{ background: "#FFFFFF" }}
                 >
-                  {/* <DotLottieReact
-                    src="/animations/Animation - 1743874670990.lottie"
-                    loop
-                    autoplay
-                    style={{ height: "100%", width: "100%" }}
-                  /> */}
+                
                   <Lottie
                     src={"animations/Animation - 1743874670990.json"}
                     width={450}
@@ -183,14 +176,8 @@ export function Hero() {
             </div>
 
             {/* Right animation */}
-            <div className="w-full md:w-1/4 hidden md:block absolute -top-96 right-0">
-              {/* <DotLottieReact
-                src="/animations/Animation - 1743874185972.lottie"
-                loop
-                autoplay
-                style={{ height: "300px" }}
-              /> */}
-
+            <div className="w-full md:w-1/4 hidden xl:block absolute -top-96 right-0">
+             
               <Lottie
                 src={"animations/Animation - 1743874185972.json"}
                 width={300}
