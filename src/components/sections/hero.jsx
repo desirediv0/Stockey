@@ -83,7 +83,7 @@ export default function Hero() {
           {/* Center content */}
           <div className="text-center col-span-1 xl:col-span-2">
             <h1
-              className="mx-auto max-w-4xl text-5xl font-bold tracking-tight  sm:text-6xl md:text-7xl my-2"
+              className="mx-auto max-w-4xl text-5xl font-bold text-nowrap tracking-tight  sm:text-6xl md:text-7xl my-2"
               style={{ color: "#1E2B4F" }}
             >
               Your Trading Analytics

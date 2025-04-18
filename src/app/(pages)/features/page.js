@@ -104,12 +104,11 @@ export default function FeaturesPage() {
         {/* Main content with animations on sides - using grid */}
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 mb-10 lg:-mb-24">
           {/* Left animation */}
-          <div className="hidden xl:flex justify-end items-start">
+          <div className="hidden xl:flex justify-end -mt-20 items-start">
             <Lottie
               src="animations/Animation - 1743874498432.json"
               width={300}
               height={300}
-              
             />
           </div>
 
@@ -140,12 +139,11 @@ export default function FeaturesPage() {
           </div>
 
           {/* Right animation */}
-          <div className="hidden xl:flex justify-start items-start">
+          <div className="hidden xl:flex justify-start -mt-20 items-start">
             <Lottie
               src="animations/Animation - 1743874404437.json"
               width={300}
               height={300}
-              
             />
           </div>
         </div>

@@ -83,7 +83,7 @@ export function Navigation() {
               </Button>
             </div>
 
-            <div className="hidden md:flex md:items-center md:space-x-8">
+            <div className="hidden md:flex md:items-center text-nowrap  md:space-x-8">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -104,7 +104,7 @@ export function Navigation() {
               <div className="hidden md:flex md:items-center">
                 <Button
                   onClick={() => setWaitlistOpen(true)}
-                  className="bg-[#4B63FF] text-white hover:bg-[#3A51E0] shadow-md shadow-[#4B63FF]/20 font-medium px-5 py-2 h-10 rounded-lg"
+                  className="bg-[#4B63FF] text-white hover:bg-[#3A51E0] shadow-md shadow-[#4B63FF]/20 font-medium ml-2 px-2  lg:px-5 py-2 h-10 rounded-lg"
                 >
                   <CalendarClock className="mr-2 h-4 w-4" />
                   Join Waitlist

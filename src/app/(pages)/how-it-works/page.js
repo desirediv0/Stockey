@@ -131,14 +131,13 @@ export default function HowItWorksPage() {
         {/* Main content with animations on sides - using grid */}
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 mb-10 lg:-mb-24">
           {/* Left animation */}
-          <div className="hidden xl:flex justify-center rotate-90  items-center">
+          <div className="hidden xl:flex justify-center  ml-28 -mt-28 rotate-90  items-center">
             <Lottie
               src="animations/Animation - 1743875012167.json"
-              width={300}
-              height={300}
+              width={400}
+              height={400}
             />
           </div>
-         
 
           {/* Center content */}
           <div className="text-center col-span-1 xl:col-span-2">
@@ -167,11 +166,11 @@ export default function HowItWorksPage() {
           </div>
 
           {/* Right animation */}
-          <div className="hidden xl:flex justify-center rotate-90 items-center">
+          <div className="hidden xl:flex justify-center 2xl:mr-[80px]   -mt-28 rotate-90 items-center">
             <Lottie
               src="animations/Animation - 1743875012167.json"
-              width={300}
-              height={300}
+              width={400}
+              height={400}
             />
           </div>
         </div>
