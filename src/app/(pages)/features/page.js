@@ -263,19 +263,13 @@ export default function FeaturesPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="relative w-full h-[300px]">
+                  <div className="relative w-full h-[200px] md:h-[300px]">
                     <Image
                       src={feature.image}
                       alt={feature.name}
                       fill
+                      className="object-contain rounded-lg"
                       priority
-                      className="object-contain"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      quality={100}
-                      style={{
-                        padding: "1rem",
-                        objectFit: "contain",
-                      }}
                     />
                   </div>
                 </div>
