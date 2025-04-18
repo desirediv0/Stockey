@@ -15,6 +15,6 @@ const Lottie = ({ width, height, src ,className }) => {
   )
 }
 
-export default Lottie
+export default Lottie;
 
 

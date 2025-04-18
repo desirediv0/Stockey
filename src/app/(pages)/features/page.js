@@ -20,7 +20,6 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-// import Lottie from "@/components/lottie";
 import dynamic from "next/dynamic";
 
 const Lottie = dynamic(() => import("@/components/lottie"), {
@@ -82,45 +81,40 @@ const features = [
 export default function FeaturesPage() {
   return (
     <div
+      className="relative overflow-hidden py-20"
       style={{
         background: "linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%)",
       }}
     >
-      <div className="container py-24 ">
-        {/* Hero Section */}
-        <div className="relative  md:mb-0  ">
-          <div className="absolute inset-0 opacity-10 z-0 "></div>
+      <div className="container relative z-10 mx-auto px-4 ">
+        {/* Status badge */}
+        <div className="flex justify-center mb-10">
+          <div
+            className="rounded-full px-4 py-1.5 text-sm font-semibold ring-1 ring-inset"
+            style={{
+              background: "rgba(75, 99, 255, 0.1)",
+              color: "#4B63FF",
+              borderColor: "rgba(75, 99, 255, 0.3)",
+            }}
+          >
+            Trading Analytics Platform
+          </div>
+        </div>
 
-          <div className="w-full md:w-1/4 hidden xl:block absolute -top-2 2xl:left-10">
+        {/* Main content with animations on sides - using grid */}
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 mb-10 lg:-mb-24">
+          {/* Left animation */}
+          <div className="hidden xl:flex justify-end items-start">
             <Lottie
-              src={"animations/Animation - 1743874498432.json"}
+              src="animations/Animation - 1743874498432.json"
               width={300}
               height={300}
+              
             />
           </div>
 
-          <div className="relative z-10 mx-auto max-w-2xl text-center">
-            <p
-              className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold mb-6"
-              style={{
-                background: "rgba(75, 99, 255, 0.1)",
-                color: "#4B63FF",
-                border: "1px solid rgba(75, 99, 255, 0.3)",
-              }}
-            >
-              <span className="relative flex h-2 w-2 mr-2">
-                <span
-                  className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                  style={{ background: "#4B63FF" }}
-                ></span>
-                <span
-                  className="relative inline-flex rounded-full h-2 w-2"
-                  style={{ background: "#4B63FF" }}
-                ></span>
-              </span>
-              Trading Analytics Platform
-            </p>
-
+          {/* Center content */}
+          <div className="text-center col-span-1 xl:col-span-2">
             <h1
               className="text-4xl font-bold tracking-tight sm:text-5xl mb-6"
               style={{ color: "#1E2B4F" }}
@@ -143,15 +137,16 @@ export default function FeaturesPage() {
               Stockey gives you everything you need to analyze your trades,
               track your portfolio, and make better trading decisions.
             </p>
+          </div>
 
-            <div className="w-full md:w-1/4 hidden xl:block absolute top-52 lg:-top-5  mx-auto  max-xl-right-0 lg:-right-32 ">
-              <Lottie
-                src={"animations/Animation - 1743874404437.json"}
-                width={300}
-                height={300}
-                className={"flex md:block justify-center"}
-              />
-            </div>
+          {/* Right animation */}
+          <div className="hidden xl:flex justify-start items-start">
+            <Lottie
+              src="animations/Animation - 1743874404437.json"
+              width={300}
+              height={300}
+              
+            />
           </div>
         </div>
 

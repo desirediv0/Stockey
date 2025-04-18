@@ -1,7 +1,6 @@
 "use client";
-import * as React from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { ArrowRight, BarChart2, Zap, Filter, Layout } from "lucide-react";
 import {
   Dialog,
@@ -11,14 +10,15 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import WishlistForm from "@/components/wishlist-form";
-
 import Link from "next/link";
 import dynamic from "next/dynamic";
-const Lottie = dynamic(() => import("../lottie"), {
+import { Card } from "../ui/card.jsx";
+
+const Lottie = dynamic(() => import("../lottie.jsx"), {
   ssr: false,
 });
 
-
+ 
 const features = [
   {
     title: "Create Custom Dashboards",
@@ -45,9 +45,8 @@ const features = [
   },
 ];
 
-export function Hero() {
 
-
+export default function Hero() {
   return (
     <div
       className="relative overflow-hidden py-20"
@@ -55,9 +54,9 @@ export function Hero() {
         background: "linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%)",
       }}
     >
-      <div className="container relative z-10 mx-auto px-4 text-center md:text-left">
+      <div className="container relative z-10 mx-auto px-4">
         {/* Status badge */}
-        <div className="mx-auto mb-10 flex justify-center">
+        <div className="flex justify-center mb-10">
           <div
             className="rounded-full px-4 py-1.5 text-sm font-semibold ring-1 ring-inset"
             style={{
@@ -70,41 +69,62 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Main heading */}
-        <div className="text-center">
-          <h1
-            className="mx-auto max-w-4xl text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl my-2"
-            style={{ color: "#1E2B4F" }}
-          >
-            Your Trading Analytics
-          </h1>
-          <span
-            className="mx-auto max-w-4xl text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl"
-            style={{
-              background: "linear-gradient(90deg, #4B63FF 0%, #A8BFFF 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              display: "block",
-            }}
-          >
-            No Code Required
-          </span>
-          <p
-            className="mx-auto mt-6 max-w-2xl text-lg md:text-xl"
-            style={{ color: "#6A7C99" }}
-          >
-            Connect your broker accounts, visualize your trades, and create
-            custom analytics dashboards without writing a single line of code.
-          </p>
+        {/* Main content with animations on sides - using grid */}
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 mb-10">
+          {/* Left animation */}
+          <div className="hidden xl:flex justify-end items-start">
+            <Lottie
+              src="animations/Animation - 1743874606040.json"
+              width={300}
+              height={300}
+            />
+          </div>
+
+          {/* Center content */}
+          <div className="text-center col-span-1 xl:col-span-2">
+            <h1
+              className="mx-auto max-w-4xl text-5xl font-bold tracking-tight  sm:text-6xl md:text-7xl my-2"
+              style={{ color: "#1E2B4F" }}
+            >
+              Your Trading Analytics
+            </h1>
+            <span
+              className="mx-auto max-w-4xl text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl"
+              style={{
+                background: "linear-gradient(90deg, #4B63FF 0%, #A8BFFF 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                display: "block",
+              }}
+            >
+              No Code Required
+            </span>
+            <p
+              className="mx-auto mt-6 max-w-2xl text-lg md:text-xl"
+              style={{ color: "#6A7C99" }}
+            >
+              Connect your broker accounts, visualize your trades, and create
+              custom analytics dashboards without writing a single line of code.
+            </p>
+          </div>
+
+          {/* Right animation */}
+          <div className="hidden xl:flex justify-start items-start">
+            <Lottie
+              src="animations/Animation - 1743874185972.json"
+              width={300}
+              height={300}
+            />
+          </div>
         </div>
 
-        {/* CTA buttons */}
-        <div className="mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row">
+        {/* CTA buttons - using grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto mb-16">
           <Dialog>
             <DialogTrigger asChild>
               <Button
                 size="lg"
-                className="w-full sm:w-auto transition-all duration-300 hover:shadow-lg"
+                className="w-full transition-all duration-300 hover:shadow-lg"
                 style={{ background: "#4B63FF", color: "white" }}
               >
                 Join Waitlist
@@ -120,11 +140,11 @@ export function Hero() {
               <WishlistForm planName="Standard" />
             </DialogContent>
           </Dialog>
-          <Link href={"/demo"}>
+          <Link href="/demo">
             <Button
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto transition-all duration-300"
+              className="w-full transition-all duration-300"
               style={{
                 borderColor: "#4B63FF",
                 color: "#4B63FF",
@@ -136,60 +156,34 @@ export function Hero() {
           </Link>
         </div>
 
-        {/* App preview mockup with Lottie animations */}
-        <div className="mt-16 relative">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
-            {/* Left animation */}
-            <div className="w-full md:w-1/4 hidden xl:block absolute -top-96 left-0">
-             
-              <Lottie
-                src={"animations/Animation - 1743874606040.json"}
-                width={300}
-                height={300}
-               
-              />
-            </div>
-
-            {/* Center dashboard preview */}
-            <div className="w-full md:w-2/4">
+        {/* Dashboard preview centered - using grid */}
+        <div className="grid grid-cols-1 justify-items-center">
+          <div className="w-full max-w-3xl">
+            <div
+              className="relative mx-auto w-full overflow-hidden rounded-xl p-2 shadow-2xl"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(75, 99, 255, 0.05) 0%, rgba(168, 191, 255, 0.1) 100%)",
+                borderColor: "rgba(30, 43, 79, 0.1)",
+              }}
+            >
               <div
-                className="relative mx-auto w-full overflow-hidden rounded-xl p-2 shadow-2xl"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(75, 99, 255, 0.05) 0%, rgba(168, 191, 255, 0.1) 100%)",
-                  borderColor: "rgba(30, 43, 79, 0.1)",
-                }}
+                className="relative aspect-video w-full rounded-lg p-1"
+                style={{ background: "#FFFFFF" }}
               >
-                <div
-                  className="relative aspect-video w-full rounded-lg p-1"
-                  style={{ background: "#FFFFFF" }}
-                >
-                
-                  <Lottie
-                    src={"animations/Animation - 1743874670990.json"}
-                    width={450}
-                    height={450}
-                    className={" flex items-center justify-center w-full h-full"}
-                  />
-                </div>
+                <Lottie
+                  src="animations/Animation - 1743874670990.json"
+                  width={450}
+                  height={450}
+                  className="flex items-center justify-center w-full h-full"
+                />
               </div>
-            </div>
-
-            {/* Right animation */}
-            <div className="w-full md:w-1/4 hidden xl:block absolute -top-96 right-0">
-             
-              <Lottie
-                src={"animations/Animation - 1743874185972.json"}
-                width={300}
-                height={300}
-               
-              />
             </div>
           </div>
         </div>
 
         {/* Features section */}
-        <div className="mt-20">
+         <div className="mt-20">
           <h2
             className="mb-12 text-center text-3xl font-bold tracking-tight"
             style={{ color: "#1E2B4F" }}
@@ -232,7 +226,7 @@ export function Hero() {
               </Card>
             ))}
           </div>
-        </div>
+        </div> 
       </div>
     </div>
   );

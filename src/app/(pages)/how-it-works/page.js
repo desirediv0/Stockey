@@ -98,44 +98,50 @@ export default function HowItWorksPage() {
 
   return (
     <div
+      className="relative overflow-hidden py-20"
       style={{
         background: "linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%)",
       }}
     >
-      <div className="container py-24 sm:py-32">
-        <div className="relative">
-          <div className="absolute inset-0 opacity-10 z-0"></div>
+      <div className="container relative z-10 mx-auto px-4 ">
+        {/* Status badge */}
+        <div className="flex justify-center mb-10">
+          <p
+            className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold mb-6"
+            style={{
+              background: "rgba(75, 99, 255, 0.1)",
+              color: "#4B63FF",
+              border: "1px solid rgba(75, 99, 255, 0.3)",
+            }}
+          >
+            <span className="relative flex h-2 w-2 mr-2">
+              <span
+                className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                style={{ background: "#4B63FF" }}
+              ></span>
+              <span
+                className="relative inline-flex rounded-full h-2 w-2"
+                style={{ background: "#4B63FF" }}
+              ></span>
+            </span>
+            Platform Overview
+          </p>
+        </div>
 
-          <div className="w-full md:w-1/4 hidden 2xl:block absolute -top-56 rotate-90 -right-0 lg:-right-0">
+        {/* Main content with animations on sides - using grid */}
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 mb-10 lg:-mb-24">
+          {/* Left animation */}
+          <div className="hidden xl:flex justify-center rotate-90  items-center">
             <Lottie
-              src={"animations/Animation - 1743875012167.json"}
-              width={500}
-              height={500}
+              src="animations/Animation - 1743875012167.json"
+              width={300}
+              height={300}
             />
           </div>
+         
 
-          <div className="relative z-10 mx-auto max-w-2xl text-center">
-            <p
-              className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold mb-6"
-              style={{
-                background: "rgba(75, 99, 255, 0.1)",
-                color: "#4B63FF",
-                border: "1px solid rgba(75, 99, 255, 0.3)",
-              }}
-            >
-              <span className="relative flex h-2 w-2 mr-2">
-                <span
-                  className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                  style={{ background: "#4B63FF" }}
-                ></span>
-                <span
-                  className="relative inline-flex rounded-full h-2 w-2"
-                  style={{ background: "#4B63FF" }}
-                ></span>
-              </span>
-              Platform Overview
-            </p>
-
+          {/* Center content */}
+          <div className="text-center col-span-1 xl:col-span-2">
             <h1
               className="text-4xl font-bold tracking-tight sm:text-5xl mb-6"
               style={{ color: "#1E2B4F" }}
@@ -159,14 +165,15 @@ export default function HowItWorksPage() {
               simple steps. Our platform makes analytics accessible to everyone.
             </p>
           </div>
-        </div>
 
-        <div className="w-full md:w-1/4 hidden 2xl:block  absolute top-0 rotate-90 left-24">
-          <Lottie
-            src={"animations/Animation - 1743875012167.json"}
-            width={500}
-            height={500}
-          />
+          {/* Right animation */}
+          <div className="hidden xl:flex justify-center rotate-90 items-center">
+            <Lottie
+              src="animations/Animation - 1743875012167.json"
+              width={300}
+              height={300}
+            />
+          </div>
         </div>
 
         <div className="mx-auto mt-24 max-w-5xl">
@@ -245,8 +252,8 @@ export default function HowItWorksPage() {
                     >
                       <div
                         className="border-b px-6 py-4"
-                        style={{ borderColor: "rgba(168, 191, 255, 0.2)" }}>
-                        
+                        style={{ borderColor: "rgba(168, 191, 255, 0.2)" }}
+                      >
                         <div className="flex items-center space-x-2">
                           <div className="h-3 w-3 rounded-full bg-red-500"></div>
                           <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
@@ -254,8 +261,7 @@ export default function HowItWorksPage() {
                           <div
                             className="ml-2 text-xs font-medium"
                             style={{ color: "#6A7C99" }}
-                          > 
-
+                          >
                             Stockey - {step.name}
                           </div>
                         </div>
