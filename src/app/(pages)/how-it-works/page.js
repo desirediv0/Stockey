@@ -175,8 +175,15 @@ export default function HowItWorksPage() {
           </div>
         </div>
 
-        <div className="mx-auto mt-24 max-w-5xl">
-          <div className="space-y-32">
+        <div className="mx-auto mt-24  max-w-5xl">
+          <div className="space-y-32 relative">
+            <div className="hidden 2xl:flex absolute  lg:-right-72 xl:top-5">
+              <Lottie
+                src="animations\Animation - 1743874721224.json"
+                width={400}
+                height={400}
+              />
+            </div>
             {steps.map((step, index) => (
               <div key={step.id} className="relative">
                 {index < steps.length - 1 && (
