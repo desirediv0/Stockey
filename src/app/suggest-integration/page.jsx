@@ -1,7 +1,6 @@
 "use client";
 
 import IntegrationForm from "@/components/integration-form";
-import Image from "next/image";
 
 export default function SuggestIntegrationPage() {
   return (
