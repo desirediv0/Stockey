@@ -8,9 +8,19 @@ import {
   Boxes,
   ChevronRight,
 } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import WishlistForm from "@/components/wishlist-form";
 
 export default function FeaturesSection() {
+  const [planType, setPlanType] = useState("Analytics");
+
   const features = [
     {
       icon: <BarChart3 className="h-8 w-8 text-white" />,
@@ -84,7 +94,7 @@ export default function FeaturesSection() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                Features 
+                Features
               </motion.span>
             </div>
 
@@ -118,14 +128,24 @@ export default function FeaturesSection() {
               interactive visualizations, and on-demand insights.
             </motion.p>
 
-            <motion.button
-              className="bg-[#4B63FF] hover:bg-[#3A51E0] text-white px-8 py-3 rounded-full font-medium flex items-center space-x-2 transition-all duration-300 hover:shadow-lg"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>Coming Soon</span>
-              <ChevronRight className="ml-2 h-4 w-4" />
-            </motion.button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className="bg-[#4B63FF] hover:bg-[#3A51E0] text-white px-8 py-3 rounded-full font-medium flex items-center space-x-2 transition-all duration-300 hover:shadow-lg">
+                    <span>Coming Soon</span>
+                    <ChevronRight className="ml-2 h-4 w-4" />
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle className="text-center text-xl font-bold text-[#1E2B4F]">
+                      Join the Waitlist for {planType}
+                    </DialogTitle>
+                  </DialogHeader>
+                  <WishlistForm planName={planType} />
+                </DialogContent>
+              </Dialog>
+            </motion.div>
           </motion.div>
 
           {/* Right Column - Features Grid */}
@@ -138,10 +158,13 @@ export default function FeaturesSection() {
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl p-6 border shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col"
+                className={`bg-white rounded-xl p-6 border shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col cursor-pointer ${
+                  planType === feature.title ? "ring-2 ring-[#4B63FF]" : ""
+                }`}
                 style={{ borderColor: "rgba(106, 124, 153, 0.2)" }}
                 variants={itemVariants}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                onClick={() => setPlanType(feature.title)}
               >
                 <div
                   className="rounded-full p-3 w-max mb-6"

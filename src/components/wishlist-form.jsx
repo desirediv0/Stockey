@@ -4,9 +4,11 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
+import { saveFormToCSV } from "@/utils/form-handler";
 
 const WishlistForm = ({ planName }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -27,34 +29,29 @@ const WishlistForm = ({ planName }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const submissionTime = new Date();
-    const submittedData = {
-      ...formData,
-      planName,
-      submissionDate: submissionTime.toLocaleDateString(),
-      submissionTime: submissionTime.toLocaleTimeString(),
-    };
+    setIsSubmitting(true);
 
     try {
-      console.log("Sending data to API:", submittedData);
-
-      // Simulate network delay
-      await new Promise((resolve) => setTimeout(resolve, 800));
-
-      // Simulate successful response
-      const fakeResponse = {
-        success: true,
-        message: "Successfully added to waitlist",
-        data: submittedData,
+      // Add the plan name to the form data
+      const completeFormData = {
+        ...formData,
+        planName,
       };
 
-      console.log("API Response:", fakeResponse);
-      console.log("Wishlist Form Submission:", submittedData);
+      // Save form data to CSV
+      const result = await saveFormToCSV(completeFormData, "wishlist");
 
+      if (!result) {
+        throw new Error("Failed to save form data");
+      }
+
+      console.log("Wishlist Form Submission:", completeFormData);
       setSubmitted(true);
     } catch (error) {
       console.error("Error submitting form:", error);
+      alert("There was an error submitting the form. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -143,11 +140,14 @@ const WishlistForm = ({ planName }) => {
             <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-[#6A7C99] h-4 w-4" />
             <Input
               id="wishlist-phone"
+              type="tel"
               placeholder="+91 1234567890"
               className="pl-10 border-[#A8BFFF] focus:border-[#4B63FF] focus:ring-1 focus:ring-[#4B63FF] w-full"
               required
               value={formData.phone}
               onChange={handleChange}
+              pattern="^[+]?[\d\s()-]{8,20}$"
+              title="Please enter a valid phone number"
             />
           </div>
         </div>
@@ -219,8 +219,9 @@ const WishlistForm = ({ planName }) => {
       <Button
         type="submit"
         className="w-full bg-[#4B63FF] hover:bg-[#3A51E0] text-white font-semibold mt-4"
+        disabled={isSubmitting}
       >
-        Join Waitlist
+        {isSubmitting ? "Joining..." : "Join Waitlist"}
       </Button>
 
       <p className="text-xs text-center text-[#6A7C99] mt-2">

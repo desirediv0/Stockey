@@ -23,10 +23,8 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import WishlistForm from "@/components/wishlist-form";
-import { Textarea } from "@/components/ui/textarea";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { saveFormToCSV } from "@/utils/form-handler";
 
 const brokers = [
   {
@@ -118,6 +116,7 @@ export function Integrations() {
     email: "",
     feedback: "",
   });
+  const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
 
   const handleFeedbackChange = (e) => {
     const { name, value } = e.target;
@@ -127,16 +126,45 @@ export function Integrations() {
     }));
   };
 
-  const handleFeedbackSubmit = (e) => {
+  const handleFeedbackSubmit = async (e) => {
     e.preventDefault();
-    console.log("Feedback submitted:", feedbackForm);
-    toast.success("Thank you for your feedback!");
-    setFeedbackForm({
-      name: "",
-      email: "",
-      feedback: "",
-    });
-    setFeedbackOpen(false);
+    setIsSubmittingFeedback(true);
+
+    try {
+      // Convert feedbackForm to match the structure expected by saveFormToCSV
+      const formattedData = {
+        fullName: feedbackForm.name,
+        email: feedbackForm.email,
+        phone: "", // We don't collect phone in this form, but required by our CSV format
+        company: "", // Not collected here but required
+        integrationDetails: feedbackForm.feedback,
+        useCase: "", // Not collected here but in our structure
+      };
+
+      // Save form data to CSV as integration type
+      const result = await saveFormToCSV(formattedData, "integration");
+
+      if (!result) {
+        throw new Error("Failed to save form data");
+      }
+
+      console.log("Integration Suggestion:", feedbackForm);
+      toast.success("Thank you for your feedback!");
+
+      setFeedbackForm({
+        name: "",
+        email: "",
+        feedback: "",
+      });
+      setFeedbackOpen(false);
+    } catch (error) {
+      console.error("Error submitting suggestion:", error);
+      toast.error(
+        "There was an error submitting your suggestion. Please try again."
+      );
+    } finally {
+      setIsSubmittingFeedback(false);
+    }
   };
 
   useEffect(() => {
@@ -322,98 +350,32 @@ export function Integrations() {
             </DialogContent>
           </Dialog>
 
-          <Dialog open={feedbackOpen} onOpenChange={setFeedbackOpen}>
-            <DialogTrigger asChild>
-              <Button
-                size="lg"
-                variant="outline"
-                className="px-4 sm:px-6 md:px-8 py-4 sm:py-6 text-sm sm:text-base rounded-full hover:scale-105 transition-all duration-300 border-[#4B63FF] text-[#4B63FF] hover:bg-[#4B63FF]/10 font-medium shadow-lg hover:shadow-xl max-w-full mx-auto break-words"
-              >
-                <span className="whitespace-normal flex items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="mr-2"
-                  >
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5v14"></path>
-                  </svg>
-                  Suggest an Integration
-                </span>
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
-              <DialogHeader>
-                <DialogTitle className="text-center text-xl font-bold text-[#1E2B4F]">
-                  Suggest an Integration
-                </DialogTitle>
-                <DialogDescription className="text-center text-[#6A7C99]">
-                  Tell us which integrations you&apos;d like to see next.
-                </DialogDescription>
-              </DialogHeader>
-              <form onSubmit={handleFeedbackSubmit} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name" className="text-[#1E2B4F] font-medium">
-                    Name
-                  </Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={feedbackForm.name}
-                    onChange={handleFeedbackChange}
-                    placeholder="Your name"
-                    required
-                    className="border-[#A8BFFF] focus:border-[#4B63FF] focus:ring-1 focus:ring-[#4B63FF]"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-[#1E2B4F] font-medium">
-                    Email
-                  </Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={feedbackForm.email}
-                    onChange={handleFeedbackChange}
-                    placeholder="your.email@example.com"
-                    required
-                    className="border-[#A8BFFF] focus:border-[#4B63FF] focus:ring-1 focus:ring-[#4B63FF]"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="feedback"
-                    className="text-[#1E2B4F] font-medium"
-                  >
-                    Your suggestion
-                  </Label>
-                  <Textarea
-                    id="feedback"
-                    name="feedback"
-                    value={feedbackForm.feedback}
-                    onChange={handleFeedbackChange}
-                    placeholder="I'd like to see integration with..."
-                    className="min-h-[120px] border-[#A8BFFF] focus:border-[#4B63FF] focus:ring-1 focus:ring-[#4B63FF]"
-                    required
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-[#4B63FF] to-[#6A3AFF] hover:from-[#3A51E0] hover:to-[#5A2AE0] text-white rounded-full py-3 font-medium transition-all duration-300"
+          <Link href="/suggest-integration">
+            <Button
+              size="lg"
+              variant="outline"
+              className="px-4 sm:px-6 md:px-8 py-4 sm:py-6 text-sm sm:text-base rounded-full hover:scale-105 transition-all duration-300 border-[#4B63FF] text-[#4B63FF] hover:bg-[#4B63FF]/10 font-medium shadow-lg hover:shadow-xl max-w-full mx-auto break-words"
+            >
+              <span className="whitespace-normal flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="mr-2"
                 >
-                  Submit Suggestion
-                </Button>
-              </form>
-            </DialogContent>
-          </Dialog>
+                  <path d="M5 12h14"></path>
+                  <path d="M12 5v14"></path>
+                </svg>
+                Suggest an Integration
+              </span>
+            </Button>
+          </Link>
         </div>
       </div>
 
@@ -434,10 +396,7 @@ export function Integrations() {
           <div className="space-y-8 mb-16 overflow-hidden">
             <div className="flex justify-center items-center pb-2 mb-8">
               <h3 className="text-2xl font-bold text-center relative">
-                <span className="text-gray-800 ">
-                  Powered By
-                </span>
-     
+                <span className="text-gray-800 ">Powered By</span>
               </h3>
             </div>
 

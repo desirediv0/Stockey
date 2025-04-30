@@ -5,15 +5,16 @@ import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { saveFormToCSV } from "@/utils/form-handler";
+import { toast } from "sonner";
 
-const ContactForm = () => {
+const IntegrationForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
-    message: "",
+    integrationDetails: "",
   });
 
   const handleChange = (e) => {
@@ -27,19 +28,26 @@ const ContactForm = () => {
 
     try {
       // Save form data to CSV
-      const result = await saveFormToCSV(formData, "contact");
+      const result = await saveFormToCSV(formData, "integration");
 
       if (!result) {
         throw new Error("Failed to save form data");
       }
 
       // Log the form data to console
-      console.log("Contact Form Submission:", formData);
+      console.log("Integration Suggestion:", formData);
+
+      // Use toast instead of changing state for better UX
+      toast.success("Your integration suggestion has been received!", {
+        duration: 5000,
+      });
 
       setSubmitted(true);
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("There was an error submitting the form. Please try again.");
+      toast.error("There was an error submitting the form", {
+        description: "Please try again or contact support.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -48,13 +56,13 @@ const ContactForm = () => {
   if (submitted) {
     return (
       <div className="py-6 text-center">
-        <div className="mx-auto w-12 h-12 bg-[#19C68B]/10 rounded-full flex items-center justify-center mb-4">
+        <div className="mx-auto w-16 h-16 bg-[#19C68B]/10 rounded-full flex items-center justify-center mb-6">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            className="w-6 h-6 text-[#19C68B]"
+            className="w-8 h-8 text-[#19C68B]"
           >
             <path
               strokeLinecap="round"
@@ -64,22 +72,26 @@ const ContactForm = () => {
             />
           </svg>
         </div>
-        <h3 className="text-lg font-semibold text-[#1E2B4F] mb-2">
-          Message Sent!
+        <h3 className="text-xl font-semibold text-[#1E2B4F] mb-3">
+          Thank You for Your Suggestion!
         </h3>
-        <p className="text-[#6A7C99]">
-          Thank you for contacting us. Our team will get back to you within 24
-          hours.
+        <p className="text-[#6A7C99] mb-6">
+          We&apos;ve received your integration request and will review it
+          carefully.
         </p>
+        <Button
+          onClick={() => setSubmitted(false)}
+          variant="outline"
+          className="border-[#4B63FF] text-[#4B63FF] hover:bg-[#4B63FF]/10"
+        >
+          Submit Another Suggestion
+        </Button>
       </div>
     );
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="grid gap-4 max-h-[70vh] overflow-y-auto pr-1 w-full"
-    >
+    <form onSubmit={handleSubmit} className="grid gap-5 w-full">
       <div className="space-y-2">
         <Label htmlFor="fullName" className="text-[#1E2B4F] font-medium">
           Full Name
@@ -97,7 +109,7 @@ const ContactForm = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div className="space-y-2">
           <Label htmlFor="email" className="text-[#1E2B4F] font-medium">
             Email
@@ -138,17 +150,20 @@ const ContactForm = () => {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="message" className="text-[#1E2B4F] font-medium">
-          Requirements
+        <Label
+          htmlFor="integrationDetails"
+          className="text-[#1E2B4F] font-medium"
+        >
+          Integration Details
         </Label>
         <div className="relative">
           <MessageSquare className="absolute left-3 top-3 text-[#6A7C99] h-4 w-4" />
           <Textarea
-            id="message"
-            placeholder="Tell us about your requirements"
-            className="min-h-24 pl-10 border-[#A8BFFF] focus:border-[#4B63FF] focus:ring-1 focus:ring-[#4B63FF] w-full"
+            id="integrationDetails"
+            placeholder="Tell us about the integration you'd like to suggest..."
+            className="min-h-[120px] pl-10 border-[#A8BFFF] focus:border-[#4B63FF] focus:ring-1 focus:ring-[#4B63FF] w-full resize-none"
             required
-            value={formData.message}
+            value={formData.integrationDetails}
             onChange={handleChange}
           />
         </div>
@@ -156,13 +171,39 @@ const ContactForm = () => {
 
       <Button
         type="submit"
-        className="w-full bg-[#4B63FF] hover:bg-[#3A51E0] text-white font-semibold mt-4"
+        className="w-full bg-[#4B63FF] hover:bg-[#3A51E0] text-white font-semibold mt-4 py-6 rounded-xl"
         disabled={isSubmitting}
       >
-        {isSubmitting ? "Submitting..." : "Submit Request"}
+        {isSubmitting ? (
+          <div className="flex items-center justify-center">
+            <svg
+              className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            Submitting...
+          </div>
+        ) : (
+          "Suggest Integration"
+        )}
       </Button>
     </form>
   );
 };
 
-export default ContactForm;
+export default IntegrationForm;
