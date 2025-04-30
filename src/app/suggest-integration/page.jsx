@@ -144,40 +144,6 @@ export default function SuggestIntegrationPage() {
                   </div>
                 </div>
               </div>
-
-              <div className="mt-8 pt-6 border-t border-[#E2E8F0]">
-                <div className="bg-white rounded-xl p-4 shadow-sm">
-                  <div className="flex items-center">
-                    <div className="mr-4 flex-shrink-0">
-                      <div className="w-12 h-12 rounded-full bg-[#4B63FF]/10 flex items-center justify-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6 text-[#4B63FF]"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M5.5 8.5 9 12l-3.5 3.5L2 12l3.5-3.5Z"></path>
-                          <path d="m12 2 3.5 3.5L12 9 8.5 5.5 12 2Z"></path>
-                          <path d="M18.5 8.5 22 12l-3.5 3.5L15 12l3.5-3.5Z"></path>
-                          <path d="m12 15 3.5 3.5L12 22l-3.5-3.5L12 15Z"></path>
-                        </svg>
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-[#1E2B4F]">
-                        Currently Supporting
-                      </h4>
-                      <p className="text-sm text-[#6A7C99]">
-                        Zerodha, Dhan, Fyers, Angel One, and more...
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

@@ -1,15 +1,18 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { v4 as uuidv4 } from "uuid";
 
 // Function to retry writing to a file with delay
-const retryWriteFile = async (filePath, data, maxRetries = 5, delay = 300) => {
+const retryWriteFile = async (filePath, data, maxRetries = 5, delay = 500) => {
   let retries = 0;
 
   while (retries < maxRetries) {
     try {
-      // Try to append to the file
-      fs.appendFileSync(filePath, data, { flag: "a", encoding: "utf8" });
+      // Using fs.promises for better async handling
+      const fileHandle = await fs.promises.open(filePath, "a");
+      await fileHandle.writeFile(data);
+      await fileHandle.close();
       return true;
     } catch (error) {
       console.log(
@@ -22,8 +25,12 @@ const retryWriteFile = async (filePath, data, maxRetries = 5, delay = 300) => {
         throw error;
       }
 
+      // Increase delay with each retry attempt
+      const adjustedDelay = delay + retries * 200;
+      console.log(`Waiting ${adjustedDelay}ms before retry ${retries + 1}...`);
+
       // Wait before retrying
-      await new Promise((resolve) => setTimeout(resolve, delay));
+      await new Promise((resolve) => setTimeout(resolve, adjustedDelay));
       retries++;
     }
   }
@@ -33,19 +40,20 @@ const retryWriteFile = async (filePath, data, maxRetries = 5, delay = 300) => {
 };
 
 // Backup function to save as JSON if CSV fails
-const saveAsJsonBackup = async (csvData) => {
+const saveAsJsonBackup = async (csvData, id) => {
   try {
     // Parse the CSV data into structured data
     const parts = csvData.trim().split(",");
-    const formType = parts[0];
-    const date = parts[1];
-    const time = parts[2];
+    const formType = parts[1]; // First part is now the ID, so shift indexes
+    const date = parts[2];
+    const time = parts[3];
 
     // The rest of the fields may have quotes, so we need to handle them carefully
     const restOfData = csvData.substring(csvData.indexOf('"'));
 
     // Create a backup entry
     const backupEntry = {
+      id,
       formType,
       date,
       time,
@@ -63,13 +71,15 @@ const saveAsJsonBackup = async (csvData) => {
       backupDir,
       `form_backup_${Date.now()}.json`
     );
-    fs.writeFileSync(
+
+    // Using fs.promises for better async handling
+    await fs.promises.writeFile(
       backupFilePath,
       JSON.stringify(backupEntry, null, 2),
       "utf8"
     );
 
-    console.log("Backup JSON saved successfully at:", backupFilePath);
+    console.log(`Successfully created backup JSON at ${backupFilePath}`);
     return true;
   } catch (backupError) {
     console.error("Failed to create backup JSON:", backupError);
@@ -82,7 +92,8 @@ export async function POST(request) {
     const data = await request.json();
     const { csvData } = data;
 
-    console.log("Received data in API:", data);
+    // Generate a unique ID for this submission
+    const id = uuidv4();
 
     // Define the path for the CSV file in the public directory
     const csvFilePath = path.join(
@@ -91,14 +102,12 @@ export async function POST(request) {
       "form-submissions.csv"
     );
 
-    console.log("Saving to file:", csvFilePath);
-
     // Create header if file doesn't exist - use a try/catch block to handle potential errors
     try {
       if (!fs.existsSync(csvFilePath)) {
         console.log("File does not exist, creating with header");
-        // Include headers for all form types
-        const header = "Type,Date,Time,Name,Email,Phone,Message/Details\n";
+        // Include headers for all form types, now with ID
+        const header = "ID,Type,Date,Time,Name,Email,Phone,Message/Details\n";
         fs.writeFileSync(csvFilePath, header, { flag: "wx", encoding: "utf8" });
       }
     } catch (fileError) {
@@ -111,14 +120,25 @@ export async function POST(request) {
       );
     }
 
+    // Add ID to the CSV data
+    // Extract the first part (before newline) to add ID at the beginning
+    let enhancedCsvData;
+    if (csvData.includes("\n")) {
+      const [firstLine, ...rest] = csvData.split("\n");
+      enhancedCsvData = `${id},${firstLine}\n${rest.join("\n")}`;
+    } else {
+      enhancedCsvData = `${id},${csvData}`;
+    }
+
     try {
       // Try to write to CSV file with retry logic
-      await retryWriteFile(csvFilePath, csvData);
-      console.log("Data appended successfully to CSV");
+      await retryWriteFile(csvFilePath, enhancedCsvData);
+      console.log("Data appended successfully to CSV with ID");
+      return NextResponse.json({ success: true, id, storage: "csv" });
     } catch (csvError) {
       // If CSV writing fails, use JSON backup
       console.error("CSV write failed, using JSON backup:", csvError);
-      const backupSuccess = await saveAsJsonBackup(csvData);
+      const backupSuccess = await saveAsJsonBackup(enhancedCsvData, id);
 
       if (!backupSuccess) {
         throw new Error("Both CSV and JSON backup failed");
@@ -126,9 +146,15 @@ export async function POST(request) {
 
       // Even though CSV failed, we created a backup successfully
       console.log("Form data saved as JSON backup instead of CSV");
+      return NextResponse.json({
+        success: true,
+        id,
+        storage: "json_backup",
+        message: "CSV was busy, data saved as JSON backup",
+      });
     }
 
-    return NextResponse.json({ success: true });
+    // This line should never be reached due to returns in try/catch blocks
   } catch (error) {
     console.error("Error saving to CSV:", error);
     return NextResponse.json(
